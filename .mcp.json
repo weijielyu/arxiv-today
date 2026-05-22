@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "arxiv-mcp-server": {
+      "command": "uv",
+      "args": [
+        "tool",
+        "run",
+        "arxiv-mcp-server"
+      ]
+    }
+  }
+}

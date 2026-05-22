@@ -1,0 +1,18 @@
+# Downloaded papers (can be large)
+papers/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+
+# macOS
+.DS_Store
+
+# Temp parse files
+/tmp/
+
+# Local Claude settings (personal overrides)
+.claude/settings.local.json
