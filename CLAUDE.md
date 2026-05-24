@@ -66,12 +66,24 @@ Flag papers from the user's close collaborators even if borderline.
 - Appended entries per day (newest at top within a date section)
 - Each entry: arXiv ID, title, authors, 2–3 sentence summary of contribution
 
+**Formatting conventions** (follow the existing reports exactly):
+- arXiv IDs use the date-based scheme `YYMM.NNNNN` (e.g., `2605.22818`); link as `[2605.22818](https://arxiv.org/abs/2605.22818)`
+- **Bold** author names for both close collaborators *and* notable group leads (e.g., `**Ming-Hsuan Yang**`, `**Ziwei Liu**`); end the summary with a `Notable: …` callout when a collaborator is an author
+- Tag each paper with a subcategory using `→` (e.g., `Video Generation → Motion Control`)
+- In category reports, prefix entries that were daily Top Picks with `⭐`
+- Daily reports use blockquote (`>`) for the per-paper rationale; lines end with two trailing spaces for hard breaks
+
+After writing reports, sync with git so other machines stay current:
+```bash
+git add reports/ && git commit -m "daily: $(date +%Y-%m-%d)" && git push
+```
+
 ---
 
 ## MCP Server
 
 `arxiv-mcp-server` (2763★, blazickjp/arxiv-mcp-server) is configured in `.mcp.json`.
-- Install: `uv tool install arxiv-mcp-server`
+- Install: `uv tool install --python 3.12 arxiv-mcp-server` (v0.5.0+ requires Python ≥3.11; without `--python`, uv may silently fall back to the broken 0.1.0 if the default interpreter is older)
 - Paper storage: `~/.arxiv-mcp-server/papers` (default, local to each machine)
 - Tools: `search_papers`, `download_paper`, `read_paper`, `list_papers`, `watch_topic`, `check_alerts`
 

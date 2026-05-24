@@ -5,6 +5,10 @@
       "args": [
         "tool",
         "run",
+        "--python",
+        "3.12",
+        "--from",
+        "arxiv-mcp-server",
         "arxiv-mcp-server"
       ]
     }
