@@ -4,6 +4,48 @@
 
 ---
 
+## 2026-05-25
+
+### ⭐ GenRecon: Bridging Generative Priors for Multi-View 3D Scene Reconstruction
+**arXiv:** [2605.23888](https://arxiv.org/abs/2605.23888)  
+**Authors:** Katharina Schmid, Nicolas von Lützow, Jozef Hladký, **Angela Dai**, **Matthias Nießner**
+
+Casts high-fidelity multi-view RGB scene reconstruction as conditional 3D generation over spatially-localized overlapping chunks that tile the scene, scaling an object-level generative prior (Trellis.2) to scene scale. A view-order-independent projection-based conditioning mechanism lifts posed multi-view features into a coherent 3D representation, yielding editable PBR mesh reconstructions that beat SOTA reconstruction by 16%.
+
+---
+
+### HorizonStream: Long-Horizon Attention for Streaming 3D Reconstruction
+**arXiv:** [2605.23889](https://arxiv.org/abs/2605.23889)  
+**Authors:** Chong Cheng, Peilin Tao, Nanjie Yao, Guanzhi Ding, Xianda Chen, Yuansen Du, et al.
+
+Formalizes geometric propagation as an "evidence influence kernel" and factorizes it: Geometric Linear Attention learns channel-wise decay for bounded multi-timescale long-range propagation, while Geometric Local Attention with spatiotemporal RoPE handles short-range matching and suppresses attention sinks. Trained on 48-frame clips, it generalizes to 10,000+ frame sequences with constant memory and linear time.
+
+---
+
+### RiGS: Rigid-aware 4D Gaussian Splatting from a Single Monocular Video
+**arXiv:** [2605.23672](https://arxiv.org/abs/2605.23672)  
+**Authors:** Chenyu Wu, Wanhua Li, Zhu-Tian Chen, **Hanspeter Pfister**
+
+Models dynamic monocular scenes across temporal scales using three Gaussian primitive types — static, rigid (long-term low-frequency motion), and transient (short-term high-frequency dynamics). An object-wise dynamic mask guides static/dynamic decomposition and rigid Gaussians can transition to transient ones under scene-flow supervision, achieving SOTA novel-view synthesis on dynamic benchmarks.
+
+---
+
+### LangFlash: Feed-forward 3D Language Gaussian Splatting from Sparse Unposed Images
+**arXiv:** [2605.23287](https://arxiv.org/abs/2605.23287)  
+**Authors:** Yilong Liu, Wanhua Li, Chen Zhu-Tian, **Hanspeter Pfister**
+
+A feed-forward framework that predicts geometry and language-aligned semantic features as Gaussian primitives in a single pass from sparse unposed multi-view images — no per-scene optimization or poses. A sparse semantic encoding scheme (global dictionary + per-primitive weights) reduces representation cost, with RealEstate10k enriched for dense semantic supervision.
+
+---
+
+### Good Token Hunting: A Hitchhiker's Guide to Token Selection for Visual Geometry Transformers
+**arXiv:** [2605.23892](https://arxiv.org/abs/2605.23892)  
+**Authors:** Shuhong Zheng, Michael Oechsle, Erik Sandström, Marie-Julie Rakotosaona, **Federico Tombari**, Igor Gilitschenski
+
+Tackles the quadratic cost of global attention in feed-forward multi-view 3D transformers by restricting each query's key/value set. A two-stage scheme — diversity-based inter-frame selection for scene coverage, then entropy-guided layer-aware intra-frame sparsification — accelerates inference by over 85% on 500-image scenes while maintaining or improving accuracy.
+
+---
+
 ## 2026-05-22
 
 ### ⭐ No Pose, No Problem in 4D: Feed-Forward Dynamic Gaussians from Unposed Multi-View Videos

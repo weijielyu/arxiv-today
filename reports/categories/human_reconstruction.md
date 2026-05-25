@@ -4,6 +4,16 @@
 
 ---
 
+## 2026-05-25
+
+### TrioMan: Generator-Refiner-Examiner Tri-Module Data Augmentation for 3D Human Avatars
+**arXiv:** [2605.23555](https://arxiv.org/abs/2605.23555)  
+**Authors:** Gangjian Zhang, Jian Shu, Sicheng Yu, Wenhao Shen, Yu Feng, Hao Wang
+
+Addresses data scarcity in reconstructing photorealistic, animatable 3D human avatars from monocular video via a tri-module augmentation pipeline: a Generator perturbs pose/camera for unseen samples, a Refiner improves them with one-step diffusion guided by texture/geometry cues, and an Examiner selects subject-consistent samples via dual-branch attention similarity. Outperforms SOTA on X-Humans and NeuMan.
+
+---
+
 ## 2026-05-22
 
 ### ⭐ BodyReLux: Temporally Consistent Full-Body Video Relighting

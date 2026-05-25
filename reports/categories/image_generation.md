@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-05-25
+
+### ⭐ PiD: Fast and High-Resolution Latent Decoding with Pixel Diffusion
+**arXiv:** [2605.23902](https://arxiv.org/abs/2605.23902)  
+**Authors:** Yifan Lu, Qi Wu, Jay Zhangjie Wu, Zian Wang, Huan Ling, **Sanja Fidler** et al.
+
+Reformulates the latent-to-pixel decoder as conditional pixel diffusion, unifying decoding and upsampling into a single generative module that synthesizes 4×–8× upscaled images. A sigma-aware adapter injects noise-corrupted latents (enabling early termination of latent diffusion) and DMD2 distillation cuts inference to 4 steps. Works for VAE and semantic (SigLIP/DINOv2) RAE latents; ~6× faster than cascaded SR.
+
+---
+
+### Composing People Together: Iterative Pose-Image Generation for Multi-Person Interaction Scenes
+**arXiv:** [2605.23178](https://arxiv.org/abs/2605.23178)  
+**Authors:** Wenxuan Peng, **Bharath Hariharan**, Hadar Averbuch-Elor
+
+Introduces a dual pose-image representation that brings person-centric structural priors into pretrained diffusion transformers, jointly predicting a 2D pose visualization and its RGB image so structure and appearance co-evolve. A cross-modal alignment scheme binds text/pose/image and an iterative construction scheme decomposes complex multi-human scenes, improving prompt alignment and scene diversity.
+
+---
+
+### VINS-120K: Ultra High-Resolution Image Editing with A Large-Scale Dataset
+**arXiv:** [2605.23518](https://arxiv.org/abs/2605.23518)  
+**Authors:** Zhizhou Chen, Shanyan Guan, Zhanxin Gao, En Ci, Yanhao Ge, Wei Li, et al.
+
+The first large-scale dataset for instruction-based ultra-high-resolution image editing: 120K curated (instruction, input, edited) triplets, each image ≥4096×4096, plus a VINS-4KEval benchmark. A high-frequency-aware post-adaptation strategy extends pretrained non-HR models to the UHR regime, improving fine-grained detail and texture realism.
+
+---
+
 ## 2026-05-22
 
 ### ⭐ Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models
