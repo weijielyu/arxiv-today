@@ -4,6 +4,56 @@
 
 ---
 
+## 2026-05-26
+
+### ERNIE-Image Technical Report
+**arXiv:** [2605.25347](https://arxiv.org/abs/2605.25347)  
+**Authors:** Jiaxiang Liu, Zhida Feng, Pengyu Zou, Zhenyu Qian, Tianrui Zhu, Jun Xia et al. (Baidu)
+
+An open-source 8B single-stream DiT text-to-image model aiming to close the gap to leading closed-source systems via better data mining and supervision. Pre-training uses a bottom-up pipeline (fine-grained categorization, rich captions, aesthetic assessment, hierarchical sampling); post-training adds top-down data construction, diversified prompts, and a stabilized DPO strategy. A notable open T2I release.
+
+---
+
+### Everything at Every Scale: Scale-Invariant Diffusion with Continuous Super-Resolution
+**arXiv:** [2605.26032](https://arxiv.org/abs/2605.26032)  
+**Authors:** Zixin Jessie Chen, Zhuo Chen, Archer Wang, Jeff Gore, **William T. Freeman**, Congyue Deng, **Marin Soljačić**
+
+SKILD unifies generation and continuous super-resolution in a single unconditional framework by exploiting scale invariance: the forward process attenuates content from fine to coarse scales while injecting spectrum-matched noise, making scale an explicit coordinate of the diffusion dynamics. The same reverse process does both tasks by varying only the starting timestep — no task-specific heads. An elegant reframing of generation and SR as scale-wise information recovery.
+
+---
+
+### Reinforcing Few-step Generators via Reward-Tilted Distribution Matching
+**arXiv:** [2605.26108](https://arxiv.org/abs/2605.26108)  
+**Authors:** Yushi Huang, Xiangxin Zhou, Ruoyu Wang, Chi Zhang, Jun Zhang, **Tianyu Pang**
+
+RTDMD unifies distribution matching distillation with reward-guided RL for few-step flow generators, showing the reward-tilted-teacher KL objective decomposes into a distribution-matching term and a reward-maximization term. An Ambient-Consistent DMD stage stabilizes the fake-score model under limited updates, then reward optimization is jointly applied. Aligns efficient few-step image generators with human preferences without sacrificing fidelity.
+
+---
+
+### Diff-Instruct with Diffused Reward: Towards Principled One-step Generator RL
+**arXiv:** [2605.24001](https://arxiv.org/abs/2605.24001)  
+**Authors:** Junyi Wu, Weijian Luo, Haoyang Zheng, Runzhe Zhang, Guang Lin
+
+DIDR is a data-free trajectory-level RL alignment framework for one-step T2I generators, derived from Integral KL minimization. Instead of terminal image-space reward optimization (which exploits stochastic degrees of freedom and harms fidelity), it propagates the RLHF-optimal reward-tilted clean-image distribution across all noise levels along the diffusion trajectory. Better balances reward gains and image quality.
+
+---
+
+### Adversarial Error Correction for Visual Autoregressive Generation
+**arXiv:** [2605.24843](https://arxiv.org/abs/2605.24843)  
+**Authors:** Ligong Bi, Tao Huang, Jianyuan Guo, **Chang Xu**
+
+AID-VAR is a plug-and-play framework that combats cascading error propagation in next-scale visual autoregressive models, where coarse-scale mispredictions amplify across the hierarchy. A discriminator diagnoses fidelity gaps at each scale transition and a lightweight guidance injector — a non-invasive adapter on a frozen VAR backbone — proactively corrects the feature manifold. Improves VAR synthesis fidelity without retraining the backbone.
+
+---
+
+### CollectionLoRA: Collecting 50 Effects in 1 LoRA via Multi-Teacher On-Policy Distillation
+**arXiv:** [2605.25378](https://arxiv.org/abs/2605.25378)  
+**Authors:** Fangtai Wu, Hailong Guo, Shijie Huang, Jiayi Song, Yubo Huang, Mushui Liu, Zhao Wang, Yunlong Yu, Jiaming Liu, Ruihua Huang
+
+Distills up to 50 different customized image-editing effect LoRAs, plus few-step generation, into a single LoRA via multi-teacher on-policy distillation. This removes the deployment overhead of storing/loading many LoRAs and resolves the parameter interference (concept bleeding, style degradation) caused by cascading effect LoRAs with acceleration modules. A practical recipe for scalable customized editing.
+
+---
+
 ## 2026-05-25
 
 ### ⭐ PiD: Fast and High-Resolution Latent Decoding with Pixel Diffusion
