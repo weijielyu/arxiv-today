@@ -55,7 +55,7 @@ class Settings:
     )
     max_results: int = int(os.getenv("ARXIV_MAX", "250"))
     score_threshold: int = int(os.getenv("ARXIV_SCORE_THRESHOLD", "50"))
-    top_pick_min: int = int(os.getenv("ARXIV_TOP_PICK_MIN", "80"))
+    top_pick_min: int = int(os.getenv("ARXIV_TOP_PICK_MIN", "85"))
     # 0 = no cap: summarize every paper at/above top_pick_min (quality-driven, not a fixed count).
     max_top_picks: int = int(os.getenv("ARXIV_MAX_TOP_PICKS", "0"))
     concurrency: int = int(os.getenv("ARXIV_CONCURRENCY", "6"))
