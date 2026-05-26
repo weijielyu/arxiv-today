@@ -1,124 +1,102 @@
-# arXiv Daily — Claude Code Project
+# arXiv Today — Claude Code Project
 
 ## Purpose
 
-Daily arXiv CS.CV paper monitor. Each session, fetch today's new submissions, filter to relevant papers, and update two sets of reports:
-1. **Daily reports** — `reports/daily/YYYY-MM-DD.md` — one file per day, all relevant papers with abstracts and a top-picks section
-2. **Category reports** — `reports/categories/*.md` — running cumulative lists organized by topic
+A **Claude-powered daily arXiv digest** (CS.CV by default). Each run fetches the day's new submissions, **scores every one** against the researcher's interests, writes deep structured summaries for the high-scoring papers, saves a markdown report, and pushes the top picks to Slack. Methodology is ported from [HarborYuan/paper_agent](https://github.com/HarborYuan/paper_agent).
+
+## Two execution paths
+
+This repo supports the same methodology two ways:
+
+1. **Scheduled routine (PRIMARY, no API key)** — a Claude Code routine runs daily on the user's **Max subscription**. The agent does the scoring and summarization *itself, in-session* — no Anthropic API key, no per-token cost. This is the engine that actually runs day-to-day. See "Routine methodology" below.
+2. **Python pipeline (reference, needs API key)** — `src/` is a standalone backend that does the same thing via the **Anthropic Claude API** (Sonnet 4.6). It requires a paid `ANTHROPIC_API_KEY` from console.anthropic.com (separate from a Claude.ai subscription), so it's kept as a clean reference / for anyone with API access — not the default runner.
+
+**No keyword filtering.** Both paths score *every* new submission against the profile rather than pre-filtering by keyword — this is deliberate (keyword gates were missing relevant papers). Relevance comes entirely from the LLM's judgment against the profile.
 
 ---
 
 ## Researcher Profile
 
-**Weijie Lyu** — 3rd-year EECS PhD at UC Merced (advisor: Prof. Ming-Hsuan Yang). Currently Research Scientist Intern at Apple (May 2026–, advisor: Dr. Lu Jiang).
+**Weijie Lyu** — EECS PhD at UC Merced (advisor: Prof. Ming-Hsuan Yang), Research Scientist Intern at Apple (advisor: Dr. Lu Jiang).
 
-**Research interests, in priority order:**
-1. **Video generation** — especially autoregressive video generation, camera-controlled video, motion-controlled video, text/image-to-video
-2. **Image generation** — controllable generation, diffusion models (DiT, flow matching), text-to-image
-3. **3D reconstruction & generation** — Gaussian Splatting, NeRF, feed-forward 3D models, dynamic 3D, scene reconstruction
-4. **Human video & reconstruction** — face generation, face reconstruction, talking head, portrait video, full-body avatars
+**Interests, in priority order** (drives the scoring rubric): (1) **video generation**, (2) **image generation**, (3) **3D reconstruction & generation**, (4) **human video & face**. Close collaborators (boosted in scoring): Ming-Hsuan Yang, Zhixin Shu, Xiangtai Li, Yujing Wang, Xueting Li, Yi-Hsuan Tsai, Lu Jiang.
 
-**Close collaborators** (flag papers from these people even if outside the main areas):
-- Ming-Hsuan Yang (advisor, UC Merced)
-- Zhixin Shu (Adobe Research)
-- Xiangtai Li, Yujing Wang (ByteDance)
-- Xueting Li, Yi-Hsuan Tsai (Adobe)
-- Lu Jiang (Apple, current internship)
+The canonical, machine-read copy of this profile lives in `USER_PROFILE` in [src/config.py](src/config.py) — edit it there; this section is the human summary.
 
 ---
 
-## Daily Workflow
+## Architecture
 
-### 1. Fetch today's papers
 ```
-https://arxiv.org/list/cs.CV/recent?skip=0&show=250
+src/
+├── config.py        ← settings (model, categories, thresholds, Slack webhooks) + USER_PROFILE
+├── models.py        ← Paper dataclass (carries scores + summary through the pipeline)
+├── arxiv_client.py  ← fetch new-submission IDs from the recent listing, metadata via arXiv API
+├── pdf_service.py   ← full-text extraction (arXiv HTML → PDF → abstract fallback)
+├── prompts.py       ← scoring rubric + summarization prompt + JSON score schema
+├── llm.py           ← Claude scoring (structured outputs) + summarization, async + bounded
+├── notifier.py      ← Slack digest (substantive: score + authors + TL;DR + report link)
+├── report.py        ← writes reports/daily/YYYY-MM-DD.md
+└── pipeline.py      ← orchestration: fetch → score → summarize top picks → report + notify
+reports/daily/       ← generated markdown archive (git-synced)
 ```
-- Parse with Python (HTML uses single-quote attributes: `class='list-title mathjax'`)
-- The page shows how many new submissions: "showing N of N"
-- New submissions come first; cross-lists follow — treat only new submissions as today's papers
-- Use the arXiv API for abstracts: `https://export.arxiv.org/api/query?id_list=ID1,ID2,...`
 
-### 2. Filter for relevant papers
-Scan title + abstract for keywords across these areas:
-- **Video gen:** video generation, video diffusion, text-to-video, image-to-video, autoregressive video, video editing, motion control, camera control, camera trajectory, novel view synthesis
-- **Image gen:** image generation, diffusion model, text-to-image, image editing, controllable generation, DiT, flow matching
-- **3D:** 3D reconstruction, 3D generation, Gaussian splatting, NeRF, neural radiance, point cloud, novel view, feed-forward 3D, dynamic 3D
-- **Human/face:** face generation, face reconstruction, talking head, portrait, avatar, human video, human reconstruction, facial, full-body
+**Pipeline stages** ([src/pipeline.py](src/pipeline.py)):
+1. **Fetch** — new-submission IDs from `arxiv.org/list/<cat>/recent` (cross-lists excluded), metadata from the arXiv Atom API.
+2. **Score** — every paper scored 0–100 by Claude with structured outputs, concurrently (bounded by `ARXIV_CONCURRENCY`). Rubric = relevance(0–5)×10 + novelty(0–5)×5 + clarity(0–5)×5, then collaborator/notable boosts and risk-flag penalties (see `SCORING_SYSTEM` in [src/prompts.py](src/prompts.py)).
+3. **Filter/rank** — keep ≥ `ARXIV_SCORE_THRESHOLD`; top picks = ≥ `ARXIV_TOP_PICK_MIN`, capped at `ARXIV_MAX_TOP_PICKS`.
+4. **Summarize top picks** — fetch full text and write a structured briefing (TL;DR / Problem / Key Contributions / Method / Results / Why It Matters).
+5. **Report + notify** — write the daily markdown report and post top picks to Slack.
 
-**Exclude by default:** medical imaging, remote sensing, autonomous driving (unless 3D-relevant), action recognition, NLP benchmarks, agricultural/satellite tasks.
+---
 
-### 3. Score & curate — assign a relevance score (1–10)
-Give every paper that passes the filter a **relevance score from 1 to 10** that reflects how worth-reading it is *for Weijie specifically*. Score holistically against these anchors, then apply the modifiers, then clamp to 1–10:
+## Running
 
-**Base relevance (interest area + quality):**
-- **9–10** — Squarely in a priority-1/2 area (**video generation** or **image generation**) *and* a clear, novel contribution from a notable group; or a strong, on-topic paper from a close collaborator. A must-read.
-- **7–8** — Solid paper with a clear contribution in any of the four interest areas; or a priority-3/4 area (**3D**, **human/face**) paper from a strong group.
-- **5–6** — Relevant to an interest area but incremental, narrow in scope, or from an unknown group.
-- **3–4** — Only tangentially related; borderline.
-- **1–2** — Off-topic or in an excluded area.
+Requires [uv](https://docs.astral.sh/uv/). Install Python ≥ 3.11 deps and run:
 
-**Priority weighting** (when otherwise comparable): video generation > image generation > 3D ≈ human/face. Nudge scores accordingly.
+```bash
+uv sync                       # install dependencies
+cp .env.example .env          # then fill in ANTHROPIC_API_KEY (+ Slack webhooks)
+uv run python -m src          # run the daily pipeline
+```
 
-**Modifiers** (apply, then clamp to 1–10):
-- **+2** — a close collaborator is an author (Ming-Hsuan Yang, Zhixin Shu, Xiangtai Li, Yujing Wang, Xueting Li, Yi-Hsuan Tsai, Lu Jiang) *and* the paper is at least loosely on-topic. This is how collaborator papers get surfaced even when borderline.
-- **+1** — notable group lead / top-tier lab (e.g., **Ziwei Liu**, **Kaiming He**) with a clearly novel contribution.
-- **−2** — in an excluded area (medical imaging, remote sensing, autonomous driving unless 3D-relevant, action recognition, NLP benchmarks, agricultural/satellite) even if it trips a keyword.
+Key environment variables (see [.env.example](.env.example)): `ANTHROPIC_API_KEY` (required), `ARXIV_MODEL` (default `claude-sonnet-4-6`), `ARXIV_CATEGORIES`, `ARXIV_SCORE_THRESHOLD`, `ARXIV_TOP_PICK_MIN`, `ARXIV_MAX_TOP_PICKS`, `ARXIV_CONCURRENCY`, `SLACK_WEBHOOK_URL`, `SLACK_WEBHOOK_URL_2`.
 
-**Tiers (drive the report from the score):**
-- **≥ 8 → ⭐ Top Pick.** Take the 3–5 highest; if more than 5 qualify, keep the top 5 (break ties by collaborator presence, then priority area). If fewer than 3 reach 8, fill Top Picks with the next-highest down to a floor of 7.
-- **5–7 → include** in the category table.
-- **< 5 → exclude** from the report.
-
-Quality over quantity still governs: prefer well-known groups/top venues, abstracts that clearly state a novel contribution, and papers likely to be discussed. The score makes that judgment explicit and sortable.
-
-### 4. Write reports
-
-**Daily report format** (`reports/daily/YYYY-MM-DD.md`):
-- Header with date and total new submission count
-- **Top Picks** section — the 3–5 highest-scored papers, ordered by score (descending), each with its score and a 2–3 sentence explanation of why
-- Tables per category: **Score**, Paper, arXiv ID (linked), authors, one-line highlight — sort rows by score descending
-
-**Category report format** (`reports/categories/<topic>.md`):
-- Appended entries per day (newest at top within a date section)
-- Each entry: score, arXiv ID, title, authors, 2–3 sentence summary of contribution
-
-**Formatting conventions** (follow the existing reports exactly):
-- arXiv IDs use the date-based scheme `YYMM.NNNNN` (e.g., `2605.22818`); link as `[2605.22818](https://arxiv.org/abs/2605.22818)`
-- Show the relevance score as **`N/10`**. In daily Top Picks put it on its own line (`**Score:** 9/10`); in category tables it's the leading **Score** column; in category reports prefix the entry title (e.g., `**9/10** · MotiMotion: …`)
-- **Bold** author names for both close collaborators *and* notable group leads (e.g., `**Ming-Hsuan Yang**`, `**Ziwei Liu**`); end the summary with a `Notable: …` callout when a collaborator is an author
-- Tag each paper with a subcategory using `→` (e.g., `Video Generation → Motion Control`)
-- In category reports, prefix entries that were daily Top Picks with `⭐`
-- Daily reports use blockquote (`>`) for the per-paper rationale; lines end with two trailing spaces for hard breaks
-
-After writing reports, sync with git so other machines stay current:
+After a run, sync reports so other machines stay current:
 ```bash
 git add reports/ && git commit -m "daily: $(date +%Y-%m-%d)" && git push
 ```
 
 ---
 
-## MCP Server
+## Claude API conventions (for anyone editing src/llm.py)
 
-`arxiv-mcp-server` (2763★, blazickjp/arxiv-mcp-server) is configured in `.mcp.json`.
-- Install: `uv tool install --python 3.12 arxiv-mcp-server` (v0.5.0+ requires Python ≥3.11; without `--python`, uv may silently fall back to the broken 0.1.0 if the default interpreter is older)
-- Paper storage: `~/.arxiv-mcp-server/papers` (default, local to each machine)
-- Tools: `search_papers`, `download_paper`, `read_paper`, `list_papers`, `watch_topic`, `check_alerts`
+- Use the official **Anthropic Python SDK** (`anthropic`), never an OpenAI-compatible shim.
+- Default model is **`claude-sonnet-4-6`** for both scoring and summarization (`ARXIV_MODEL`). Do not silently change models.
+- **Scoring** uses structured outputs (`output_config={"format": {"type": "json_schema", "schema": SCORE_SCHEMA}}`) — keep the schema within the supported subset (no numeric min/max; `additionalProperties: false`).
+- **Prompt caching:** the scoring rubric + profile is a stable system-prompt prefix with a `cache_control` breakpoint — keep volatile per-paper content in the user message so the prefix stays cacheable.
+- Scoring/summarization run concurrently via `AsyncAnthropic` bounded by a semaphore; the SDK auto-retries 429/5xx.
 
 ---
 
-## Repository Structure
+## Routine methodology (the path that actually runs)
 
-```
-arxiv_today/
-├── CLAUDE.md                    ← this file
-├── .mcp.json                    ← arxiv-mcp-server config
-├── .gitignore
-└── reports/
-    ├── daily/
-    │   └── YYYY-MM-DD.md
-    └── categories/
-        ├── video_generation.md
-        ├── image_generation.md
-        ├── 3d_reconstruction.md
-        └── human_reconstruction.md
-```
+The daily routine is a Claude Code cloud session on the user's Max subscription (model: Opus 4.7). Its prompt instructs the agent to, in one session:
+
+1. **Fetch** all new cs.CV submissions from the recent listing (cross-lists excluded); pull title/abstract/authors via the arXiv API.
+2. **Score every paper 0–100** against the profile + rubric (relevance·10 + novelty·5 + clarity·5, then collaborator/notable boosts, risk-flag penalties). **No keyword filtering.**
+3. **Summarize by quality, not a fixed count** — every paper scoring **≥ 80** gets a full-text structured summary (fetch `arxiv.org/html/<id>`; TL;DR / Problem / Key Contributions / Method / Results / Why It Matters). Some days that's 3 papers, some days 15.
+4. **Write** `reports/daily/YYYY-MM-DD.md` (full summaries for ≥80; scored table for the rest ≥ threshold), `git add reports/ && commit && push`.
+5. **Notify Slack** — post the ≥80 picks (score + authors + TL;DR + report link) to `SLACK_WEBHOOK_URL` / `SLACK_WEBHOOK_URL_2` (read from the environment; treat as secret).
+
+The routine needs **no `ANTHROPIC_API_KEY`** (the agent is Claude, on the subscription); it only needs the Slack webhook env vars set in the cloud environment, and GitHub access for clone/push.
+
+## Scheduling / hosting (Python path)
+
+The Python pipeline is stateless, so with an `ANTHROPIC_API_KEY` + Slack webhooks in the environment it can be driven by cron, CI, or a routine running `uv run python -m src`. There is no long-running server to host. For the day-to-day no-key path, use the routine above instead.
+
+---
+
+## Reports
+
+`reports/daily/YYYY-MM-DD.md` — Top Picks (with full structured summaries) + a scored table of other relevant papers. Earlier dates use the legacy hand-curated format; the pipeline now generates this automatically.

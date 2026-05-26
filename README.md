@@ -1,97 +1,67 @@
 # 📄 arXiv Today
 
-> A personal daily arXiv digest for CS.CV — curated by Claude Code, organized by topic.
+> A Claude-powered daily arXiv digest for CS.CV — fetch, **score**, **summarize**, and notify.
 
-Every day, Claude Code fetches all new [cs.CV](https://arxiv.org/list/cs.CV/recent) submissions, filters them by research interest, reads the abstracts, and writes two sets of reports:
+Every run pulls the day's new [cs.CV](https://arxiv.org/list/cs.CV/recent) submissions, scores each one (0–100) against a researcher profile with **Claude (Sonnet 4.6)**, writes a deep structured summary for the top picks from their full text, saves a markdown report, and pushes the top picks to Slack.
 
-- **Daily reports** — top picks with explanations + full tables by category
-- **Category logs** — running cumulative lists so you can track any topic over time
-
----
-
-## Research Areas Covered
-
-| Category | Topics |
-|----------|--------|
-| 🎬 Video Generation | Autoregressive video, camera control, motion control, text/image-to-video |
-| 🖼️ Image Generation | Diffusion models, DiT, flow matching, text-to-image, controllable generation |
-| 🧊 3D Reconstruction & Generation | Gaussian Splatting, NeRF, feed-forward 3D, dynamic 3D, scene reconstruction |
-| 🧑 Human Video & Face | Face generation/reconstruction, talking head, portrait video, full-body avatars |
+The architecture is ported from [HarborYuan/paper_agent](https://github.com/HarborYuan/paper_agent), with OpenAI replaced by the **Anthropic Claude API**. It's a backend pipeline — no web UI, no database, nothing to host 24/7.
 
 ---
 
-## Reports
+## What it does
 
-### By Date
-Browse [`reports/daily/`](reports/daily/) for day-by-day digests.
-
-Each daily report has:
-- **⭐ Top Picks** — 3–5 papers most worth reading, with a paragraph on why
-- **Category tables** — all relevant papers with authors and a one-line highlight
-
-### By Topic
-Browse [`reports/categories/`](reports/categories/) for running topic logs.
-
-| File | Covers |
-|------|--------|
-| [video_generation.md](reports/categories/video_generation.md) | Video gen, motion/camera control |
-| [image_generation.md](reports/categories/image_generation.md) | Image gen, diffusion, DiT |
-| [3d_reconstruction.md](reports/categories/3d_reconstruction.md) | 3D reconstruction & generation |
-| [human_reconstruction.md](reports/categories/human_reconstruction.md) | Human video, face, avatars |
+| Stage | Detail |
+|-------|--------|
+| 🔎 **Fetch** | New submissions from the category recent listing (cross-lists excluded); metadata via the arXiv API. |
+| 🤖 **Score** | Every paper scored **0–100** by Claude with structured outputs — `relevance·10 + novelty·5 + clarity·5`, plus collaborator/notable boosts and risk-flag penalties. |
+| 📝 **Summarize** | Top picks get a structured briefing (TL;DR · Problem · Contributions · Method · Results · Why It Matters) generated from the **full paper text**. |
+| 📬 **Notify** | Top picks pushed to Slack with score, authors, TL;DR, and a link to the full report. |
+| 🗂️ **Archive** | A markdown report is written to [`reports/daily/`](reports/daily/) and committed to git. |
 
 ---
 
 ## Setup
 
-### Requirements
-- [Claude Code](https://claude.ai/code)
-- [uv](https://docs.astral.sh/uv/) — Python package manager
-
-### Installation
-
 ```bash
 git clone https://github.com/weijielyu/arxiv-today.git
 cd arxiv-today
 
-# Install the arXiv MCP server (blazickjp/arxiv-mcp-server, 2700+★)
-uv tool install arxiv-mcp-server
+uv sync                 # install deps (Python ≥ 3.11)
+cp .env.example .env    # fill in ANTHROPIC_API_KEY (+ optional Slack webhooks)
 ```
 
-Then open the folder in Claude Code:
+Then run the daily pipeline:
 
 ```bash
-claude .
+uv run python -m src
 ```
 
-Claude Code will detect `.mcp.json` and wire up the `arxiv-mcp-server` automatically (one-time trust prompt). From there, just ask Claude to fetch today's papers.
+### Configuration
 
-### Syncing across machines
+All via environment / `.env` (see [`.env.example`](.env.example)):
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `ANTHROPIC_API_KEY` | — | **Required.** Claude API key. |
+| `ARXIV_MODEL` | `claude-sonnet-4-6` | Model for scoring + summarization. |
+| `ARXIV_CATEGORIES` | `cs.CV` | Comma-separated categories to scan. |
+| `ARXIV_SCORE_THRESHOLD` | `50` | Minimum score to appear in the report. |
+| `ARXIV_TOP_PICK_MIN` | `70` | Minimum score to earn a full PDF summary. |
+| `ARXIV_MAX_TOP_PICKS` | `5` | Cap on deep-summarized top picks. |
+| `ARXIV_CONCURRENCY` | `6` | Concurrent scoring requests. |
+| `SLACK_WEBHOOK_URL`, `SLACK_WEBHOOK_URL_2` | — | Slack incoming webhooks (second is optional). |
+
+---
+
+## Scheduling
+
+The pipeline is stateless, so any scheduler works as long as it provides the env vars: cron on a host, a CI cron job, or a [Claude Code routine](https://claude.ai/code/routines) running `uv run python -m src`. There's no server to keep alive.
 
 ```bash
-# After each session
+# Sync the report after each run
 git add reports/ && git commit -m "daily: $(date +%Y-%m-%d)" && git push
-
-# On another machine before starting
-git pull
 ```
 
 ---
 
-## How It Works
-
-1. **Fetch** — downloads the full day's cs.CV listing from arXiv (`show=250`)
-2. **Filter** — scans titles against topic keywords; fetches abstracts via the arXiv API for candidates
-3. **Curate** — reads abstracts, applies quality judgment (known groups, clear contributions, community relevance)
-4. **Write** — updates the daily report and appends to the relevant category logs
-
-The full workflow and curation rules live in [`CLAUDE.md`](CLAUDE.md), which Claude Code reads automatically on every session.
-
----
-
-## MCP Server
-
-This project uses [`arxiv-mcp-server`](https://github.com/blazickjp/arxiv-mcp-server) (2700+★) configured in [`.mcp.json`](.mcp.json). It exposes tools for searching arXiv, downloading papers, reading full text, and setting up topic alerts — all directly accessible within Claude Code.
-
----
-
-*Built with [Claude Code](https://claude.ai/code)*
+*Built with [Claude Code](https://claude.com/claude-code) · scoring & summaries by Claude Sonnet 4.6*

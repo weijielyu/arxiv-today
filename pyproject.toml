@@ -1,0 +1,20 @@
+[project]
+name = "arxiv-today"
+version = "0.1.0"
+description = "Claude-powered daily arXiv digest: fetch, score, summarize, and notify."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40.0",
+    "httpx>=0.27.0",
+    "feedparser>=6.0.11",
+    "pypdf>=4.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.setuptools]
+packages = ["src"]
