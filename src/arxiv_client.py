@@ -16,23 +16,38 @@ import httpx
 
 from .models import Paper
 
-RECENT_URL = "https://arxiv.org/list/{cat}/recent?skip=0&show={n}"
+# show=2000 so a busy day (cs.CV often announces 250-300+) is never truncated.
+RECENT_URL = "https://arxiv.org/list/{cat}/recent?skip=0&show=2000"
 API_URL = "https://export.arxiv.org/api/query"
 _ID_RE = re.compile(r"/abs/(\d{4}\.\d{4,5})")
-_CROSS_RE = re.compile(r"Cross[\s-]?(?:lists|submissions)", re.I)
+_DAY_HEADER_RE = re.compile(r"<h3>.*?</h3>", re.S)
 _USER_AGENT = "arxiv-today/0.1 (https://github.com/weijielyu/arxiv-today)"
 
 
 def fetch_new_submission_ids(category: str, n: int = 250) -> list[str]:
-    """Return the arXiv IDs of NEW submissions on the category's recent page, in order."""
-    url = RECENT_URL.format(cat=category, n=n)
-    resp = httpx.get(url, timeout=30, follow_redirects=True, headers={"User-Agent": _USER_AGENT})
+    """Return the arXiv IDs announced for the most recent day in the category.
+
+    The recent page lists several days, each starting with an <h3> header like
+    "Tue, 26 May 2026 (showing 292 of 292 entries)". We take ONLY the first
+    (latest) day's section and collect every /abs/ id in it — new submissions
+    plus cross-lists. Cross-lists are interleaved inline (marked "(cross-list
+    from ...)"), so we deliberately do NOT cut on them (doing so truncates the
+    list at the first cross-listed paper). The ``n`` argument is accepted for
+    backwards-compatibility but no longer caps the fetch.
+    """
+    url = RECENT_URL.format(cat=category)
+    resp = httpx.get(url, timeout=60, follow_redirects=True, headers={"User-Agent": _USER_AGENT})
     resp.raise_for_status()
     html = resp.text
 
-    # New submissions appear before the "Cross-lists" / "Cross submissions" heading.
-    cut = _CROSS_RE.search(html)
-    region = html[: cut.start()] if cut else html
+    # Isolate the first day-section: from the first <h3> to the second.
+    headers = list(_DAY_HEADER_RE.finditer(html))
+    if headers:
+        start = headers[0].start()
+        end = headers[1].start() if len(headers) > 1 else len(html)
+        region = html[start:end]
+    else:
+        region = html
 
     ids: list[str] = []
     seen: set[str] = set()
