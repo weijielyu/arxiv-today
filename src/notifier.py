@@ -15,35 +15,57 @@ from .models import Paper
 _REPORT_URL = "https://github.com/weijielyu/arxiv-today/blob/main/reports/daily/{date}.md"
 
 
-def extract_tldr(summary: str) -> str:
-    """Pull the text under the '## TL;DR' heading from a structured summary."""
+def _extract_section(summary: str, heading: str) -> str:
+    """Pull the text under a '## <heading>' section from a structured summary."""
     if not summary:
         return ""
-    match = re.search(r"##\s*TL;DR\s*\n(.+?)(?:\n##\s|\Z)", summary, re.S | re.I)
-    if not match:
-        # Fall back to the first non-empty line.
-        for line in summary.splitlines():
-            if line.strip() and not line.strip().startswith("#"):
-                return line.strip()
-        return ""
-    return re.sub(r"\s+", " ", match.group(1)).strip()
+    match = re.search(
+        rf"##\s*{re.escape(heading)}\s*\n(.+?)(?:\n##\s|\Z)", summary, re.S | re.I
+    )
+    return match.group(1).strip() if match else ""
+
+
+def extract_tldr(summary: str) -> str:
+    tldr = _extract_section(summary, "TL;DR")
+    if tldr:
+        return re.sub(r"\s+", " ", tldr).strip()
+    for line in summary.splitlines():  # fallback: first non-heading line
+        if line.strip() and not line.strip().startswith("#"):
+            return line.strip()
+    return ""
+
+
+def extract_contributions(summary: str, limit: int = 3) -> list[str]:
+    """Return up to `limit` Key Contributions bullets, cleaned to one line each."""
+    section = _extract_section(summary, "Key Contributions")
+    bullets: list[str] = []
+    for line in section.splitlines():
+        line = line.strip()
+        if line.startswith(("-", "*", "•")):
+            text = re.sub(r"\s+", " ", line.lstrip("-*• ").strip())
+            if text:
+                bullets.append(text)
+    return bullets[:limit]
 
 
 def build_message(date: str, total: int, top_picks: list[Paper]) -> str:
     lines = [
-        f"*:rolled_up_newspaper: arXiv CS.CV Daily — {date}*  ·  _{total} new submissions_",
+        f"*:rolled_up_newspaper: arXiv CS.CV Daily — {date}*  ·  _{total} papers_",
         "",
         "*⭐ Top Picks*",
     ]
     for p in top_picks:
+        lines.append(f"\n*{p.score}/100 · <{p.abs_url}|{p.title}>*")
+        lines.append(f"_{p.author_str(limit=5)}_")
         tldr = extract_tldr(p.summary) or p.reason
-        lines.append(
-            f"\n*{p.score}/100 · <{p.abs_url}|{p.title}>*  ({p.author_str(limit=4)})"
-        )
         if tldr:
-            lines.append(tldr)
+            lines.append(f"TL;DR: {tldr}")
+        contribs = extract_contributions(p.summary)
+        if contribs:
+            lines.append("Key contributions:")
+            lines.extend(f"• {c}" for c in contribs)
     lines.append(
-        f"\n:page_facing_up: Full report: <{_REPORT_URL.format(date=date)}|reports/daily/{date}.md>"
+        f"\n:page_facing_up: <{_REPORT_URL.format(date=date)}|Full report ({total} scanned)>"
     )
     return "\n".join(lines)
 

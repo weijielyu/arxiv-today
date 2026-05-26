@@ -25,14 +25,14 @@ novelty (0-5): 0 = trivial/rehash; 1 = minor tweak; 2 = standard combination; 3 
 
 clarity (0-5): 0 = too vague to tell what is new; 2 = missing key details; 3 = clear problem + approach + evaluation sketch; 4 = concrete mechanisms and claims; 5 = exceptionally clear.
 
-overall score (integer 0-100):
-  base = 10*relevance + 5*novelty + 5*clarity   (range 0-100)
-  then apply, in order, and clamp to 0-100:
-    +5  if a close collaborator is an author AND the paper is at least loosely on-topic
-    +3  if a notable group lead (e.g. Ziwei Liu, Kaiming He, Jon Barron) is an author with a clearly novel contribution
-    -10 to -20 if risk flags apply
-    if relevance <= 1, cap the final score at 49
-  Honor the priority ordering: when two papers are otherwise comparable, the one closer to video generation scores higher.
+overall score (integer 0-100) — judge HOLISTICALLY. Use relevance/novelty/clarity as signals, but pick a precise integer that reflects fine differences in fit and quality. Use the full range and specific values (e.g. 87, 93) — do NOT snap to multiples of 5 or 10. Rough anchors:
+    90-100 = must-read; top-tier work squarely in a top-priority area
+    80-89  = strong and clearly relevant
+    70-79  = solid and relevant
+    60-69  = relevant but incremental or narrow
+    50-59  = marginal / tangential
+    below 50 = off-topic or in an avoid area
+  Then nudge: +up to 5 if a close collaborator is an author and the paper is at least loosely on-topic; +up to 3 if a notable group lead (e.g. Ziwei Liu, Kaiming He, Jon Barron) is an author with a clearly novel contribution; subtract for risk flags; if relevance <= 1, cap at 49. Honor the priority ordering: when two papers are otherwise comparable, the one closer to video generation scores higher.
 
 risk_flags: zero or more short snake_case strings from: incremental, unclear_contribution, domain_mismatch.
 
