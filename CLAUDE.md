@@ -19,7 +19,7 @@ This repo supports the same methodology two ways:
 
 **Weijie Lyu** — EECS PhD at UC Merced (advisor: Prof. Ming-Hsuan Yang), Research Scientist Intern at Apple (advisor: Dr. Lu Jiang).
 
-**Interests, in priority order** (drives the scoring rubric): (1) **video generation**, (2) **image generation**, (3) **3D reconstruction & generation**, (4) **human video & face**. Close collaborators (boosted in scoring): Ming-Hsuan Yang, Zhixin Shu, Xiangtai Li, Yujing Wang, Xueting Li, Yi-Hsuan Tsai, Lu Jiang.
+**Interests, in priority order** (drives the scoring rubric): (1) **agentic AI research & automated scientific discovery** (AI scientist systems, autonomous research agents, LLM-driven experiment loops, multi-agent research pipelines), (2) **video generation**, (3) **image generation**, (4) **3D reconstruction & generation**, (5) **human video & face**. Close collaborators (boosted in scoring): Ming-Hsuan Yang, Zhixin Shu, Xiangtai Li, Yujing Wang, Xueting Li, Yi-Hsuan Tsai, Lu Jiang.
 
 The canonical, machine-read copy of this profile lives in `USER_PROFILE` in [src/config.py](src/config.py) — edit it there; this section is the human summary.
 
@@ -83,10 +83,10 @@ git add reports/ && git commit -m "daily: $(date +%Y-%m-%d)" && git push
 
 The daily routine is a Claude Code cloud session on the user's Max subscription (model: Sonnet 4.6 — faster/lighter than Opus for scoring the full day's list in one session). Its prompt instructs the agent to, in one session:
 
-1. **Fetch** all papers announced today from the recent listing's first day-section (new submissions **plus** cross-lists, `show=2000`); pull title/abstract/authors via the arXiv API.
+1. **Fetch** all papers announced today from the recent listing's first day-section (new submissions **plus** cross-lists, `show=2000`) for **cs.CV**; pull title/abstract/authors via the arXiv API.
 2. **Score every paper** with a holistic integer 0–100 against the profile (relevance/novelty/clarity as signals, plus collaborator/notable boosts and risk-flag penalties — a precise score like 87 or 93, not a multiple-of-5 formula). **No keyword filtering.**
 3. **Summarize by quality, not a fixed count** — every paper scoring **≥ 85** gets a full-text structured summary (fetch `arxiv.org/html/<id>`; TL;DR / Problem / Key Contributions / Method / Results / Why It Matters). Some days that's 3 papers, some days 15.
-4. **Write** `reports/daily/YYYY-MM-DD.md` (full summaries for ≥85; scored table for the rest ≥ threshold), `git add reports/ && commit && push`.
+4. **Write** `reports/daily/YYYY-MM-DD.md` (full summaries for ≥85; scored table for the rest ≥ threshold). Append any auto_research papers scoring ≥70 to `reports/categories/auto_research.md` (date header + arXiv ID, title, authors, 2–3 sentence summary). Then `git add reports/ && commit && push`.
 5. **Notify Slack** — post the ≥85 picks (each: score + title link + authors + TL;DR + 2–3 Key Contributions bullets) plus a link to the full report, to `SLACK_WEBHOOK_URL` / `SLACK_WEBHOOK_URL_2` (read from the environment; treat as secret).
 
 The routine needs **no `ANTHROPIC_API_KEY`** (the agent is Claude, on the subscription); it only needs the Slack webhook env vars set in the cloud environment, and GitHub access for clone/push.

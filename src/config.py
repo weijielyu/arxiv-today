@@ -16,10 +16,11 @@ USER_PROFILE = """\
 Weijie Lyu — EECS PhD (UC Merced, advisor Ming-Hsuan Yang), Research Scientist Intern at Apple (advisor Lu Jiang).
 
 Research interests, in PRIORITY order (higher = score relevance higher):
-1. Video generation — autoregressive video, camera-controlled video, motion-controlled video, text/image-to-video, video diffusion, video editing.
-2. Image generation — controllable generation, diffusion models (DiT, flow matching), text-to-image, image editing.
-3. 3D reconstruction & generation — Gaussian Splatting, NeRF, feed-forward 3D, dynamic/4D, scene reconstruction, novel view synthesis.
-4. Human video & reconstruction — face generation/reconstruction, talking head, portrait video, full-body avatars.
+1. Agentic AI research & automated scientific discovery — AI scientist systems, autonomous research agents, LLM-driven experiment loops, automated hypothesis generation, multi-agent research pipelines, agentic ML optimization.
+2. Video generation — autoregressive video, camera-controlled video, motion-controlled video, text/image-to-video, video diffusion, video editing.
+3. Image generation — controllable generation, diffusion models (DiT, flow matching), text-to-image, image editing.
+4. 3D reconstruction & generation — Gaussian Splatting, NeRF, feed-forward 3D, dynamic/4D, scene reconstruction, novel view synthesis.
+5. Human video & reconstruction — face generation/reconstruction, talking head, portrait video, full-body avatars.
 
 Close collaborators (treat their papers as high-relevance even if borderline): Ming-Hsuan Yang, Zhixin Shu, Xiangtai Li, Yujing Wang, Xueting Li, Yi-Hsuan Tsai, Lu Jiang.
 
