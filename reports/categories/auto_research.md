@@ -104,6 +104,44 @@ Position paper identifying four fundamental challenges in building autonomous AI
 
 ---
 
+## 2026-05-29
+
+### GenClaw: Code-Driven Agentic Image Generation
+**arXiv:** [2605.30248](https://arxiv.org/abs/2605.30248)
+**Authors:** Junyan Ye, Jun He, Zilong Huang, Dongzhi Jiang, Xuan Yang
+**Score:** 85
+
+Proposes using executable code (SVG, HTML, Three.js) as a structured intermediate "canvas" in an agentic image generation pipeline — Conceptualize (search + reasoning) → Sketch (code execution for layout) → Color (image model for textures). Addresses the fundamental bottleneck of existing image-gen agents that are trapped in prompt-rewriting loops with no direct canvas control. Demonstrates improved compositional control, text rendering, physics-assisted simulation, and layered editing. Directly relevant as an example of LLM code agents applied to creative visual generation, establishing a debuggable and interpretable agentic framework where each pipeline stage has a clear failure mode.
+
+---
+
+### WorldMemArena: Evaluating Multimodal Agent Memory Through Action-World Interaction
+**arXiv:** [2605.29341](https://arxiv.org/abs/2605.29341)
+**Authors:** Chengzhi Liu, Yuzhe Yang, Sophia Xiao Pu, Yepeng Liu, Lin Long
+**Score:** 80
+
+New benchmark decomposing multimodal agent memory into four distinct operations: write, maintain, retrieve, and use — evaluated through interactive world environment tasks where agents must track an evolving state, revise stale information, and surface the right evidence at decision time. Unlike existing benchmarks that collapse memory into end-of-task accuracy, WorldMemArena localizes failures to specific memory operations, enabling principled comparison of memory designs (hand-crafted vs. agent-authored). Directly useful for understanding which memory mechanisms are the bottleneck in long-horizon multimodal agents.
+
+---
+
+### AgentCVR: Active Multi-Agent Cross-Video Reasoning via Script-Simulated Reinforcement Learning
+**arXiv:** [2605.29643](https://arxiv.org/abs/2605.29643)
+**Authors:** Yilun Qiu, Jiahe Wang, Cilin Yan, Jiayin Cai, Xiaolong Jiang
+**Score:** 73
+
+Multi-agent framework for cross-video reasoning that treats evidence acquisition as an active task: a Master Agent iteratively coordinates specialized Visual and Audio agents to retrieve and aggregate evidence distributed across multiple videos. Trained via script-simulated RL, avoiding the cost of human annotation. Outperforms single-pass MLLM strategies that compress all video context into a shared context window. Relevant as a multi-agent pattern (active coordinator + specialized sub-agents with RL training) applicable to evidence-gathering in research pipelines.
+
+---
+
+### STAMP: Training Explicit Memory for Mobile GUI Agents in Controllable and Scalable Virtual Environments
+**arXiv:** [2605.29324](https://arxiv.org/abs/2605.29324)
+**Authors:** Junyang Wang, Haiyang Xu, Xi Zhang, Zhaoqing Zhu et al.
+**Score:** 70
+
+Trains GUI agents to explicitly memorize task-relevant transient information during long-horizon tasks — addressing the context-window vs. screenshot-heavy history conflict that causes reactive agents to lose critical state. Uses scalable virtual environments to generate what-and-when-to-memorize training signals that static datasets cannot provide. Relevant as a memory training paradigm: the insight that agents need explicit training to know *when* to write to memory (not just how) applies directly to research agents that must selectively log experiment results across long sessions.
+
+---
+
 ## 2026-05-27
 
 ### GenEvolve: Self-Evolving Image Generation Agents via Tool-Orchestrated Visual Experience Distillation
