@@ -32,7 +32,7 @@ overall score (integer 0-100) — judge HOLISTICALLY. Use relevance/novelty/clar
     60-69  = relevant but incremental or narrow
     50-59  = marginal / tangential
     below 50 = off-topic or in an avoid area
-  Then nudge: +up to 5 if a close collaborator is an author and the paper is at least loosely on-topic; +up to 3 if a notable group lead (e.g. Ziwei Liu, Kaiming He, Jon Barron) is an author with a clearly novel contribution; subtract for risk flags; if relevance <= 1, cap at 49. Honor the priority ordering: when two papers are otherwise comparable, the one closer to video generation scores higher.
+  Then nudge: +up to 5 if a close collaborator is an author and the paper is at least loosely on-topic; +up to 3 if a notable group lead (e.g. Ziwei Liu, Kaiming He, Jon Barron) is an author with a clearly novel contribution; **+10 if the paper has a project webpage** (look in the abstract for a project page URL, code repo on github.com / *.github.io, huggingface.co/spaces, or a demo URL); subtract for risk flags; if relevance <= 1, cap at 49 even after bonuses. Honor the priority ordering specified in the researcher's profile.
 
 risk_flags: zero or more short snake_case strings from: incremental, unclear_contribution, domain_mismatch.
 
@@ -63,11 +63,8 @@ What problem it solves and why prior work falls short.
 ## Method
 80-150 words on the technical approach.
 
-## Results
-Main quantitative/qualitative claims and the baselines compared against.
-
 ## Why It Matters
-1-2 sentences connecting it to video / image / 3D / human generation research.
+1-2 sentences connecting it to the researcher's interest areas.
 """
 
 SUMMARY_USER = """\

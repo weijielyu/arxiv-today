@@ -43,7 +43,7 @@ reports/daily/       ← generated markdown archive (git-synced)
 
 **Pipeline stages** ([src/pipeline.py](src/pipeline.py)):
 1. **Fetch** — all arXiv IDs in the most recent day-section of `arxiv.org/list/<cat>/recent` (new submissions **plus** cross-lists; `show=2000` so a busy day isn't truncated), metadata from the arXiv Atom API.
-2. **Score** — every paper scored 0–100 by Claude with structured outputs, concurrently (bounded by `ARXIV_CONCURRENCY`). The score is **holistic** (a precise integer 0–100), informed by relevance/novelty/clarity sub-signals plus collaborator/notable boosts and risk-flag penalties — deliberately *not* a rigid `10r+5n+5c` formula, which would snap every score to a multiple of 5 (see `SCORING_SYSTEM` in [src/prompts.py](src/prompts.py)).
+2. **Score** — every paper scored 0–100 by Claude with structured outputs, concurrently (bounded by `ARXIV_CONCURRENCY`). The score is **holistic** (a precise integer 0–100), informed by relevance/novelty/clarity sub-signals plus collaborator/notable boosts, a **+10 bonus when the paper has a project webpage** (URL / GitHub repo / demo cited in the abstract), and risk-flag penalties — deliberately *not* a rigid `10r+5n+5c` formula, which would snap every score to a multiple of 5 (see `SCORING_SYSTEM` in [src/prompts.py](src/prompts.py)).
 3. **Filter/rank** — keep ≥ `ARXIV_SCORE_THRESHOLD`; top picks = ≥ `ARXIV_TOP_PICK_MIN`, capped at `ARXIV_MAX_TOP_PICKS`.
 4. **Summarize top picks** — fetch full text and write a structured briefing (TL;DR / Problem / Key Contributions / Method / Results / Why It Matters).
 5. **Report + notify** — write the daily markdown report and post top picks to Slack.
@@ -85,9 +85,9 @@ The daily routine is a Claude Code cloud session on the user's Max subscription 
 
 1. **Fetch** all papers announced today from the recent listing's first day-section (new submissions **plus** cross-lists, `show=2000`) for **cs.CV**; pull title/abstract/authors via the arXiv API.
 2. **Score every paper** with a holistic integer 0–100 against the profile (relevance/novelty/clarity as signals, plus collaborator/notable boosts and risk-flag penalties — a precise score like 87 or 93, not a multiple-of-5 formula). **No keyword filtering.**
-3. **Summarize by quality, not a fixed count** — every paper scoring **≥ 85** gets a full-text structured summary (fetch `arxiv.org/html/<id>`; TL;DR / Problem / Key Contributions / Method / Results / Why It Matters). Some days that's 3 papers, some days 15.
-4. **Write** `reports/daily/YYYY-MM-DD.md` (full summaries for ≥85; scored table for the rest ≥ threshold). Append any auto_research papers scoring ≥70 to `reports/categories/auto_research.md` (date header + arXiv ID, title, authors, 2–3 sentence summary). Then `git add reports/ && commit && push`.
-5. **Notify Slack** — post the ≥85 picks (each: score + title link + authors + TL;DR + 2–3 Key Contributions bullets) plus a link to the full report, to `SLACK_WEBHOOK_URL` / `SLACK_WEBHOOK_URL_2` (read from the environment; treat as secret).
+3. **Summarize by quality, not a fixed count** — every paper scoring **≥ 80** gets a full-text structured summary (fetch `arxiv.org/html/<id>`; TL;DR / Problem / Key Contributions / Method / Why It Matters — *no Results section: "better than baselines" claims aren't useful*). Some days that's 3 papers, some days 15.
+4. **Write** `reports/daily/YYYY-MM-DD.md` (full summaries for ≥80; scored table for the rest ≥ threshold). Append any auto_research papers scoring ≥70 to `reports/categories/auto_research.md` (date header + arXiv ID, title, authors, 2–3 sentence summary). Then `git add reports/ && commit && push`.
+5. **Notify Slack** — post the ≥80 picks (each: score + title link + authors + TL;DR + 2–3 Key Contributions bullets) plus a link to the full report, to `SLACK_WEBHOOK_URL` / `SLACK_WEBHOOK_URL_2` (read from the environment; treat as secret).
 
 The routine needs **no `ANTHROPIC_API_KEY`** (the agent is Claude, on the subscription); it only needs the Slack webhook env vars set in the cloud environment, and GitHub access for clone/push.
 
