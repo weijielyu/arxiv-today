@@ -104,6 +104,17 @@ Position paper identifying four fundamental challenges in building autonomous AI
 
 ---
 
+## 2026-06-01
+
+### Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs
+**arXiv:** [2605.30611](https://arxiv.org/abs/2605.30611)
+**Authors:** Haozhe Zhao, Shuzheng Si, Zhenhailong Wang, Zheng Wang, Liang Chen, Xiaotong Li, Zhixiang Liang, Maosong Sun, Minjia Zhang
+**Score:** 83
+
+Multi-agent harness for scientific figure generation that solves the root failure mode of AI-generated structured visuals: five cooperating agents (intent reasoner, plan generator, critic, specification refiner, convergence judge) share an evolving structured figure specification as persistent pipeline memory, enabling typed targeted correction of localized errors (garbled labels, misaligned connectors) across diverse figure types and input modalities. Companion system CraftEditor converts raster outputs to locally editable SVGs via iterative assembly; CraftBench benchmark spans 3 figure types and 4 input conditions. Directly relevant to automated research pipelines: the harness abstraction (structured spec as memory, verify-then-refine loop, directive diagnostics) generalizes to any structured scientific content generation task.
+
+---
+
 ## 2026-05-29
 
 ### GenClaw: Code-Driven Agentic Image Generation
