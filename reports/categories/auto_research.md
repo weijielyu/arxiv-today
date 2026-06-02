@@ -163,3 +163,104 @@ Trains GUI agents to explicitly memorize task-relevant transient information dur
 Self-evolving framework for image generation agents that improves through experience rather than fixed training. Each generation attempt is modeled as a tool-orchestrated trajectory; the agent distills successful visual experiences into its policy via a feedback loop over tool use and output quality. Relevant to the auto-research theme: demonstrates how an agent can accumulate skill from trial-and-error trajectories rather than requiring curated supervised data, analogous to how a research agent should learn from its experiment history.
 
 ---
+
+## 2026-06-02
+
+### Reasmory: 3D Reconstruction as Explicit Memory for VLMs Spatial Reasoning
+**arXiv:** [2606.00963](https://arxiv.org/abs/2606.00963)
+**Authors:** Jixuan He, Xueting Li, Chieh Hubert Lin, Ming-Hsuan Yang
+**Score:** 93
+
+Reasmory builds explicit 3D point-cloud memory from multi-view images or video and constrains VLM interaction with that memory via a validated domain-specific language (DSL), achieving 6–18% gains over GPT-5-mini and Gemini-3-flash on spatial reasoning benchmarks. Semantic 3D object instances augment the point cloud, and generated DSL programs are syntactically validated before execution — preventing the errors common with unconstrained free-form tool use. Demonstrates that structured, validated access to explicit spatial memory dramatically outperforms unconstrained tool calls for VLM reasoning tasks.
+
+---
+
+### OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents
+**arXiv:** [2606.02031](https://arxiv.org/abs/2606.02031)
+**Authors:** Rui Yang, Qianhui Wu, Yuxi Chen, Hao Bai, Wenlin Yao, Hao Cheng, Baolin Peng, Huan Zhang, Tong Zhang, Jianfeng Gao
+**Score:** 83
+
+OpenWebRL is the first fully open-source framework for training visual web agents with online multi-turn RL on real websites, using only 0.4K initialization trajectories versus the 278K required by supervised baselines. Core contribution is MM-GRPO (Multimodal Multi-turn GRPO), extending GRPO to live browser interaction with trajectory-level outcome rewards judged by OpenWebRL-Judge-8B. OpenWebRL-4B achieves 67.0% on Online-Mind2Web and 64.0% on DeepShop — competitive with proprietary systems like OpenAI CUA at 650× less training data.
+
+---
+
+### Thinking in Blender: Staged Executable Inverse Graphics with Vision-Language Models
+**arXiv:** [2606.02580](https://arxiv.org/abs/2606.02580)
+**Authors:** Guangzhao He, Rundong Luo, Wei-Chiu Ma, Hadar Averbuch-Elor
+**Score:** 81
+
+SEIG (Staged Executable Inverse Graphics) reconstructs editable 3D Blender scenes from single images by decomposing reconstruction into sequential stages (geometry → materials → composition → lighting), each with a generator-verifier loop where a pretrained VLM writes executable Blender Python code and visually inspects rendered output before proceeding. No specialized 3D models or differentiable rendering pipelines are required. Shows that agentic VLMs can perform complex 3D reconstruction through structured code generation and staged verification — the finding that task decomposition matters more than toolkit richness is broadly applicable to agentic AI design.
+
+---
+
+### VESTA: Visual Exploration with Statistical Tool Agents
+**arXiv:** [2606.00384](https://arxiv.org/abs/2606.00384)
+**Authors:** William Rudman, Abhishek Divekar, Kanishk Jain, Sebastian Joseph, Stella S. R. Offner, Matthew Lease, Kyle Mahowald, Greg Durrett, Junyi Jessy Li
+**Score:** 80
+
+VESTA equips VLMs with a dynamically growing toolkit of visual diagnostic tools (data transformations, hypothesis-driven visualizations, statistical tests) to iteratively fit statistical models to data, including real-world astronomy tasks (gravitational-wave chirp signals, initial mass functions). Unlike prior systems that rely on iterative text critique alone, tools accumulate in context across refinement rounds and are reused; dynamically generated tools outperform expert-written static tool sets, especially on complex domain-specific tasks. Demonstrates automated scientific discovery at the level of statistical model fitting — one of the most expertise-intensive steps in research pipelines — directly relevant to AI scientist systems.
+
+---
+
+### APE: Agentic Prompt Enhancer for Image Generation and Editing
+**arXiv:** [2606.00204](https://arxiv.org/abs/2606.00204)
+**Authors:** Zijian Huang, Jay Zhangjie Wu, Zian Wang, Tianshi Cao, Jiasi Chen, Sanja Fidler, Huan Ling, Xuanchi Ren
+**Score:** 78
+
+APE post-trains small language models (SLMs) as lightweight prompt-enhancement agents for image generation and editing, eliminating dependence on proprietary LLMs like ChatGPT or Gemini for prompt rewriting. Two variants: SAPE for single-pass rewriting and MAPE, a multi-agent router→rewriter→composer pipeline handling compositional constraints over objects, attributes, spatial relations, and edits. With task-aware RL rewards, APE outperforms base SLMs and narrows the gap to closed-source prompt enhancers without modifying the downstream visual model.
+
+---
+
+### 3DCodeBench: Benchmarking Agentic Procedural 3D Modeling Via Code
+**arXiv:** [2606.01057](https://arxiv.org/abs/2606.01057)
+**Authors:** Yipeng Gao, Lei Shu, Genzhi Ye, Xi Xiong, Ameesh Makadia, Meiqi Guo, Laurent Itti, Jindong Chen
+**Score:** 77
+
+3DCodeBench evaluates 12 advanced VLMs as agentic procedural 3D modelers, testing their ability to translate text and image references into procedural code for 3D modeling software — a paradigm offering deterministic, engine-ready, precisely editable assets that neural 3D generators lack. Key findings: failures mostly arise from API mismatches, and test-time scaling (higher thinking budgets, multi-turn refinement) consistently improves performance. Includes 3DCodeArena, a pairwise human-preference ranking platform, highlighting the need for high-quality procedural coding data and robust execution environments for iterative VLM refinement.
+
+---
+
+### Agent Skills Should Go Beyond Text: The Case for Visual Skills
+**arXiv:** [2606.01414](https://arxiv.org/abs/2606.01414)
+**Authors:** Binxiao Xu, Ruichuan An, Bocheng Zou, Hang Hua
+**Score:** 75
+
+Argues that text-only skill paradigms (instructions, reasoning traces, summarized trajectories) create a fundamental bottleneck for visual-centric agents, where reusable knowledge depends on spatial layout, visual grounding, and localized state changes. Proposes three multimodal skill forms: static priors for stable conventions, dynamic priors for in-situ visual working memory, and interleaved visual skills binding text steps to source frames and page regions. An automatic system converts agent trajectories into these multimodal skills; experiments on GUI tasks show visual skills consistently outperform text-only skills on tasks requiring spatial correspondence and visual verification.
+
+---
+
+### DeepLatent: Think with Images via Parallel Latent Visual Reasoning
+**arXiv:** [2606.00562](https://arxiv.org/abs/2606.00562)
+**Authors:** Dongchen Lu, Zhimo Li, Mao Shu, Huo Cao
+**Score:** 75
+
+DeepLatent introduces a parallel latent visual reasoning framework where VLMs embed explicit visual states into intermediate reasoning steps, combining the flexibility of tool-assisted methods with lower latency. LatentFormer uses learnable 2D tokens to generate context-conditioned latent states in parallel — anchored to original image features — while a continuous-space RL algorithm optimizes latent modulation parameters directly in embedding space, improving representation quality beyond what knowledge distillation alone achieves. Achieves state-of-the-art performance across multiple benchmarks while avoiding the sequential bottleneck of autoregressive latent-token approaches.
+
+---
+
+### Do Multimodal Agents Really Benefit from Tool Use? A Systematic Study
+**arXiv:** [2606.02357](https://arxiv.org/abs/2606.02357)
+**Authors:** Garvin Guo, Donglei Yu, Yu Chen, Xiang Wang, Shuai Li, Xinpei Zhao, Huaxing Liu, Qinghao Wang, Minpeng Liao
+**Score:** 74
+
+Challenges the common interpretation that strong benchmark gains from tool-augmented agents prove tool utility: 93–96% of tool-solved problems in two representative agents (Thyme, DeepEyesV2) are also solved by non-tool settings, and tool access yields little consistent aggregate improvement or token-cost reduction. Mechanism ablations show agents learn tool-calling patterns more reliably than tool-contributed capabilities — raising the possibility that benchmark gains come from structured output formatting rather than actual tool benefit. Recommends evaluation designs that distinguish tool availability from whether tools actually expand what agents can solve.
+
+---
+
+### Sandboxed Coding Agents are Competitive Omni-modal Task Solvers
+**arXiv:** [2606.00579](https://arxiv.org/abs/2606.00579)
+**Authors:** Dongping Chen, Xuanao Huang, Zhihan Hu, Qingyuan Shi, Dianqi Li, Tianyi Zhou
+**Score:** 73
+
+Shows that coding agents with only text+image access and sandboxed tool use can match or outperform state-of-the-art native omnimodal models on video and audio benchmarks by converting omnimodal tasks into retrieval and code-driven information-processing problems. Their strength comes from writing code to extract evidence from transcripts, frames, and modality signals rather than ingesting entire media streams. Introduces Code-X (training recipe + OmniCoding trajectory dataset with verifiable reward) and TerminalBench-O for process-level omnimodal benchmarking.
+
+---
+
+### Diversity Over Frequency: Rethinking Tool Use in Visual Chain-of-Thought Agents
+**arXiv:** [2606.00096](https://arxiv.org/abs/2606.00096)
+**Authors:** Dong-Hee Kim, Reuben Tan, Donghyun Kim
+**Score:** 72
+
+Identifies a "tool-use collapse" phenomenon in visual chain-of-thought agents: models progressively stop using tools during training while still achieving higher accuracy, revealing an asymmetry where eliminating tools hurts but incentivizing tool use yields only marginal gains. Both standard training and tool-use encouragement reduce rollout diversity — explaining why higher tool frequency does not yield stronger reasoning — while entropy regularization promoting diverse rollout exploration achieves best performance despite declining tool usage. Reframes tools as training-time scaffolding rather than inference-time necessities, with important implications for agent training curricula.
+
+---
