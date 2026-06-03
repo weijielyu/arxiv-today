@@ -264,3 +264,23 @@ Shows that coding agents with only text+image access and sandboxed tool use can 
 Identifies a "tool-use collapse" phenomenon in visual chain-of-thought agents: models progressively stop using tools during training while still achieving higher accuracy, revealing an asymmetry where eliminating tools hurts but incentivizing tool use yields only marginal gains. Both standard training and tool-use encouragement reduce rollout diversity — explaining why higher tool frequency does not yield stronger reasoning — while entropy regularization promoting diverse rollout exploration achieves best performance despite declining tool usage. Reframes tools as training-time scaffolding rather than inference-time necessities, with important implications for agent training curricula.
 
 ---
+
+## 2026-06-03
+
+### MUSE: A Unified Agentic Harness for MLLMs
+**arXiv:** [2606.03005](https://arxiv.org/abs/2606.03005)
+**Authors:** Jianglin Lu, Hailing Wang, Xu Ma, Qihua Dong, Mingyuan Zhang et al.
+**Score:** 73
+
+MUSE investigates how much capability can be elicited from a frozen MLLM purely through improved execution scaffolding — without any weight updates. It introduces a unified agentic harness with learnable interface modules (structured perception, action decomposition, iterative verification loops) that wrap a frozen MLLM and handle tasks like grid maze navigation or multi-step puzzle solving that the base model fails at. The key finding is that the execution scaffold matters as much as model capacity: a frozen medium-sized MLLM with a well-designed harness outperforms a larger bare model. Directly relevant as a design template for wrapping any MLLM with an agentic layer for research tasks.
+
+---
+
+### JAVEDIT: Joint Audio-Visual Instruction-Guided Video Editing with Agentic Data Curation
+**arXiv:** [2606.03168](https://arxiv.org/abs/2606.03168)
+**Authors:** Yinan Chen, Chuming Lin, Zhennan Chen, Yuxiang Zeng, Junwei Zhu et al.
+**Score:** 78
+
+JAVEDIT introduces JAVEdit-100k, the first large-scale dataset (100K clips) for instruction-guided joint audio-visual video editing, built entirely via an agentic data curation pipeline that automatically filters, annotates, and pairs raw video clips with editing instructions without human labeling. The agentic pipeline demonstrates how LLM-driven automation can replace manual dataset construction for multimodal tasks — a pattern directly applicable to building training data for research agent systems. The accompanying editing model supports simultaneous instruction-guided modification of both visual and audio streams in human-centric videos.
+
+---
