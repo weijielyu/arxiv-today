@@ -284,3 +284,32 @@ MUSE investigates how much capability can be elicited from a frozen MLLM purely 
 JAVEDIT introduces JAVEdit-100k, the first large-scale dataset (100K clips) for instruction-guided joint audio-visual video editing, built entirely via an agentic data curation pipeline that automatically filters, annotates, and pairs raw video clips with editing instructions without human labeling. The agentic pipeline demonstrates how LLM-driven automation can replace manual dataset construction for multimodal tasks — a pattern directly applicable to building training data for research agent systems. The accompanying editing model supports simultaneous instruction-guided modification of both visual and audio streams in human-centric videos.
 
 ---
+
+## 2026-06-08
+
+### Skill-3D: Evolving Scene-Aware Skills for Agentic 3D Spatial Reasoning
+**arXiv:** [2606.07436](https://arxiv.org/abs/2606.07436)
+**Authors:** Haoyuan Li, Zhengdong Hu, Jun Wang, Hehe Fan, Yi Yang
+**Score:** 76
+
+Identifies a core failure mode in agentic 3D spatial reasoning: MLLM agents apply a uniform tool-use strategy regardless of scene, missing that 3D tasks are heterogeneous across environments. Skill-3D addresses this with a self-evolving Scene Memory: successful tool-use trajectories from similar scenes are distilled into reusable scene-aware skills, while failures are attached as lessons. The co-evolution loop between memory and skill library drives tool utilization from 39% to 78% on VSI-Bench and boosts Gemini-3-Flash by 67% on MMSI-Bench. Relevant as a framework for adapting agentic tool use to domain-specific task distributions.
+
+---
+
+### MemDreamer: Decoupling Perception and Reasoning for Long Video Understanding via Hierarchical Graph Memory and Agentic Retrieval Mechanism
+**arXiv:** [2606.07512](https://arxiv.org/abs/2606.07512)
+**Authors:** Cong Chen, Guo Gan, Kaixiang Ji, ChaoYang Zhang, Zhen Yang, Guangming Yao, Hao Chen, Jingdong Chen, Yi Yuan, Chunhua Shen
+**Score:** 72
+
+MemDreamer shifts long-video understanding into an agentic exploration paradigm by decoupling perception from reasoning: streaming video builds a Hierarchical Graph Memory (three-tier semantic abstraction with spatiotemporal/causal edges), while inference uses an Observation-Reason-Action loop to navigate the graph and retrieve only what is needed. Constraining the reasoning context to 2% of full-context input still yields a 12.5-point accuracy gain. The finding of a strong positive linear correlation between logic reasoning capability and long-video understanding suggests agentic capability scaling as a new training paradigm — relevant to any LLM-driven retrieval and multi-step reasoning agent.
+
+---
+
+### GOPAgen: Motion-Aware and Efficient Agentic Long-Video Understanding with Structural Memory and Hierarchical Reasoning
+**arXiv:** [2606.06532](https://arxiv.org/abs/2606.06532)
+**Authors:** Haozhe Chi, Yang Jin, Yadong Mu
+**Score:** 71
+
+GOPAgen integrates video codec structure into agentic video understanding: a motion agent trained on Groups of Pictures (GOPs) captures detailed local motion, a GOP tree reasoning algorithm provides hierarchical navigation, and a structural memory with coarse-to-fine zoom-in enables efficient retrieval. A motion vector database supports multi-granularity retrieval. Achieves state-of-the-art on MotionBench and Egoschema. The codec-native memory architecture is a concrete example of incorporating domain-specific efficient representations into an agentic framework.
+
+---
