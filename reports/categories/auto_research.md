@@ -313,3 +313,76 @@ MemDreamer shifts long-video understanding into an agentic exploration paradigm 
 GOPAgen integrates video codec structure into agentic video understanding: a motion agent trained on Groups of Pictures (GOPs) captures detailed local motion, a GOP tree reasoning algorithm provides hierarchical navigation, and a structural memory with coarse-to-fine zoom-in enables efficient retrieval. A motion vector database supports multi-granularity retrieval. Achieves state-of-the-art on MotionBench and Egoschema. The codec-native memory architecture is a concrete example of incorporating domain-specific efficient representations into an agentic framework.
 
 ---
+
+---
+
+## 2026-06-09
+
+### VideoWeaver: Evaluating and Evolving Skills for Agentic Long Video Generation
+**arXiv:** 2606.08091 | **Authors:** Jianhui Wei, Jie Tan, Hengchuan Zhu, Xiaotian Zhang, Yan Zhang, Ziyi Chen, Daoan Zhang, Wei Xu, Zuozhu Liu
+
+The first systematic study of whether general-purpose coding agent frameworks (Claude Code, Codex, OpenClaw) can handle long video generation as a long-horizon multimodal task. Introduces VideoWeaver, a benchmark (16 categories, 285 cases) and agent harness where agents compose and evolve their own skill workflows rather than following fixed pipelines, plus an agent-as-judge that evaluates both execution traces and final videos. Skill evolution via agent feedback meaningfully improves long video quality, and the framework establishes a research agenda at the intersection of agentic AI and video generation.
+
+---
+
+### Crayotter: Traceable Multi-Agent Workflows for Long-Form Video Editing
+**arXiv:** 2606.07636 | **Authors:** Lecheng Yan, Yichong Zhang, Ben Pan, Xiaoyu Zheng, Jiawei Qian, Anqi Wu, Wenxi Li, Chenyang Lyu
+
+Open-source multi-agent system for prompt-driven long-form video editing with three phases (material preparation → editing research → timeline execution), each externalizing inspectable artifacts for diagnostic replay. Agents can selectively revise failed segments without restarting, and a trajectory-level RLVR design prepares these workflows for future policy optimization. Scores 3.40/5 vs 2.44 and 1.70 for competing baselines in human evaluation on 23 editing themes.
+
+---
+
+### ViMax: Agentic Video Generation
+**arXiv:** 2606.07649 | **Authors:** Lingxuan Huang, Sizhe He, Hengji Zhou, Liqiang Nie, Lianghao Xia, Chao Huang
+
+Multi-agent video generation framework that addresses long-form narrative video creation through hierarchical narrative planning with retrieval-augmented generation and a dependency-aware visual consistency mechanism tracking character and environment states. Specialized VLM-guided agents coordinate narrative decisions, visual continuity, and production quality; spatial coherence is maintained through transition videos between scenes. Directly addresses "catastrophic semantic forgetting" in current video generators via principled multi-agent coordination.
+
+---
+
+### Struct-Searcher: Agentic Structural Thinking Advances Multimodal Deep Information Seeking
+**arXiv:** 2606.07689 | **Authors:** Fan Zhang, Vireo Zhang, Shengju Qian, Haoxuan Li et al.
+
+Plug-and-play agentic workflow grounded in belief revision theory that maintains an evolving multimodal structural graph throughout deep information seeking, enabling conflict-aware resolution when text and visual evidence contradict each other. Unlike evidence accumulation agents that linearly aggregate information, Struct-Searcher explicitly detects and resolves contradictions via graph updates grounded in formal belief revision. Achieves +17.2% average relative accuracy improvement on BrowseComp-VL across five backbone models without retraining.
+
+---
+
+### SceneConductor: 3D Scene Generation from Single Image with Multi-Agent Orchestration
+**arXiv:** 2606.08402 | **Authors:** Jeonghwan Kim, Yushi Lan, Yongwei Chen, Hieu Trung Nguyen, Chuanyu Pan, Xingang Pan
+
+Multi-agent orchestration framework for single-image 3D scene generation with three stages: initialization, environment construction, and multi-agent refinement where a planner agent routes simple fixes directly and dispatches specialist agents for complex localized revisions. Demonstrates that agent-based decomposition outperforms holistic or weakly-decomposed pipelines on geometric accuracy and perceptual realism on standard benchmarks. The specialist-agent routing pattern is a scalable solution to the complexity-growth problem in 3D scene generation.
+
+---
+
+### A Case Study of Evaluating AI Agents on a Neuroscience Data-to-Discovery Pipeline
+**arXiv:** 2606.07718 | **Authors:** Kai A. Horstmann, Ethan Lin, Alice A. Robie, Jennifer J. Sun et al.
+
+Empirical evaluation of general-purpose coding agents on a real fly optogenetics data-to-discovery pipeline with datasets orders of magnitude larger than typical benchmarks and domain-expert-grounded evaluation criteria. Agents can handle individual pipeline stages but fail end-to-end; the key failure mode is when no predefined iteration criterion exists and agents must apply scientific judgment to assess their own intermediate outputs. Distills principles for constructing scientific agent benchmarks and identifies computational resource management and visual self-evaluation as critical open challenges for AI scientist systems.
+
+---
+
+### PhysAgent: Automating Physics-Based 4D Synthesis via Trajectory-Grounded Multi-Agent Feedback
+**arXiv:** 2606.08688 | **Authors:** Chunji Lv, Jiaxi Ye, Yuchen Jiang, Rexar Lin, Changsheng Li
+
+First simulator-in-the-loop multi-agent framework for automated physics-based 4D synthesis, using a Semantic Agent for force field initialization and Trajectory-Grounded Refine Agents that extract dense point trajectories from rendered frames and use LLM reasoning for zero-shot force field optimization. Eliminates the manual configuration bottleneck in physics-based 4D synthesis by fully decoupling material properties from extrinsic force fields and closing the optimization loop through physical simulation feedback. Significantly outperforms existing baselines in generation diversity and physical accuracy.
+
+---
+
+### IEA: Amateur-Friendly Conversational Image Editing Agent
+**arXiv:** 2606.08016 | **Authors:** Zichen Zhu, Yuheng Sun, Mingxuan Zhu, Wenjie Ma et al.
+
+Conversational image editing agent designed for non-expert users via three-stage multitask alignment: intent understanding, edit planning, and instruction-following execution. Bridges the gap between user intent and generative model outputs by making the editing process interactive and transparent, explaining why edits were applied. Demonstrates that conversational agentic interaction significantly reduces artifacts and stylistic drift compared to single-round generation.
+
+---
+
+### Visual Para-Thinker++: Single-Policy Multi-Agent Framework for Visual Reasoning
+**arXiv:** 2606.09290 | **Authors:** Haoran Xu, Hongyu Wang, Yifei Gao, Jiaze Li et al.
+
+Single shared MLLM policy instantiated as multiple parallel reasoning agents that integrate visual evidence from different regions, attributes, and relations, avoiding early perceptual commitment and hallucination in single-chain reasoning. Each agent explores a different reasoning path simultaneously, and a consensus mechanism aggregates the parallel evidence streams. Demonstrates consistent improvement over single-chain baselines on visual reasoning benchmarks.
+
+---
+
+### Claude Code-Driving Scenario Mining for the Argoverse 2 Challenge
+**arXiv:** 2606.09180 | **Authors:** Wei Deng, Caoshengzhe Xue, Shuaikun Liu, Zhaohong Liu et al.
+
+CVPR 2026 challenge system submission using a Claude Code agent for autonomous code generation in a four-stage pipeline: iterative code generation → training set screening → dataset extension → evaluation. Demonstrates that a coding agent can autonomously navigate the full scenario mining pipeline with iterative self-improvement via threshold-based curation. Provides a practical case study of Claude Code-style agents for data-curation automation in autonomous driving research.
+
