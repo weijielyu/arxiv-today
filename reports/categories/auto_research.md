@@ -386,3 +386,33 @@ Single shared MLLM policy instantiated as multiple parallel reasoning agents tha
 
 CVPR 2026 challenge system submission using a Claude Code agent for autonomous code generation in a four-stage pipeline: iterative code generation → training set screening → dataset extension → evaluation. Demonstrates that a coding agent can autonomously navigate the full scenario mining pipeline with iterative self-improvement via threshold-based curation. Provides a practical case study of Claude Code-style agents for data-curation automation in autonomous driving research.
 
+---
+
+## 2026-06-10
+
+### Data Journalist Agent: Transforming Data into Verifiable Multimodal Stories
+**arXiv:** [2606.11176](https://arxiv.org/abs/2606.11176)
+**Authors:** Kevin Qinghong Lin, Batu EI, Yuhong Shi, Pan Lu, Philip Torr, James Zou
+**Score:** 82
+
+Data2Story is a 7-agent virtual newsroom (Detective, Analyst, Editor, Designer, Programmer, Auditor, Inspector) that takes a raw dataset and produces an interactive multimedia news article where every claim is traceable back to executable code or a source URL. The Inspector agent is the key innovation: it binds each published HTML fragment to the exact code line or external reference that generated it, achieving claim-level auditability that even carefully crafted human articles rarely provide. A human study (53 participants, 18 articles) finds Data2Story competitive with professional journalists on transparency and verifiability while human articles retain an edge in editorial angle and design.
+
+---
+
+### A History-Aware Visually Grounded Critic for Computer Use Agents
+**arXiv:** [2606.11078](https://arxiv.org/abs/2606.11078)
+**Authors:** Jaewoo Lee, Zaid Khan, Archiki Prasad, Justin Chih-Yao Chen, Supriyo Chakraborty, Kartik Balasubramaniam
+**Score:** 81
+
+HiViG is a test-time critic for Computer Use Agents that addresses two overlooked failure modes in existing critic models: short-sighted planning (forgetting earlier actions) and lack of visual grounding (approving logically correct but spatially misaligned actions). The critic is trained on 52K GUI trajectory samples and at test time recursively compresses past interactions into macro-action histories while visually verifying proposed action coordinates against a rendered marker on the screenshot. HiViG improves Gemini-3-Flash on WebArenaLitev2 by 15% absolute (30.5%→45.5%) and outperforms all baseline critics by 9% average across web, mobile, and desktop — a notable result for long-horizon GUI automation.
+
+---
+
+### 3D-CoS: A New 3D Reconstruction Paradigm Based on VLM Code Synthesis
+**arXiv:** [2606.10478](https://arxiv.org/abs/2606.10478)
+**Authors:** Yuhao Wang, Puyi Wang, Linjie Li, Zhengyuan Yang, Kevin Qinghong Lin, Yu Cheng
+**Score:** 74
+
+3D-CoS proposes constructing 3D assets as executable Blender code rather than neural representations (NeRF, point clouds, meshes) — a programmatic medium that is interpretable, controllable, and directly editable at the part level. The paper systematically evaluates VLMs on code-based 3D reconstruction across four synthesis workflows: blueprint-based planning, RAG over Blender API documentation, few-shot geometric demonstrations, and a component-level agent workflow for part-wise code generation. Code-based 3D representation shows strong edit fidelity and locality for targeted text-driven modifications, establishing a new direction at the intersection of VLM code synthesis and 3D generation.
+
+---
