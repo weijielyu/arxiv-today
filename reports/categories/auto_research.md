@@ -416,3 +416,32 @@ HiViG is a test-time critic for Computer Use Agents that addresses two overlooke
 3D-CoS proposes constructing 3D assets as executable Blender code rather than neural representations (NeRF, point clouds, meshes) — a programmatic medium that is interpretable, controllable, and directly editable at the part level. The paper systematically evaluates VLMs on code-based 3D reconstruction across four synthesis workflows: blueprint-based planning, RAG over Blender API documentation, few-shot geometric demonstrations, and a component-level agent workflow for part-wise code generation. Code-based 3D representation shows strong edit fidelity and locality for targeted text-driven modifications, establishing a new direction at the intersection of VLM code synthesis and 3D generation.
 
 ---
+
+## 2026-06-11
+
+### InternVideo3: Agentify Foundation Models with Multimodal Contextual Reasoning
+**arXiv:** [2606.12195](https://arxiv.org/abs/2606.12195)
+**Authors:** Ziang Yan, Sheng Xia, Jiashuo Yu, Yue Wu, Tianxiang Jiang, Songze Li, Kanghui Tian, Yicheng Xu, Yinan He, Kai Chen, Limin Wang, Yu Qiao, Yi Wang
+**Score:** 85
+
+InternVideo3 introduces Multimodal Contextual Reasoning (MCR), a closed-loop formulation where multimodal observations, instructions, intermediate reasoning, tool actions, feedback, and memory all share one evolving context — treating long-video understanding as iterative evidence accumulation and belief revision rather than single-pass prediction. Complementing MCR, M²LA (Multimodal Multi-head Latent Attention) compresses KV-cache states via RoPE-aware positional aggregation and low-rank latent factorization, enabling efficient long-horizon rollouts without discarding full token streams. A staged training recipe (continued pretraining → short-to-long SFT → rule-based RL → on-policy distillation) yields strong results on Video-MME, MLVU, and EgoSchema, and a video agent instantiation demonstrates how recursive multimodal reasoning supports robust evidence-grounded tool use.
+
+---
+
+### DIRECT: When and Where Should You Allocate Test-Time Compute in Embodied Planners?
+**arXiv:** [2606.12402](https://arxiv.org/abs/2606.12402)
+**Authors:** Jadelynn Dao, Milan Ganai, Yasmina Abukhadra, Ajay Sridhar, Mozhgan Nasr Azadani, Katie Luo, Clark Barrett, Jiajun Wu, Chelsea Finn, Marco Pavone
+**Score:** 80
+
+DIRECT shows that the three dominant test-time compute axes for embodied VLM planners — chain-of-thought depth, model size, and memory context — are qualitatively distinct and non-interchangeable: CoT depth helps on tasks with implicit spatial/semantic constraints, model size governs skill breadth, and memory helps on history-dependent tasks but can hurt elsewhere. Building on this diagnostic, the paper introduces a lightweight multimodal router that allocates per-task compute by matching each task's inferred cognitive demands to the cheapest capable VLM configuration. Physical Franka arm validation (DROID setup) shows DIRECT matches frontier model success rates at up to 65% lower average latency — a practical blueprint for deploying efficient agentic systems under real-world constraints.
+
+---
+
+### DrivingAgent: Design and Scheduling Agents for Autonomous Driving Systems
+**arXiv:** [2606.12236](https://arxiv.org/abs/2606.12236)
+**Authors:** Zhongyu Xia, Wenhao Chen, Yongtao Wang, **Ming-Hsuan Yang**
+**Score:** 75
+
+DrivingAgent addresses two bottlenecks that arise when incorporating foundation models into autonomous driving: the labor-intensive manual design/integration process and the lack of intelligent scheduling strategies for multi-model pipelines. The paper proposes an agent-based framework that automates both the design of new model integrations and the runtime scheduling of foundation models, adapting to diverse driving scenarios and long-tail cases. Notable: co-authored by close collaborator Ming-Hsuan Yang.
+
+---
