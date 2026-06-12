@@ -445,3 +445,50 @@ DIRECT shows that the three dominant test-time compute axes for embodied VLM pla
 DrivingAgent addresses two bottlenecks that arise when incorporating foundation models into autonomous driving: the labor-intensive manual design/integration process and the lack of intelligent scheduling strategies for multi-model pipelines. The paper proposes an agent-based framework that automates both the design of new model integrations and the runtime scheduling of foundation models, adapting to diverse driving scenarios and long-tail cases. Notable: co-authored by close collaborator Ming-Hsuan Yang.
 
 ---
+
+## 2026-06-12
+
+### InterleaveThinker: Reinforcing Agentic Interleaved Generation
+**arXiv:** [2606.13679](https://arxiv.org/abs/2606.13679)
+**Authors:** Dian Zheng, Harry Lee, Manyuan Zhang, Kaituo Feng, Zoey Guo, Ray Zhang, Hongsheng Li
+**Score:** 92
+
+InterleaveThinker introduces the first multi-agent pipeline that endows any existing image generator with interleaved text-image generation capabilities by deploying a planner agent (organizes multi-step plans) and a critic agent (detects deviations and refines instructions) in a closed loop. RL training with GRPO on single-step critic corrections effectively guides trajectories spanning 25+ generator calls without full-trajectory optimization, achieving GPT-5-comparable performance on interleaved generation benchmarks. The paradigm — plan, generate, critique, refine — generalizes across generator architectures and delivers surprising gains on visual reasoning benchmarks beyond interleaved generation.
+
+---
+
+### SpatialClaw: Rethinking Action Interface for Agentic Spatial Reasoning
+**arXiv:** [2606.13673](https://arxiv.org/abs/2606.13673)
+**Authors:** Seokju Cho, Ryo Hachiuma, Abhishek Badki, Hang Su, Byung-Kwan Lee, Chan Hee Song, Sifei Liu, Subhashree Radhakrishnan, Seungryong Kim, Yu-Chiang Frank Wang, Min-Hung Chen
+**Score:** 83
+
+SpatialClaw demonstrates that the choice of action interface is a primary driver of agentic spatial reasoning performance: code-as-action with a stateful Python kernel outperforms both single-pass code (no mid-course correction) and structured tool-calls (limited compositionality) by +11.2 points across 20 benchmarks. The framework is training-free and generalizes to 6 VLM backbones, suggesting the interface design principle — persistent kernel, per-step execution, observation of all prior outputs — is model-agnostic. This is a concrete design lesson for building agentic systems that need to reason iteratively over structured tool outputs.
+
+---
+
+### ComAct: Reframing Professional Software Manipulation via COM-as-Action Paradigm
+**arXiv:** [2606.13239](https://arxiv.org/abs/2606.13239)
+**Authors:** Jiaxin Ai, Tao Hu, Xuemeng Yang, Shu Zou, Hairong Zhang
+**Score:** 77
+
+ComAct identifies the Component Object Model (COM) as a unified executable abstraction for professional software (CAD, Office, etc.), proposing COM-as-Action: reframing software interaction as deterministic program synthesis rather than sequential visual GUI control. Frontier models achieve near-zero success under GUI-based interaction on the new ComCADBench benchmark, while COM-based execution yields substantial immediate gains; ComActor (a self-correcting agent via progressive 3-stage training) further closes the gap to geometric accuracy. This paradigm shift from visual fragility to deterministic API synthesis is directly relevant to agentic AI for professional tool use.
+
+---
+
+### IterCAD: An Iterative Multimodal Agent for Visually-Grounded CAD Generation and Editing
+**arXiv:** [2606.13368](https://arxiv.org/abs/2606.13368)
+**Authors:** Tao Hu, Jiaxin Ai, Licheng Wen, Xueheng Li, Shu Zou
+**Score:** 73
+
+IterCAD formulates CAD generation and editing as a closed-loop multi-turn interaction between a multimodal agent and an executable CAD sandbox, covering drawing-to-code, text-to-code, and interactive editing tasks. Progressive SFT followed by geometry-aware RL with viable-prefix masking trains the agent to produce executable, geometrically precise code across multiple interaction turns. The IterCAD-Bench benchmark introduces the CD-TR curve (Chamfer Distance Tolerance-Recall) as a survivor-bias-free metric unifying code validity and geometric precision — a useful evaluation framework for agentic code generation in structured domains.
+
+---
+
+### Perceive, Interact, Reason: Building Tool-Augmented Visual Agents for Spatial Reasoning
+**arXiv:** [2606.12830](https://arxiv.org/abs/2606.12830)
+**Authors:** Changye Li, Meng Lu, Yi Wu, Ligeng Zhu
+**Score:** 73
+
+PERIA is a tool-augmented visual agent for spatial reasoning that trains multi-tool behavior via OR-GIGPO (Observation-Relaxed Group-in-Group Policy Optimization), combining supervised tool-use trajectory synthesis with composite rewards. PERIA-8B improves over its Qwen3-8B backbone by 10.0% on in-distribution and 4.4% on out-of-distribution spatial benchmarks, with performance comparable to much larger models (Qwen3-VL-235B, GPT-5) — demonstrating that targeted RL training for tool use can make small models competitive with frontier models on structured spatial tasks.
+
+---
