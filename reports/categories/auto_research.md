@@ -492,3 +492,41 @@ IterCAD formulates CAD generation and editing as a closed-loop multi-turn intera
 PERIA is a tool-augmented visual agent for spatial reasoning that trains multi-tool behavior via OR-GIGPO (Observation-Relaxed Group-in-Group Policy Optimization), combining supervised tool-use trajectory synthesis with composite rewards. PERIA-8B improves over its Qwen3-8B backbone by 10.0% on in-distribution and 4.4% on out-of-distribution spatial benchmarks, with performance comparable to much larger models (Qwen3-VL-235B, GPT-5) — demonstrating that targeted RL training for tool use can make small models competitive with frontier models on structured spatial tasks.
 
 ---
+
+## 2026-06-15
+
+### MUSE: Agentic 3D Scene Authoring via Memory-Grounded Incremental Requirement Satisfaction
+**arXiv:** [2606.14168](https://arxiv.org/abs/2606.14168)
+**Authors:** Ruijie Xu, Xinnan Zhu, Jiayu Ying, Daoguo Dong, Yuzhou Ji, Xin Tan
+**Score:** 84
+
+MUSE is a multi-agent framework for controllable 3D scene authoring in which an Architect compiles natural language into structured requirement programs, a Sculptor executes local scene operations, and an Inspector verifies each step while updating three persistent memory stores (Working, Scene, Skill). The system formulates scene construction and editing as incremental requirement satisfaction — when a sub-goal fails, Skill Memory guides targeted local retry rather than full-scene regeneration, achieving 80.7 all-goal success (up from 37.9) and 99.9% preservation rate on editing benchmarks.
+
+---
+
+### Orchestra-o1: Omnimodal Agent Orchestration
+**arXiv:** [2606.13707](https://arxiv.org/abs/2606.13707)
+**Authors:** Fan Zhang, Vireo Zhang, Shengju Qian, Haoxuan Li, Hao Wu, Jinyang Wu, Donghao Zhou, Zhihong Zhu, Zheng Lian, Xin Wang, Pheng-Ann Heng
+**Score:** 82
+
+Orchestra-o1 is a multi-agent orchestration framework that enables agent swarms to handle tasks spanning text, image, audio, and video modalities through modality-aware task decomposition and parallel sub-agent specialization. A custom RL training method (DA-GRPO) trains the orchestrator to make high-quality decomposition decisions rather than optimizing only final output, achieving +10.3% over the best prior approach on OmniGAIA and SOTA among all open-source omnimodal agents at 8B scale.
+
+---
+
+### Naive Visual Memory is Not Enough: A Failure-Mode Study of GUI Agents
+**arXiv:** [2606.14106](https://arxiv.org/abs/2606.14106)
+**Authors:** Seoyoung Choi, Minseok Ko, Hyunseok Lee, Kunwoong Kim, Woomin Song, Chanseok Jeon, Jinwoo Shin
+**Score:** 74
+
+This paper introduces a taxonomy of four GUI agent failure modes (cognitive failure, visual state misunderstanding, hidden operation blindness, grounding error) and shows that prepending full-image visual memory to GUI agents has a divergent effect: it reduces state-level failures but worsens action-level ones, particularly hidden operation blindness and grounding errors. The proposed Action-Grounded Visual Memory (AGMem) stores local image crops around successful/recovery actions rather than full screenshots, improving task success by 33.3% over full-image memory on OSWorld.
+
+---
+
+### μ₀: A Scalable 3D Interaction-Trace World Model
+**arXiv:** [2606.13769](https://arxiv.org/abs/2606.13769)
+**Authors:** Seungjae Lee, Yoonkyo Jung, Jusuk Lee, Jonghun Shin, Amir Hossein Shahidzadeh, Yao-Chih Lee, H. Jin Kim, Jia-Bin Huang, Furong Huang
+**Score:** 72
+
+μ₀ is an embodiment-agnostic world model that forecasts 3D trajectories (B-spline traces) for salient interaction keypoints (objects, tools, hands, contact regions) rather than predicting dense pixels or embodiment-specific actions, enabling scalable pretraining from diverse video sources via automated TraceExtract supervision. The frozen μ₀ world model can be paired with lightweight action experts for downstream robot manipulation, achieving performance competitive with VLA models pretrained with action supervision despite requiring no action labels during pretraining.
+
+---
