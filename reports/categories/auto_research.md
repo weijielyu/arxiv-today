@@ -530,3 +530,41 @@ This paper introduces a taxonomy of four GUI agent failure modes (cognitive fail
 μ₀ is an embodiment-agnostic world model that forecasts 3D trajectories (B-spline traces) for salient interaction keypoints (objects, tools, hands, contact regions) rather than predicting dense pixels or embodiment-specific actions, enabling scalable pretraining from diverse video sources via automated TraceExtract supervision. The frozen μ₀ world model can be paired with lightweight action experts for downstream robot manipulation, achieving performance competitive with VLA models pretrained with action supervision despite requiring no action labels during pretraining.
 
 ---
+
+## 2026-06-16
+
+### Qwen-RobotWorld Technical Report: Unifying Embodied World Modeling through Language-Conditioned Video Generation
+**arXiv:** [2606.17030](https://arxiv.org/abs/2606.17030)
+**Authors:** Jie Zhang, Xiaoyue Chen, Anzhe Chen, Chenxu Lv, Deqing Li, Gengze Zhou, Hang Yin, Haoqi Yuan, Haoyang Li, Jiahao Li et al. (Qwen Team)
+**Score:** 85
+
+Qwen-RobotWorld is a language-conditioned video world model for embodied intelligence that treats natural language as a universal action interface, enabling a single 60-layer double-stream MMDiT to predict physically grounded future visual trajectories across robotic manipulation, autonomous driving, indoor navigation, and human-to-robot transfer. The key architectural insight is coupling a frozen Qwen2.5-VL backbone with video-VAE latents through layer-wise joint attention, while training on the 8.6M-video EWK corpus (200M+ frames, 20+ embodiments, 500+ action categories) via a general+expert progressive curriculum. Achieves 1st place on EWMBench and DreamGen Bench; most directly relevant as a blueprint for scalable synthetic data generation for robot policy training and cross-embodiment world knowledge transfer.
+
+---
+
+### DreamX-World 1.0: A General-Purpose Interactive World Model
+**arXiv:** [2606.16993](https://arxiv.org/abs/2606.16993)
+**Authors:** DreamX Team, Yancheng Bai, Rui Chen, Xiangxiang Chu, Rujing Dang, Hao Dou, Bingjie Gao, Qiwen Gu, Siyu Hong, Jiachen Lei et al.
+**Score:** 85
+
+DreamX-World 1.0 is a streaming interactive world model (up to 16 FPS on 8× RTX 5090) built from Wan2.2 with five progressive training stages: camera control (E-PRoPE), long-horizon scene persistence (camera-geometry memory + residual recycling), composable event control (structured event instruction tuning), autoregressive distillation (causal forcing + DMD), and RL alignment for post-distillation quality recovery. The five-stage progressive pipeline — where each capability is an independent stage and RL is the final quality-recovery layer — is a reusable recipe for converting any large video diffusion backbone into a deployable interactive world model. Relevant to agentic AI as a real-time simulation substrate for embodied agents requiring persistent spatial memory.
+
+---
+
+### Kairos: A Native World Model Stack for Physical AI
+**arXiv:** [2606.16533](https://arxiv.org/abs/2606.16533)
+**Authors:** Kairos Team, Fei Wang, Shan You, Qiming Zhang, Tao Huang, Zuoyi Fu, Zhisheng Zheng, Yunlong Xi, Feng Lv, Xiaoming Wu et al.
+**Score:** 84
+
+Kairos provides both a theoretical foundation and a complete practical system for world models as deployable physical-AI infrastructure. The core theoretical contribution is a formal proof that local continuation heuristics are provably insufficient for long-horizon state maintenance (irreducible excess risk), motivating the Hybrid Linear Temporal Attention (HLTA) architecture — gated linear attention for persistent global memory + dilated/standard sliding-window for local dynamics — which bounds error accumulation across extended horizons. Training follows a three-stage cross-embodiment curriculum (physical pretraining → human-centric embodied pretraining → joint world-action training), with deployment-aware inference optimizations for both server-grade and consumer hardware. Code and models available at https://github.com/kairos-agi/kairos-sensenova.
+
+---
+
+### Context-Aware RL for Agentic and Multimodal LLMs
+**arXiv:** [2606.17053](https://arxiv.org/abs/2606.17053)
+**Authors:** Peiyang Xu, Bangzheng Li, Sijia Liu, Karthik R. Narasimhan, Pramod Viswanath et al.
+**Score:** 75
+
+ContextRL trains agentic and multimodal LLMs to identify and attend to the single decisive piece of evidence in long or complex contexts — a tool trace line, a subtle image detail, a specific passage — that determines the correct answer. Applied to both text-only agentic settings (tool traces) and multimodal settings, ContextRL is a targeted remedy for the failure mode where frontier LLMs give wrong answers despite the answer being present in context because they fail to locate the critical evidence. Directly relevant to long-horizon agentic loops where the agent must act on evidence buried in large observation histories.
+
+---
