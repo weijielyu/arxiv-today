@@ -568,3 +568,41 @@ Kairos provides both a theoretical foundation and a complete practical system fo
 ContextRL trains agentic and multimodal LLMs to identify and attend to the single decisive piece of evidence in long or complex contexts — a tool trace line, a subtle image detail, a specific passage — that determines the correct answer. Applied to both text-only agentic settings (tool traces) and multimodal settings, ContextRL is a targeted remedy for the failure mode where frontier LLMs give wrong answers despite the answer being present in context because they fail to locate the critical evidence. Directly relevant to long-horizon agentic loops where the agent must act on evidence buried in large observation histories.
 
 ---
+
+## 2026-06-17
+
+### OmniDrive (DRIVE-CHOREO): LLM-Choreographed Multi-Agent World Model for Multi-View Driving Video Generation
+**arXiv:** [2606.17536](https://arxiv.org/abs/2606.17536)
+**Authors:** Zijie Meng, Yufei Liu, Chengqian Ma, Zhiyu Li, Jiyuan Liu, Wenhua Nie, Bingcai Wei, Shuqin Chen, Weichen Xu, Jiquan Yuan, Miao Zhang
+**Score:** 76
+
+DRIVE-CHOREO introduces a three-agent LLM pipeline (Director parsing user intent into structured WorldScript, Cartographer grounding it into spatially-anchored layout tokens, Auditor feeding cross-view critiques back as auxiliary supervision) that jointly authors a position-aware token sequence for controllable multi-view driving video generation. All control signals — free-form language, HD-maps, trajectories, camera poses — are unified into a single symbolic interlingua aligned at the latent-token level, co-compressed with multi-view video via a view-time permutation enforcing inter-camera geometry within a 3-D VAE. Sets new state-of-the-art multi-view consistency and BEV mAP (21.6) on nuScenes; the three-agent Director/Cartographer/Auditor decomposition is a reusable pattern for LLM-orchestrated generative pipelines.
+
+---
+
+### ProCUA-SFT Technical Report: Computer-Use Agent Supervised Fine-Tuning
+**arXiv:** [2606.17321](https://arxiv.org/abs/2606.17321)
+**Authors:** Jaehun Jung, Ximing Lu, Brandon Cui, Muhammad Khalifa, Shaokun Zhang, Hao Zhang, Jin Xu, Amala Sanjay Deshmukh, Karan Sapra, Andrew Tao, Yejin Choi, Jan Kautz, Mingjie Liu, Yi Dong
+**Score:** 73
+
+ProCUA-SFT is a 3.1M step-level SFT dataset for computer-use agents produced by a fully-automated pipeline: a single VLM (Kimi-K2.5) serves as goal generator, precondition judge, and trajectory executor across 2,484 application combinations on live desktops seeded with real-world content, distilling 93K synthetic trajectories into step-prefix samples that exactly reproduce inference-time context layouts. Fine-tuning UI-TARS 7B for one epoch yields 45.0% on OSWorld — an 18.7 percentage-point improvement over the base model and >35% above AgentNet-trained counterparts, demonstrating that automated SFT data generation at this scale is sufficient to substantially improve computer-use performance. The finding that human-collected AgentNet data (22.5K trajectories) causes negative transfer while synthetic data at 4× scale causes strong positive transfer is a key empirical data point for automated agent training pipelines.
+
+---
+
+### GASE: Gaussian Splatting-Based Automated System for Embodied Simulation Environment Construction
+**arXiv:** [2606.17520](https://arxiv.org/abs/2606.17520)
+**Authors:** Jiawei Zhang, Yiming Yan, Chao Liang, Nuo Xu, Seson Sun, Qichen Zhang, Yuhao Xu, Yantai Yang, Yingqiao Wang, Qin Jin, Zhipeng Zhang
+**Score:** 70
+
+GASE is a highly automated pipeline for constructing high-fidelity simulation environments from multi-view panoramic video, using a camera-pose-based 2D strategy for robust foreground object extraction, high-quality scene inpainting, and independent 3DGS reconstruction of objects and background before import into physics simulators. Outperforms existing 3DGS-based methods in segmentation accuracy by over 10% while achieving state-of-the-art inpainting quality; real-robot deployment on manipulation and navigation tasks shows <10% performance gap vs. policies trained on real-world data. Directly addresses the automated sim-to-real pipeline bottleneck, enabling scalable robot training data generation without skilled operators or expensive hardware.
+
+---
+
+### AnnotateAnything: Automatic Annotation of 3D Assets for Robot Manipulation
+**arXiv:** [2606.17446](https://arxiv.org/abs/2606.17446)
+**Authors:** Haoran Lu, Mutian Shen, Shuyang Yu, Yu Xiao, Songling Liu, Jianshu Zhang, Shang Wu, Yue Chen, Guo Ye, Jiayi Wang, Zhaoran Wang, Han Liu
+**Score:** 70
+
+AnnotateAnything converts passive 3D assets into manipulation-ready assets via two complementary pipelines: a visual-language annotation pipeline using VLM reasoning to infer semantics, interaction constraints, and 3D-grounded cues; and a massively parallel physics annotation pipeline that generates diverse executable action labels (grasp poses, dexterous contacts, articulation waypoints, insertion directions, hanging affordances, navigation targets) through candidate generation, geometry optimization, and trajectory synthesis. The framework supports downstream affordance detection, robotic VQA, and visual instruction fine-tuning — demonstrating that automated annotation at scale can replace manual labeling across diverse object categories and robot embodiments. The asynchronous parallel simulation data-collection system enables orders-of-magnitude faster dataset construction than existing annotation pipelines.
+
+---
