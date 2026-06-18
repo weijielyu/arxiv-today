@@ -606,3 +606,25 @@ GASE is a highly automated pipeline for constructing high-fidelity simulation en
 AnnotateAnything converts passive 3D assets into manipulation-ready assets via two complementary pipelines: a visual-language annotation pipeline using VLM reasoning to infer semantics, interaction constraints, and 3D-grounded cues; and a massively parallel physics annotation pipeline that generates diverse executable action labels (grasp poses, dexterous contacts, articulation waypoints, insertion directions, hanging affordances, navigation targets) through candidate generation, geometry optimization, and trajectory synthesis. The framework supports downstream affordance detection, robotic VQA, and visual instruction fine-tuning — demonstrating that automated annotation at scale can replace manual labeling across diverse object categories and robot embodiments. The asynchronous parallel simulation data-collection system enables orders-of-magnitude faster dataset construction than existing annotation pipelines.
 
 ---
+
+---
+
+## 2026-06-18
+
+### CHIEF: Creator-Driven Recurrent Video Generation with Agentic Feedback Loops
+**arXiv:** [2606.18591](https://arxiv.org/abs/2606.18591)
+**Authors:** Denis Savytski, Aiden Lei, Heding Liu, Warren Yang, Sihan Liang, Alexander Liu, Zhe Zhao
+**Score:** 82
+
+CHIEF is a multi-agent, human-in-the-loop video generation framework where persona-conditioned LLM agents — instantiated from real viewer comment histories (YouTube, Rotten Tomatoes) — simulate diverse audience perspectives and produce structured, urgency-ranked critique that drives iterative prompt refinement across a Video Generator, Feedback Agents, and Feedback Translator pipeline. The key agentic insight is replacing aggregated reward-model feedback with individuated persona simulation, capturing the subjective diversity of real audience sentiment that uniform reward signals miss. Demonstrated with non-expert students producing a 10-minute film rated 4.1/5 by a live audience (vs. 2.4/5 for the unrefined baseline), establishing persona-conditioned multi-agent feedback as a practical substitute for human viewer panels in creative content iteration.
+
+---
+
+### SCPE: Self-Correcting Process Editing — Taming I2V Models for Image HOI Editing
+**arXiv:** [2606.19073](https://arxiv.org/abs/2606.19073)
+**Authors:** Jiayi Gao, Qingchao Chen, Yuxin Peng, Yang Liu
+**Score:** 88
+
+SCPE is an agentic self-correcting framework for Human-Object Interaction image editing that uses I2V models' temporal generation as a "failure replay" mechanism: a Video Analyst diagnoses failure modes (physics violations, incorrect trajectory, wrong entity selection) from generated video, a Critic aggregates these into a dynamic Playbook mapping failure patterns to validated prompting strategies, and the loop iteratively refines instructions until the generated video correctly depicts the target HOI. The framework also introduces HOI-Edit, the first hierarchical benchmark for HOI editing across three cognitive levels (foundational dynamic edits, context spatial understanding, causal and physical reasoning), with HOI-Eval providing grounded pair-wise region-sensitive metrics. Achieves SOTA among open-source models and competitive with commercial SOTA (Google Nano Banana) on interaction metrics; the Playbook-driven iterative refinement pattern is directly transferable to any agentic generative editing pipeline.
+
+---
