@@ -628,3 +628,23 @@ CHIEF is a multi-agent, human-in-the-loop video generation framework where perso
 SCPE is an agentic self-correcting framework for Human-Object Interaction image editing that uses I2V models' temporal generation as a "failure replay" mechanism: a Video Analyst diagnoses failure modes (physics violations, incorrect trajectory, wrong entity selection) from generated video, a Critic aggregates these into a dynamic Playbook mapping failure patterns to validated prompting strategies, and the loop iteratively refines instructions until the generated video correctly depicts the target HOI. The framework also introduces HOI-Edit, the first hierarchical benchmark for HOI editing across three cognitive levels (foundational dynamic edits, context spatial understanding, causal and physical reasoning), with HOI-Eval providing grounded pair-wise region-sensitive metrics. Achieves SOTA among open-source models and competitive with commercial SOTA (Google Nano Banana) on interaction metrics; the Playbook-driven iterative refinement pattern is directly transferable to any agentic generative editing pipeline.
 
 ---
+
+## 2026-06-19
+
+### Agentic AutoResearch for Space Autonomy: An Auditable, LLM-Driven Research Agent for Aerospace Control Problems
+**arXiv:** [2606.20394](https://arxiv.org/abs/2606.20394)
+**Authors:** Amit Jain, Richard Linares
+**Score:** 83
+
+AutoResearch is an LLM-driven agentic framework in which the model autonomously reads a natural-language problem description and an append-only run history, proposes a single edit to a training script, executes it, and logs the outcome — closing the full hypothesis→experiment→analysis loop for aerospace control problems without any human intervention. Its distinguishing contribution over AI Scientist / FunSearch is a credibility layer embedded inside the loop: per-problem seed noise is measured first, the best configuration is reseeded and reverified, and leave-one-out pruning isolates which individual edits carry each result — making autonomous gains auditable rather than just fast. Demonstrated on CW relative rendezvous and safety-constrained collision-avoidance docking, the framework produces audited policies clearing measured seed noise by many standard deviations, while undirected search yields no feasible policy at all on the harder task; the "family contract" abstraction (description + editable script + single metric + run log) is domain-agnostic and directly reusable.
+
+---
+
+### Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining
+**arXiv:** [2606.20363](https://arxiv.org/abs/2606.20363)
+**Authors:** Yuexing Hao, Xiaomin Li
+**Score:** 71
+
+This work studies whether skill libraries for computer-using agents can be automatically mined from interaction trajectory data in a way that actually improves downstream policies, using a three-stage pipeline: GUI trajectory segmentation, clustering of segments into candidate skills, and skill-aware policy training from the resulting annotations. Five of eight mined clusters achieve ≥0.95 purity against ground-truth task labels, validating that automated skill extraction produces readable, coherent skills rather than noise. The framework is a step toward self-improving computer-using agents that build their own explicit skill libraries from logged experience rather than relying on hand-authored documentation.
+
+---
