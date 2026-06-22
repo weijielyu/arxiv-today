@@ -648,3 +648,41 @@ AutoResearch is an LLM-driven agentic framework in which the model autonomously 
 This work studies whether skill libraries for computer-using agents can be automatically mined from interaction trajectory data in a way that actually improves downstream policies, using a three-stage pipeline: GUI trajectory segmentation, clustering of segments into candidate skills, and skill-aware policy training from the resulting annotations. Five of eight mined clusters achieve ≥0.95 purity against ground-truth task labels, validating that automated skill extraction produces readable, coherent skills rather than noise. The framework is a step toward self-improving computer-using agents that build their own explicit skill libraries from logged experience rather than relying on hand-authored documentation.
 
 ---
+
+## 2026-06-22
+
+### S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence
+**arXiv:** [2606.20515](https://arxiv.org/abs/2606.20515)
+**Authors:** Yalun Dai, Hao Li, Shulin Tian, Runmao Yao, Yuhao Dong, Fangzhou Hong, Zhaoxi Chen, Fangfu Liu, Baoliang Tian, Dingwen Zhang, Tao Wang, Kim-Hui Yap, Ziwei Liu
+**Score:** 91
+
+S-Agent casts the VLM as a semantic planner that iteratively requests spatial evidence from a three-level tool hierarchy (2D perception → 3D geometric lifting → spatial knowledge aggregation), while dual memory — Scene Memory for persistent entity-centric 3D state and Agent Memory for the reasoning trajectory — enables evidence integration across frames and reasoning steps without redundant re-processing. In a training-free setting it improves GPT-5.4 on MMSI-Bench by 4.5%; fine-tuning Qwen3-VL-8B on 300K auto-generated S-Agent trajectories (S-300K) yields S-Agent-8B, a compact model that matches GPT-5.4 and Gemini 3 Pro across multiple spatial benchmarks. The separation of semantic planning from spatial evidence acquisition is a directly exportable architecture for any embodied or spatial reasoning agent, and the trajectory-distillation recipe demonstrates that agentic scaffolds, not model scale alone, can close the gap to frontier models.
+
+---
+
+### Current World Models Lack a Persistent State Core
+**arXiv:** [2606.20545](https://arxiv.org/abs/2606.20545)
+**Authors:** Jinpeng Lu, Dexu Zhu, Haoyuan Shi, Linghan Cai, Guo Tang, Yinda Chen, Jie Cao, Duyu Tang
+**Score:** 76
+
+This position paper exposes a fundamental blind spot in current video world models: they learn to render convincing frames but lack an internal state that evolves decoupled from observation — objects must persist and events must run to their conclusions even when no camera is watching, just as the moon holds its orbit unseen. The paper proposes a new benchmark dimension measuring whether world models maintain hidden object-state beyond what is directly visible, arguing that frame fidelity, motion realism, and camera controllability are necessary but not sufficient for genuine world modeling. The persistent-state requirement is directly relevant to designing agentic world models for long-horizon planning where agents must reason about parts of the world currently outside their observation window.
+
+---
+
+### HumanScale: Egocentric Human Video Can Outperform Real-Robot Data for Embodied Pretraining
+**arXiv:** [2606.20521](https://arxiv.org/abs/2606.20521)
+**Authors:** Juncheng Ma, Jianxin Bi, Yufan Deng, Xuanran Zhai, Kewei Zhang, Ye Huang, Bo Liang, Shukai Gong, et al.
+**Score:** 72
+
+HumanScale demonstrates that egocentric human video — scalable, high-diversity, and low-cost — can outperform teleoperated robot trajectories as pretraining data for embodied foundation models when the embodiment gap is properly addressed. The key finding is that behavioral and environmental diversity in pretraining data matters more than embodiment alignment for downstream policy generalization, reversing the conventional assumption that robot-collected trajectories are irreplaceable. This has direct implications for scaling agentic robotic systems: human video can serve as the primary pretraining source, dramatically reducing the data collection bottleneck that has constrained embodied AI.
+
+---
+
+### EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies
+**arXiv:** [2606.20092](https://arxiv.org/abs/2606.20092)
+**Authors:** Ganlin Yang, Zhangzheng Tu, Yuqiang Yang, Sitong Mao, Junyi Dong, Tianxing Chen, Jiaqi Peng, Jing Xiong, et al.
+**Score:** 71
+
+EventVLA introduces sparse visual evidence memory for VLA policies: rather than buffering all frames or relying on unselective context windows, the system records task-relevant cues (object appearance, occlusion events, key state changes) exactly when they occur as discrete events, enabling long-horizon manipulation policies to retrieve critical information on demand without accumulating visual redundancy. End-to-end training avoids the high latency of decoupled dual-system memory while achieving better task success than dense frame buffers on occlusion-heavy long-horizon tasks. The event-driven selective memory pattern — write on event, read on demand — is applicable to any long-horizon agentic system that must track intermittently observable state.
+
+---
