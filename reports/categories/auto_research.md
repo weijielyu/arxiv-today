@@ -686,3 +686,59 @@ HumanScale demonstrates that egocentric human video — scalable, high-diversity
 EventVLA introduces sparse visual evidence memory for VLA policies: rather than buffering all frames or relying on unselective context windows, the system records task-relevant cues (object appearance, occlusion events, key state changes) exactly when they occur as discrete events, enabling long-horizon manipulation policies to retrieve critical information on demand without accumulating visual redundancy. End-to-end training avoids the high latency of decoupled dual-system memory while achieving better task success than dense frame buffers on occlusion-heavy long-horizon tasks. The event-driven selective memory pattern — write on event, read on demand — is applicable to any long-horizon agentic system that must track intermittently observable state.
 
 ---
+
+## 2026-06-23
+
+### VideoAgent: All-in-One Framework for Video Understanding and Editing
+**arXiv:** [2606.23327](https://arxiv.org/abs/2606.23327)
+**Authors:** Hengji Zhou, Lingxuan Huang, Jian Wang, Bing Zhou, Si Wu, Lianghao Xia, Chao Huang
+**Score:** 88
+
+VideoAgent is a multi-agent orchestration framework that unifies video understanding and editing through a Shot Planning Agent (coherent narrative decomposition + cross-modal retrieval) and a library of 30+ specialized editing agents assembled via textual-gradient graph optimization. It achieves 87–95% orchestration success across diverse video genres (news, music video, commentary) while reducing API costs by 60%, producing content rated only 4% below human-created videos on human evaluation. The textual-gradient graph optimization technique — which propagates feedback through non-linear agent workflow graphs to adapt pipeline structure without manual specification — is directly applicable to any complex multi-agent research pipeline.
+
+---
+
+### World Action Models: A Survey
+**arXiv:** [2606.20781](https://arxiv.org/abs/2606.20781)
+**Authors:** Qiuhong Shen, Shihua Zhang, Yue Liao, Qi Li, Zhenxiong Tan, Shizun Wang, Shuicheng Yan, Xinchao Wang
+**Score:** 82
+
+This survey taxonomizes World Action Models (WAMs) — embodied predictive-action systems that couple future prediction with control — using a dual framework: a three-way design-philosophy split (Render-and-Decode / Latent-Only / Video-Generation-Free) and a four-axis anatomy (predictive substrate, backbone, action coupling, deployment regime). The key emergent principle is "dream less, act more": the strongest WAMs retain only the minimal predicted future that control requires, trading representational richness for compute and latency efficiency. Seven open challenges are identified including data sourcing for each training stage, memory scalability, and physical plausibility evaluation — providing a direct research roadmap for next-generation agentic world models.
+
+---
+
+### RS-Gen: A Multi-Stage Agentic Framework for Reasoning and Search-Augmented Image Generation
+**arXiv:** [2606.23221](https://arxiv.org/abs/2606.23221)
+**Authors:** Feifei Bian, Zhimin Zheng, Wei Deng, Daiguo Zhou et al.
+**Score:** 79
+
+RS-Gen addresses the failure of standard T2I models on ambiguous intentions, logical reasoning, and OOD knowledge by introducing a multi-stage agentic pipeline that interleaves deep reasoning and real-time search retrieval before and during image generation. The agentic architecture enables the model to autonomously clarify intent, retrieve external information, and iteratively refine generation — moving image synthesis from a single-step mapping to a multi-turn reasoning process. This is an early demonstration of agentic orchestration closing the quality gap in image generation for underspecified or knowledge-intensive prompts.
+
+---
+
+### AIR: Adaptive Interleaved Reasoning with Code in MLLMs
+**arXiv:** [2606.23678](https://arxiv.org/abs/2606.23678)
+**Authors:** Cong Han, Xiaohan Lan, Haibo Qiu, Yujie Zhong
+**Score:** 75
+
+Following the o3 paradigm, AIR enables multimodal large language models to adaptively interleave natural-language reasoning steps with code execution, deciding dynamically when to invoke code rather than committing to a fixed reasoning mode. The adaptive switching — conditioned on problem type and current reasoning state — outperforms both pure-language CoT and always-code baselines on multimodal reasoning tasks. This is a practical architecture for building agentic reasoning loops in MLLMs that need both symbolic precision (code) and semantic flexibility (language).
+
+---
+
+### HoloAgent-0: A Unified Embodied Agent Framework with 3D Spatial Memory
+**arXiv:** [2606.23565](https://arxiv.org/abs/2606.23565)
+**Authors:** Xiaolin Zhou, Liu Liu, Tingyang Xiao, Wei Feng et al.
+**Score:** 75
+
+HoloAgent-0 extends the standard LLM agent loop (reason → tool call → inspect → revise) to physical robots by adding a persistent 3D spatial memory that accumulates scene observations across manipulation steps, enabling spatial reasoning and multi-step object interaction beyond what short context windows allow. The unified framework bridges the gap between digital LLM agents and physical embodied systems without requiring task-specific robot code. As 3D spatial state is a fundamental requirement for any agent operating in the physical world, the spatial memory architecture is a broadly reusable component for embodied agentic systems.
+
+---
+
+### ENVS: Environment-Native Verified Search for Long-Horizon GUI Agents
+**arXiv:** [2606.22948](https://arxiv.org/abs/2606.22948)
+**Authors:** Yincheng Zhou, Athena Zhuoming Zhong, Shijie Zhang, Kevin Zhang et al.
+**Score:** 72
+
+ENVS frames long-horizon GUI agent tasks as trajectory discovery in live desktop environments, using environment-native execution feedback (not simulated rollouts) to verify intermediate actions and guide search through the exponentially large action space. The key insight is that real execution feedback is both cheaper and more reliable than model-based verification for GUI tasks, where visual state changes are the ground truth. The verified search approach — discovering successful trajectories by executing and checking rather than hallucinating outcomes — is directly applicable to any agentic system that controls real software through observation-action loops.
+
+---
