@@ -742,3 +742,41 @@ HoloAgent-0 extends the standard LLM agent loop (reason → tool call → inspec
 ENVS frames long-horizon GUI agent tasks as trajectory discovery in live desktop environments, using environment-native execution feedback (not simulated rollouts) to verify intermediate actions and guide search through the exponentially large action space. The key insight is that real execution feedback is both cheaper and more reliable than model-based verification for GUI tasks, where visual state changes are the ground truth. The verified search approach — discovering successful trajectories by executing and checking rather than hallucinating outcomes — is directly applicable to any agentic system that controls real software through observation-action loops.
 
 ---
+
+## 2026-06-24
+
+### Sol Video Inference Engine: Agent-Native Full-Stack Acceleration Framework for Efficient Video Generation
+**arXiv:** [2606.23743](https://arxiv.org/abs/2606.23743)
+**Authors:** Yitong Li, Junsong Chen, Haopeng Li, Haozhe Liu, Jincheng Yu, Ligeng Zhu, Ping Luo, Song Han, Enze Xie
+**Score:** 83
+
+Sol Video Inference Engine is a multi-agent system that automatically discovers instance-optimal acceleration stacks for video diffusion models: parallel skill agents each optimize one technique (caching, sparse attention, token pruning, quantization, kernel fusion), and an agent integrator composes them via global search, with a human validator in the loop. The framework replaces the multi-team manual engineering traditionally required to deploy video models on new hardware, achieving >2× speedup with near-lossless quality across three diverse models (64B, 22B, 2B). This is a compelling demonstration of agentic AI applied to AI infrastructure — the configuration space for video diffusion acceleration is too large for humans to explore manually, but well-suited to autonomous agent-driven search.
+
+---
+
+### VisCritic: Visual State Comparison as Process Reward for GUI Agents
+**arXiv:** [2606.24525](https://arxiv.org/abs/2606.24525)
+**Authors:** Jiachen Qian
+**Score:** 78
+
+VisCritic introduces a visual process reward model for GUI agents that verifies action success by directly comparing pre-action and post-action screenshots in feature space using a Siamese vision transformer, rather than relying on textual reasoning alone about GUI state changes. The Action-Aware Critic Head jointly evaluates action success, task progress, and error type, and weak supervision from existing trajectories enables training without additional human labels. The plug-and-play design improves diverse GUI agents across five benchmarks, addressing a core bottleneck for long-horizon task automation.
+
+---
+
+### Agentic Collaborative Cognition for Zero-Shot 3D Understanding
+**arXiv:** [2606.24649](https://arxiv.org/abs/2606.24649)
+**Authors:** Wenxin Wang, Bo Zhang, Feng Chen, Zixuan Wang, Wen Li, Changsheng Li, Yinjie Lei
+**Score:** 76
+
+A two-agent system for zero-shot 3D scene understanding: a Planning Agent selects query-relevant viewpoints and supplements missing perspectives based on a cognitive map, while a Perception Agent builds a structured holistic map with consistent object identifiers across viewpoints and provides feedback to filter candidates and guide further exploration. The closed-loop iterative collaboration outperforms single-agent and retrieval-only baselines by 11.1% Acc@0.5 on ScanRefer and 14.6 BLEU-1 on 3D dialog, demonstrating that structured multi-agent collaboration with explicit feedback channels substantially improves agentic 3D perception.
+
+---
+
+### Autonomous Video Generation with Counterfactual Controllability for Self-Evolving World Models
+**arXiv:** [2606.24152](https://arxiv.org/abs/2606.24152)
+**Authors:** Xin Wang, Wenxuan Liu, Tongtong Feng, Wenwu Zhu
+**Score:** 75
+
+Position paper arguing that video generation models learn a partial, implicit world model — but not a grounded or controllable one — because scaling visual prediction alone does not yield agents that can ask "what would happen under action X." The authors define counterfactual controllability as the decisive criterion for self-evolving world models: generating futures that survive embodiment constraints and feed resulting action knowledge back into future imagination. The framing clarifies the gap between current video generation and truly agentic world modeling, and suggests that counterfactual data and intervention-based training are the missing ingredients.
+
+---
