@@ -780,3 +780,41 @@ A two-agent system for zero-shot 3D scene understanding: a Planning Agent select
 Position paper arguing that video generation models learn a partial, implicit world model — but not a grounded or controllable one — because scaling visual prediction alone does not yield agents that can ask "what would happen under action X." The authors define counterfactual controllability as the decisive criterion for self-evolving world models: generating futures that survive embodiment constraints and feed resulting action knowledge back into future imagination. The framing clarifies the gap between current video generation and truly agentic world modeling, and suggests that counterfactual data and intervention-based training are the missing ingredients.
 
 ---
+
+## 2026-06-26
+
+### Qwen-Image-Agent: Bridging the Context Gap in Real-World Image Generation
+**arXiv:** [2606.26907](https://arxiv.org/abs/2606.26907)
+**Authors:** Zekai Zhang, Jiahao Li, Jie Zhang, Kaiyuan Gao, Kun Yan, Lihan Jiang, Ningyuan Tang, et al.
+**Score:** 82
+
+Qwen-Image-Agent addresses the "Context Gap" — the mismatch between underspecified real-world user requests and the fully specified prompts that T2I models need — by framing image generation as an agentic context-construction process: the agent progressively fills in missing context through plan, reason, search, memory, and feedback modules before invoking the T2I renderer. Context-Aware Planning operates at three levels (information, content, generation) and Context Grounding taps multiple sources (reasoning, web search, persistent memory, iterative feedback), all without requiring any model fine-tuning. The companion IA-Bench benchmark covers 17 real-world tasks across 4 agentic capabilities (Plan, Reason, Search, Memory), filling a gap in evaluation of the full agent loop for visual synthesis.
+
+---
+
+### Empowering GUI Agents via Autonomous Experience Exploration and Hindsight Experience Utilization for Task Planning
+**arXiv:** [2606.27330](https://arxiv.org/abs/2606.27330)
+**Authors:** Tianyi Men, Zhuoran Jin, Pengfei Cao, Yubo Chen, Kang Liu
+**Score:** 78
+
+PEEU (Planning Experience Exploration and Utilization) lets a small 7B MLLM autonomously explore GUI environments to collect experience, then synthesizes hindsight high-level training data from that experience — bridging the gap between low-level atomic skill mastery and high-level OOD planning generalization. The key finding from the task decomposition hierarchical analysis (TDHAF) is that competence in atomic skills does not imply high-level planning competence, but training directly on high-level tasks with hindsight experience yields strong cross-website generalization. The resulting 7B model achieves 30.6% accuracy on real-world GUI benchmarks, surpassing Qwen2.5-VL-32B — demonstrating that self-collected experience can substitute for scale in GUI agent planning.
+
+---
+
+### Confidence-Aware Tool Orchestration for Robust Video Understanding
+**arXiv:** [2606.26904](https://arxiv.org/abs/2606.26904)
+**Authors:** Yangfan He, Yujin Choi, Jaehong Yoon
+**Score:** 75
+
+Robust-TO identifies the "Blind Trust Problem" in video reasoning models — that implicitly treating all frames as equally reliable causes 15–30pp accuracy drops under realistic perturbations (blur, glare, occlusion) — and addresses it with an agentic framework that assigns per-frame trustworthiness scores and orchestrates heterogeneous perception tools under a unified evidence interface. Each tool receives only the most trustworthy frames, returns structured evidence with calibrated reliability, and a three-tier synthesis process (high/medium/low confidence) combines evidence using a confidence-cost GRPO reward that jointly optimizes correctness and efficiency. On eight video reasoning tasks, Robust-TO achieves 56.4% average accuracy (10.6pp above the best open-source baseline) and maintains 54.3% under five corruption types — demonstrating that agentic tool orchestration with explicit reliability reasoning substantially improves both clean and robust video understanding.
+
+---
+
+### DocArena: Turning Raw Documents into Controllable Training Environments for Document Search Agents
+**arXiv:** [2606.26122](https://arxiv.org/abs/2606.26122)
+**Authors:** Jiamian Wang, Ruiyi Zhang, Tong Yu, Jing Shi, Samyadeep Basu
+**Score:** 72
+
+DocArena is a fully automated pipeline for building multimodal document search agent training environments: it uses MLLM-based visual perception to structure and index raw documents, then profiles cross-page information distribution to construct reasoning-intensive QA pairs, and applies cascaded quality assurance — all without human annotation. The resulting DocArena-79K dataset (8,336 documents, 16 domains, 49 languages) is used to train a Doc-Search agent that decouples visual perception from the policy model, allowing a text-based LLM to serve as the reasoning backbone for multimodal retrieval and QA. Agents trained on DocArena data outperform prior approaches on both retrieval accuracy and QA quality across six multimodal document scenarios and seven text-based QA benchmarks, with analysis confirming the controllability of the training environment shapes diverse search strategies.
+
+---
