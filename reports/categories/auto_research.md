@@ -818,3 +818,14 @@ Robust-TO identifies the "Blind Trust Problem" in video reasoning models — tha
 DocArena is a fully automated pipeline for building multimodal document search agent training environments: it uses MLLM-based visual perception to structure and index raw documents, then profiles cross-page information distribution to construct reasoning-intensive QA pairs, and applies cascaded quality assurance — all without human annotation. The resulting DocArena-79K dataset (8,336 documents, 16 domains, 49 languages) is used to train a Doc-Search agent that decouples visual perception from the policy model, allowing a text-based LLM to serve as the reasoning backbone for multimodal retrieval and QA. Agents trained on DocArena data outperform prior approaches on both retrieval accuracy and QA quality across six multimodal document scenarios and seven text-based QA benchmarks, with analysis confirming the controllability of the training environment shapes diverse search strategies.
 
 ---
+
+## 2026-06-29
+
+### DMV-Bench: Diagnosing Long-Horizon Multimodal Agents' Visual Memory with Incidental Cue Injection
+**arXiv:** [2606.27499](https://arxiv.org/abs/2606.27499)
+**Authors:** Yujin Tang, Chenming Shang, Ruize Xu, Nikhil Singh
+**Score:** 78
+
+DMV-Bench is the first benchmark specifically designed to test whether long-horizon multimodal agents truly retain visual information they have *seen* rather than information they could have inferred or written down — distinguishing genuine visual memory from text-side recall. It uses "incidental cue injection" to embed visual cues (object appearance, spatial relations, text content, temporal sequences) into interactive environments without cueing the agent to memorize them, then probes retention across varying horizon lengths. Experiments reveal that current VLMs and agents systematically fail to maintain visual memory across long interaction sequences — including failures on 2-step tasks — exposing a critical gap between the text-memory capabilities of long-context LLMs and the visual memory actually needed for long-horizon embodied agents.
+
+---
