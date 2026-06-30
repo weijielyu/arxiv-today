@@ -829,3 +829,95 @@ DocArena is a fully automated pipeline for building multimodal document search a
 DMV-Bench is the first benchmark specifically designed to test whether long-horizon multimodal agents truly retain visual information they have *seen* rather than information they could have inferred or written down — distinguishing genuine visual memory from text-side recall. It uses "incidental cue injection" to embed visual cues (object appearance, spatial relations, text content, temporal sequences) into interactive environments without cueing the agent to memorize them, then probes retention across varying horizon lengths. Experiments reveal that current VLMs and agents systematically fail to maintain visual memory across long interaction sequences — including failures on 2-step tasks — exposing a critical gap between the text-memory capabilities of long-context LLMs and the visual memory actually needed for long-horizon embodied agents.
 
 ---
+
+## 2026-06-30
+
+### Orca: The World is in Your Mind
+**arXiv:** [2606.30534](https://arxiv.org/abs/2606.30534)
+**Authors:** Yihao Wang, Yuheng Ji, Mingyu Cao, Yanqing Shen, Runze Xiao et al. (Beijing Academy of Artificial Intelligence)
+**Score:** 83
+
+Orca is a general world foundation model that learns a unified "world latent space" from multimodal signals via two complementary paradigms: unconscious learning (predicting next-frame latents from continuous video with no language supervision) and conscious learning (language-conditioned prediction of meaningful state transitions across 125K hours of video and 160M event annotations). The frozen backbone serves lightweight task-specific decoders for text, image prediction, and embodied action generation — demonstrating that scalable world latent quality, not decoder capacity, drives downstream performance across all three modalities. For agentic AI research, Orca provides a reference design showing how a world model pre-trained on raw experience can serve as a zero-shot prior for autonomous agents without task-specific retraining.
+
+---
+
+### Self-Evolving Agentic Image Restoration via Deliberate Planning and Intuitive Execution (SEAR)
+**arXiv:** [2606.28971](https://arxiv.org/abs/2606.28971)
+**Authors:** Shuang Cui, Fan Ji, Guanglong Sun, Yufei Guo, Xiongxin Tang et al. (Institute of Software, Chinese Academy of Sciences)
+**Score:** 80
+
+SEAR reformulates image restoration as long-horizon sequential decision-making and solves it with a dual-process architecture: a Deliberate Planner using Pruning-Aware Monte Carlo Tree Search (P-MCTS) with agenda-driven action space pruning for micro-level tool coordination, paired with a fast Intuitive Executor that retrieves and replays previously discovered high-reward trajectories from a self-evolving episodic memory indexed by degradation-aware fingerprints. The system overcomes two structural failures of prior agentic restoration pipelines — greedy myopia (step-wise local optimization causing irreversible errors) and episodic amnesia (discarding expensive MCTS search results after each image) — with memory growing progressively across a deployment lifetime. The dual-system synergy (fast System-1 replay when memory matches, slow System-2 planning otherwise) and self-evolution mechanism generalize directly to any agentic pipeline where tool sequences must be optimized over long horizons and expensive prior searches should accumulate as reusable expertise.
+
+---
+
+### Flow Matching in Feature Space for Stochastic World Modeling
+**arXiv:** [2606.29059](https://arxiv.org/abs/2606.29059)
+**Authors:** Francois Porcher, Nicolas Carion, Karteek Alahari, Shizhe Chen
+**Score:** 79
+
+Applies flow matching in strong perceptual feature space (DINOv2) rather than pixel space for stochastic world modeling, preserving perception-useful semantic information while explicitly modeling uncertainty over future states. The feature-space formulation enables the world model to generate diverse plausible futures with semantic consistency — unlike pixel-space models that conflate texture noise with structural uncertainty — establishing a stronger predictive substrate for downstream planning agents. This approach is directly relevant to agentic world models that must efficiently represent and sample from the distribution of possible future states for planning under uncertainty.
+
+---
+
+### GUICrafter: Weakly-Supervised GUI Agent Leveraging Massive Unannotated Screenshots
+**arXiv:** [2606.29705](https://arxiv.org/abs/2606.29705)
+**Authors:** Sunqi Fan, Lingshan Chen, Runqi Yin, Qingle Liu, Yongming Rao et al.
+**Score:** 74
+
+GUICrafter trains GUI agents using massive web-harvested unannotated screenshots via weak supervision, directly addressing the critical data scarcity bottleneck that limits GUI agent capability — most current methods require expensive human-annotated interaction trajectories. The approach demonstrates that weakly-supervised learning from unlabeled screenshots at scale produces GUI agents that generalize across diverse application environments without task-specific trajectory collection. This data-efficiency finding has implications for any agentic system that must operate across software interfaces without the luxury of fully-labeled training data.
+
+---
+
+### NaLA: A 3D Native LLM Layout Agent for High-quality 3D Scene Generation
+**arXiv:** [2606.29395](https://arxiv.org/abs/2606.29395)
+**Authors:** Cheng Wan, Yongsen Mao, Wenzheng Wu, Yuxuan Xie, Chucheng Xiang et al.
+**Score:** 74
+
+NaLA is an LLM layout agent that reasons natively in 3D asset and spatial layout space rather than through text descriptions, fixing the modality-gap layout errors that arise when language models must bridge the semantic and geometric domains in 3D scene generation pipelines. By treating 3D spatial arrangement as a first-class planning problem — operating directly over object tokens in 3D space — NaLA produces more geometrically coherent scene layouts without requiring expensive domain-specific training data. The native 3D reasoning paradigm is applicable broadly to agentic systems that must plan and compose spatial structures rather than describe them in text.
+
+---
+
+### Training Vision-Language-Action Models with Dense Embodied Chain-of-Thought Supervision
+**arXiv:** [2606.30552](https://arxiv.org/abs/2606.30552)
+**Authors:** Haoyang Li, Guanlin Li, Youhe Feng, Chen Zhao, Zhuoran Wang et al.
+**Score:** 73
+
+Introduces dense chain-of-thought supervision for VLA models operating over high-level cognitive processes — perception, planning, and sub-task decomposition — rather than only low-level action prediction, providing explicit intermediate supervision at each cognitive stage rather than end-to-end action supervision alone. The dense CoT training enables cross-embodiment transfer without task-specific retraining, establishing VLA as an agentic framework with interpretable reasoning traces for open-world robot manipulation. The cognitive-process supervision paradigm directly informs how to build agentic systems where intermediate reasoning must be both accurate and transferable across task distributions.
+
+---
+
+### Walking in the Implicit: Interactive World Exploration via Neural Scene Representation
+**arXiv:** [2606.30045](https://arxiv.org/abs/2606.30045)
+**Authors:** Zhiqi Li, Chengrui Dong, Zhenhua Du, Hangning Zhou, Cong Qiu et al.
+**Score:** 72
+
+Uses neural implicit scene state — rather than discrete frame latents — as the internal state for camera-controlled world exploration, enabling infinite-length video rollout without the boundary artifacts that accumulate in autoregressive frame-based world models. The implicit representation encodes persistent scene structure queryable from arbitrary camera viewpoints, supporting coherent exploration over long horizons by maintaining a compact, continuous-space scene model instead of unbounded frame histories. This architecture is relevant to embodied agents that must navigate and reason about persistent 3D environments without forgetting scene structure seen in earlier time steps.
+
+---
+
+### DreamForge-World 0.1 Preview: A Low-Compute Real-Time Controllable World Model
+**arXiv:** [2606.30292](https://arxiv.org/abs/2606.30292)
+**Authors:** Daniyel Ayupov, Artur Markov-Tsoy
+**Score:** 72
+
+DreamForge-World 0.1 is a real-time interactive world simulation model at low compute, using a residual action pathway on an autoregressive video stack (Wan2.1-derived) that conditions next-frame generation on compact action signals without retraining the backbone video model. Demonstrates that controllable world simulation at interactive frame rates is achievable with consumer hardware — removing the compute barrier that has restricted embodied agent training environments to expensive server infrastructure. The residual-action-pathway design is a practical recipe for adding controllability to any pre-trained autoregressive video model without full fine-tuning.
+
+---
+
+### A Physics-Grounded Benchmark for Multi-Agent Dynamics in World Models
+**arXiv:** [2606.28757](https://arxiv.org/abs/2606.28757)
+**Authors:** Nuo Chen, Lulin Liu, Zihao Li, Ziyao Zeng, Zihao Zhu et al.
+**Score:** 71
+
+The first benchmark measuring whether generated multi-agent dynamics — collisions, joint forces, physical interactions between agents — obey physics laws rather than just appearing visually plausible, filling a gap in world model evaluation where perceptual metrics cannot catch physically incorrect behavior. Experiments reveal that current world models systematically fail to model physically accurate multi-agent interactions even when visual quality is high, establishing physics compliance as a distinct evaluation axis from visual fidelity. This benchmark directly addresses requirements for agentic simulation environments where training robot or multi-agent policies requires physically accurate interaction dynamics.
+
+---
+
+### Can AI Draw Science? A Benchmark for Evaluating Scientific Figure Generation
+**arXiv:** [2606.28406](https://arxiv.org/abs/2606.28406)
+**Authors:** Davie Chen
+**Score:** 71
+
+A comprehensive evaluation suite for text-to-image models and MLLMs on scientific figure generation tasks — mechanism diagrams, pathway schematics, graphical abstracts — revealing severe quality and accuracy gaps between current AI-generated figures and domain-expert-created scientific imagery. The benchmark covers multiple scientific domains and figure types with quantitative metrics for structural accuracy, label correctness, and visual conventions, providing a principled way to measure progress in automated scientific illustration. For AI scientist systems, figure generation is a critical output bottleneck: a research agent that cannot produce accurate diagrams cannot produce papers that communicate findings effectively.
+
+---
