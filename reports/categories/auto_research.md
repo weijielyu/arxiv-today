@@ -921,3 +921,68 @@ The first benchmark measuring whether generated multi-agent dynamics — collisi
 A comprehensive evaluation suite for text-to-image models and MLLMs on scientific figure generation tasks — mechanism diagrams, pathway schematics, graphical abstracts — revealing severe quality and accuracy gaps between current AI-generated figures and domain-expert-created scientific imagery. The benchmark covers multiple scientific domains and figure types with quantitative metrics for structural accuracy, label correctness, and visual conventions, providing a principled way to measure progress in automated scientific illustration. For AI scientist systems, figure generation is a critical output bottleneck: a research agent that cannot produce accurate diagrams cannot produce papers that communicate findings effectively.
 
 ---
+
+## 2026-07-01
+
+### One Reflection Is Not Enough: Self-Correcting Autonomous Research via Multi-Hypothesis Failure Attribution (SAGE)
+**arXiv:** [2606.31478](https://arxiv.org/abs/2606.31478)
+**Authors:** Jie Ma, Binfei Chu, Jie Gao, Jinlu Zhang, Yiwei Ma, Yi Tan, Jiayi Ji, Xiaoshuai Sun, Rongrong Ji
+**Score:** 89
+
+SAGE proposes Multi-Hypothesis Failure Attribution (MHFA) as the core mechanism for autonomous research agents: rather than compressing a failure into one verbal reflection, MHFA generates multiple evidence-grounded causal hypotheses, ranks them by severity, and deterministically routes the verified root cause to the correct intervention level (hypothesis redesign, experimental design change, or code fix), escaping the localized trial-and-error trap. A grounded reporting mechanism explicitly constrains drafted results to actual measured values, preventing hallucinated metrics from corrupting scientific outputs. On a 12-topic, 5-domain benchmark, SAGE raises metrics-bearing outputs from 42% to 92%, improves artifact quality from 5.00 to 6.75/10, and outscores AI-Scientist-v2 — establishing structured causal diagnosis as the key missing capability in current autonomous research pipelines.
+
+---
+
+### MECoBench: A Systematic Study of Multimodal Agent Collaboration in Embodied Environments
+**arXiv:** [2606.31966](https://arxiv.org/abs/2606.31966)
+**Authors:** Qingyun Liu, Jiwen Zhang, Jingyi Hu, Siyuan Wang, Zhongyu Wei
+**Score:** 81
+
+MECoBench is the first benchmark that systematically studies multimodal MLLM-based agents collaborating in visually-grounded 3D environments, spanning variable team sizes (1–5), two cooperation structures, three collaboration modes, and both textual and visual inter-agent communication — 192 test cases covering more variation than all prior multi-agent embodied benchmarks combined. Three key empirical findings: communication is essential to collaboration gains; more agents do not always help and the optimal team size depends on model capability and task structure; and collaboration consistently improves robustness under noisy priors. Provides systematic data on when and how multi-agent coordination works, directly informing the design of collaborative multi-agent research pipelines.
+
+---
+
+### Learning from Failure: Inference-Time Self-Improvement for Computer-Use Agents
+**arXiv:** [2606.31270](https://arxiv.org/abs/2606.31270)
+**Authors:** Xueqiao Sun, Xiaohan Wang, Ludwig Schmidt, Serena Yeung-Levy, Yuhui Zhang
+**Score:** 80
+
+Proposes a failure-case self-improvement loop for computer-use agents that diagnoses failed trajectories into four failure modes (grounding errors, competency gaps, knowledge deficiencies, redundant loops), generates targeted inference-time code patches and behavioral modifiers for each, and deploys them without any retraining — achieving +6.6 pp on OSWorld with OpenCUA-72B. Unlike success-only SFT pipelines that discard the majority of training signal, this approach treats failures as a complementary data source, with generalizations demonstrated across model scales and benchmarks. Validates failure-driven self-improvement as a practical, training-free paradigm applicable to any agentic system operating in verifiable environments.
+
+---
+
+### DataEvolver: Self-Evolving Multi-Agent Data Construction for Text-Rich Image Generation
+**arXiv:** [2606.31537](https://arxiv.org/abs/2606.31537)
+**Authors:** Siyu Yan, Yizhen Gao, Yilin Wang, Dongxing Mao, Alex Jinpeng Wang
+**Score:** 79
+
+DataEvolver replaces the static crawl-filter-freeze data pipeline with a feedback-driven multi-agent construction loop: a Retriever, Verifier, Critic, and Generator agent cycle continuously, with the Critic summarizing rejection causes into semantic feedback that guides the Generator to target under-covered regions in the next round — turning rejected samples into actionable improvement signals rather than discarded waste. Improves OCR-F1 by 85.3% over the strongest static baseline at the 0.75M scale on TextScenesHQ, with gains transferring across downstream generators. Demonstrates the multi-agent feedback loop pattern applied to data curation — a direct analogue of the experiment-reflect-retry loop in research agents.
+
+---
+
+### What Memory Do GUI Agents Really Need? From Passive Records to Active Task-Driving States (ATMem)
+**arXiv:** [2606.31612](https://arxiv.org/abs/2606.31612)
+**Authors:** Chen Liu, Ling Chen, Hanzhang Zhou, Xu Zhang, Quyu Kong, Panrong Tong, Wenhao Wang, Xin Yu, Steven Hoi, Yue Wang
+**Score:** 75
+
+ATMem reframes GUI agent memory from passive storage (accumulate and retrieve) to an actively maintained execution state that links each tracked value to its current workflow role and status, preventing the implicit-reconstruction failures that cause repeated or missed operations in long trajectories with similar fields and outdated states. STR-GRPO, an online RL method that contrasts memory-on vs. memory-off rollouts, trains agents to use ATMem selectively and cost-efficiently. The distinction between passive history and active execution state is a broadly applicable design principle for any agentic system that must track task-relevant information across long-horizon, multi-step workflows.
+
+---
+
+### SimpleSearch-VL: A Simple Recipe for Multimodal Agentic Deep Search
+**arXiv:** [2606.31504](https://arxiv.org/abs/2606.31504)
+**Authors:** Ming Dai, Zhihong Lu, Jinjie Gu, Jiedong Zhuang, Yefeng Liu, Wankou Yang, Jian Wang, Chunhua Shen
+**Score:** 73
+
+SimpleSearch-VL improves multimodal agentic search by focusing on the agent's own search-and-verification process rather than scaling data or tooling: Factorized Adaptive Rollout (FAR) improves training efficiency by forming informative sample groups, and explicit chain-of-thought verification assesses retrieved visual/textual cue relevance before committing to an answer. With only 5K supervised trajectories and 2K RL data, it improves Qwen3-VL baselines by 15.8–16.0 points and matches agentic Gemini-3-Pro — showing that principled training design outweighs compute scaling for agentic search. The evidence-verified reasoning pattern (retrieve → verify relevance → reason) is directly applicable to research agents that must validate retrieved literature or experimental results.
+
+---
+
+### Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs
+**arXiv:** [2606.31471](https://arxiv.org/abs/2606.31471)
+**Authors:** Deniz Bickici, Michael Pabst, Shohei Mori, Dieter Schmalstieg
+**Score:** 72
+
+Proposes an asynchronous architecture where lightweight online mapping and heavyweight VLM-based semantic enrichment run concurrently, making the 3D scene graph queryable during exploration rather than only after a post-hoc enrichment pass — surpassing prior state-of-the-art on Sr3D+, Nr3D, and ScanRefer visual grounding benchmarks by 15.3–18.8 A@0.25. A probabilistic voxel backbone maintains stable object identities incrementally while background VLM agents progressively attach attributes; semantic loop closure resolves duplicate tracks across sessions. The asynchronous concurrent-processing pattern (fast online perception + slow semantic enrichment as background agent) is directly applicable to embodied research agents operating in physical environments where real-time scene understanding is needed.
+
+---
