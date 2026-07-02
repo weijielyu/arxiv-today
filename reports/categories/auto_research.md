@@ -986,3 +986,14 @@ SimpleSearch-VL improves multimodal agentic search by focusing on the agent's ow
 Proposes an asynchronous architecture where lightweight online mapping and heavyweight VLM-based semantic enrichment run concurrently, making the 3D scene graph queryable during exploration rather than only after a post-hoc enrichment pass — surpassing prior state-of-the-art on Sr3D+, Nr3D, and ScanRefer visual grounding benchmarks by 15.3–18.8 A@0.25. A probabilistic voxel backbone maintains stable object identities incrementally while background VLM agents progressively attach attributes; semantic loop closure resolves duplicate tracks across sessions. The asynchronous concurrent-processing pattern (fast online perception + slow semantic enrichment as background agent) is directly applicable to embodied research agents operating in physical environments where real-time scene understanding is needed.
 
 ---
+
+## 2026-07-02
+
+### Autonomous Scientific Discovery via Iterative Meta-Reflection (DiscoPER)
+**arXiv:** [2607.01131](https://arxiv.org/abs/2607.01131)
+**Authors:** Bingchen Zhao, Sara Beery, Oisin Mac Aodha
+**Score:** 88
+
+DiscoPER is an LLM-powered autonomous discovery framework that formalizes open-ended scientific research as a Propose→Evaluate→Reflect loop operating over fully open executable hypothesis spaces (arbitrary Python statistical tests), starting from raw multimodal data with no pre-specified research question. The key innovation is a **meta-reflection** step that periodically synthesizes all accepted and rejected claims to identify confounds, epistemic gaps, and unexplored variable combinations, producing structured guidance that steers the next round of hypothesis generation — the cumulative, self-redirecting reasoning that prior systems (AI Scientist, ExperiGen, classical causal discovery) all lack. On iNatDisco, a new multimodal ecological benchmark with expert-verified ground truth from peer-reviewed literature, DiscoPER recovers 8 of 9 known patterns with 72.7% hypothesis support rate, outperforming classical causal discovery and LLM-guided baselines; ablations confirm reflection — not just more compute — is the primary driver of improvement.
+
+---
