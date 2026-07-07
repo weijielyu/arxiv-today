@@ -997,3 +997,86 @@ Proposes an asynchronous architecture where lightweight online mapping and heavy
 DiscoPER is an LLM-powered autonomous discovery framework that formalizes open-ended scientific research as a Propose→Evaluate→Reflect loop operating over fully open executable hypothesis spaces (arbitrary Python statistical tests), starting from raw multimodal data with no pre-specified research question. The key innovation is a **meta-reflection** step that periodically synthesizes all accepted and rejected claims to identify confounds, epistemic gaps, and unexplored variable combinations, producing structured guidance that steers the next round of hypothesis generation — the cumulative, self-redirecting reasoning that prior systems (AI Scientist, ExperiGen, classical causal discovery) all lack. On iNatDisco, a new multimodal ecological benchmark with expert-verified ground truth from peer-reviewed literature, DiscoPER recovers 8 of 9 known patterns with 72.7% hypothesis support rate, outperforming classical causal discovery and LLM-guided baselines; ablations confirm reflection — not just more compute — is the primary driver of improvement.
 
 ---
+
+## 2026-07-07
+
+### VideoSearcher: Empowering Video Deep Research with Multi-Tool Agentic Reasoning via Reinforcement Learning
+**arXiv:** [2607.02927](https://arxiv.org/abs/2607.02927)
+**Authors:** Zhenkun Gao, Yicheng Bao, Jinlong Peng, Xueheng Li
+**Score:** 88
+
+VideoSearcher formalizes Video Deep Research (VDR) — open-world video understanding that requires active evidence exploration rather than closed-context perception — and proposes a closed-loop agentic framework that trains VLMs to unify temporal localization, spatial focusing, and multimodal search within a single RL-optimized reasoning trajectory. Unlike existing multimodal search agents that target static images and discard visual information via text-centric retrieval, VideoSearcher grounds visual clues progressively and retrieves cross-modal evidence in a self-correcting loop. The RL training objective rewards full-trajectory evidence quality rather than individual tool calls, producing an agent whose tool-use strategy adapts to the question — directly embodying the multi-tool agentic research paradigm.
+
+---
+
+### Search Beyond What Can Be Taught: Evolving the Knowledge Boundary in Agentic Visual Generation
+**arXiv:** [2607.05382](https://arxiv.org/abs/2607.05382)
+**Authors:** Haozhe Wang, Weijia Feng, Jinpeng Yu, Che Liu
+**Score:** 85
+
+This work identifies and benchmarks a structural world-knowledge bottleneck in visual generation: frontier open generators score only 21–28/100 on SearchGen-Bench (20,839 prompts across twelve failure categories — new characters, trending entities, post-cutoff events), because training on fixed corpora cannot cover an open-ended visual world. The proposed agentic solution treats the knowledge boundary itself as a dynamic variable, enabling the generator to recognize when parametric knowledge is exhausted and to invoke multimodal retrieval from SearchGen-Corpus-1M to fill the gap. The benchmark and corpus establish a reproducible testbed for the core challenge of agentic systems that must operate beyond their training distribution — a direct analogue of the knowledge-gap detection problem in automated scientific discovery.
+
+---
+
+### Homer: Understanding Long-form Videos with Hierarchical Memory and Agentic Reasoning
+**arXiv:** [2607.02588](https://arxiv.org/abs/2607.02588)
+**Authors:** Yixin Ji, Fanghua Ye, Juntao Li, Bo Zhao
+**Score:** 85
+
+Homer builds a multi-scale online memory for hour-long video understanding — from raw perception to recurring entities to event-level causal structure — processed incrementally so the agent never needs to reprocess the full video at query time. Rather than organizing memory by temporal proximity (as prior approaches do), Homer uses explicit causal links between events, enabling multi-hop narrative reasoning that persists across context-window boundaries. The hierarchical memory architecture (perceive → abstract → link causally) directly parallels the structure needed in research agents that must synthesize evidence accumulated across many experiments or retrieved documents.
+
+---
+
+### Incentivizing Vision Language Models to Search for Long Video Question Answering (VSeek)
+**arXiv:** [2607.02959](https://arxiv.org/abs/2607.02959)
+**Authors:** Harsh Goel, S P Sharan, Sahil Shah, Minkyu Choi
+**Score:** 82
+
+VSeek transforms long-video QA from passive single-pass perception into a multi-turn retrieval loop where the agent formulates targeted natural-language search queries, retrieves relevant clips, and iteratively refines its understanding — trained end-to-end with RL. The core technical contribution is a neuro-symbolic verified reward that decomposes retrieval quality into symbolic checks (relevance, completeness, non-redundancy) rather than soft VLM-preference scores, enabling stable RL training where prior verified-reward approaches fail for video. The search-formulate-verify-reason loop is a direct instance of the agentic experiment-reflect-retry pattern, applied to grounding in long visual evidence rather than laboratory results.
+
+---
+
+### ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog
+**arXiv:** [2607.04438](https://arxiv.org/abs/2607.04438)
+**Authors:** Lingao Xiao, Yalun Dai, Yangyu Huang, Qihao Zhao
+**Score:** 78
+
+ResearchStudio-Reel automates research dissemination — converting a paper into an editable poster, a talk video, and a blog post — as a composition of five specialized agents sharing a single upstream paper extractor, with agent-readable contracts that expose structured content (figures, claims, contributions) rather than free-form text. A measured-fill loop with hard pass/fail render gates (not soft VLM-preference scoring) ensures load-bearing sections are never empty in the output artifact. This pipeline instantiates automated scientific communication as an agentic workflow, demonstrating that the "last mile" from results to dissemination can be modularized, verified, and automated — a natural downstream capability for AI scientist systems.
+
+---
+
+### WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-World Modeling
+**arXiv:** [2607.03461](https://arxiv.org/abs/2607.03461)
+**Authors:** Zelin Zhao, Min Shi, Bo Yuan, Haotian Xue
+**Score:** 78
+
+WorldBagel instantiates a unified VLAW (Vision-Language-Action-World) framework on top of BAGEL — a modern multimodal unified model — to investigate whether unification of perception, language, action, and world-model prediction into a single model is more powerful than task-specific alternatives. Across multi-task robotic manipulation and cross-domain experiments, the unified model consistently outperforms specialized approaches, suggesting that shared representations across modalities compound positively. The framework provides a foundation for embodied research agents that must simultaneously perceive, plan, act, and simulate the consequences of their actions.
+
+---
+
+### iFLYTEK-Embodied-Omni Technical Report
+**arXiv:** [2607.02542](https://arxiv.org/abs/2607.02542)
+**Authors:** Yuan Zhang, Jingfei Ni, Guanchen Lu, Shiqi Zhang
+**Score:** 75
+
+iFLYTEK-Embodied-Omni is a unified multimodal foundation model for general-purpose embodied agents that jointly models vision (images and video), language, and action within a single Omni framework — avoiding the interface bottlenecks and compound prediction errors of cascaded pipelines that handle VL reasoning, video world modeling, and action generation in separate modules. The technical report details how modality-specific heads share a common backbone, enabling cross-modal transfer that improves performance on all three capabilities simultaneously. As a technical baseline for general-purpose embodied agents operating across diverse task types, it is relevant to research on agentic systems that must be broadly capable rather than narrowly specialized.
+
+---
+
+### Cortex: A Bidirectionally Aligned Embodied Agent Framework for Long-horizon Manipulation
+**arXiv:** [2607.05377](https://arxiv.org/abs/2607.05377)
+**Authors:** Jiaqi Peng, Xiqian Yu, Delin Feng, Yuqiang Yang
+**Score:** 72
+
+Cortex addresses the semantic-kinematic gap between high-level VLM planning and low-level VLA execution in long-horizon manipulation by introducing bidirectional alignment through a customized planning interface: 32 canonical skill primitives with injected tractability constraints that make high-level plans directly executable by the low-level VLA without reinterpretation. Unlike prior hierarchical systems where the planner produces natural-language instructions the executor must re-ground, Cortex's interface is co-designed so plans are already in a form the VLA can act on, eliminating a major failure mode in multi-step manipulation. The bidirectional alignment principle — ensuring that the planning vocabulary is grounded in what the executor can actually do — is broadly applicable to agentic systems that decompose long-horizon tasks.
+
+---
+
+### DynaWM: A Base-VLA-Guided World Foundation Model for Moving-Object Manipulation
+**arXiv:** [2607.02604](https://arxiv.org/abs/2607.02604)
+**Authors:** Chongkei Chang, Zhidong Deng
+**Score:** 72
+
+DynaWM proposes a world foundation model for dynamic object manipulation that takes the action chunk from a pretrained base VLA as input rather than fine-tuning the VLA itself — using a Mamba-3-based action encoder to translate VLA outputs into world-model conditioning without degrading the pretrained VLA's performance through inappropriate gradient updates. This decoupled design allows DynaWM to adapt to a wide variety of fine-tuned and coarse-tuned base VLA checkpoints, making the world model a plug-in module rather than an architectural commitment. The pattern of using a frozen foundation model's outputs to condition a specialized reasoning module (rather than end-to-end fine-tuning) is a practical strategy for composing world-model capabilities with existing agentic action policies.
+
+---
