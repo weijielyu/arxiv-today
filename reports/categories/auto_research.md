@@ -1080,3 +1080,41 @@ Cortex addresses the semantic-kinematic gap between high-level VLM planning and 
 DynaWM proposes a world foundation model for dynamic object manipulation that takes the action chunk from a pretrained base VLA as input rather than fine-tuning the VLA itself — using a Mamba-3-based action encoder to translate VLA outputs into world-model conditioning without degrading the pretrained VLA's performance through inappropriate gradient updates. This decoupled design allows DynaWM to adapt to a wide variety of fine-tuned and coarse-tuned base VLA checkpoints, making the world model a plug-in module rather than an architectural commitment. The pattern of using a frozen foundation model's outputs to condition a specialized reasoning module (rather than end-to-end fine-tuning) is a practical strategy for composing world-model capabilities with existing agentic action policies.
 
 ---
+
+## 2026-07-08
+
+### CanvasAgent: Enabling Complex Image Creation and Editing via Visual Tool Orchestration
+**arXiv:** [2607.05465](https://arxiv.org/abs/2607.05465)
+**Authors:** Hairui Zhu, Yiying Yang, Tengjin Weng, Ziyu Lu, Xiao Yao, Xiaoyang Ye, Lin Ma, Wenhao Jiang
+**Score:** 84
+
+CanvasAgent moves agentic AI from passive perception to active visual creation by orchestrating heterogeneous visual tools (generation, segmentation, editing, compositing, OCR, enhancement) through multi-turn stateful workflows, trained on the new CanvasCraft dataset of 140K fully annotated execution trajectories and 10K RL task specifications. The two-stage training combines SFT for valid tool bootstrapping with GRPO reinforcement learning using a hybrid reward (outcome alignment + aesthetic quality + trajectory coherence + efficiency penalty), enabling the agent to inspect intermediate results, track multi-asset visual states, and adapt tool decisions to the evolving canvas. This is the first agent explicitly designed for complex multi-tool image creation workflows, directly instantiating tool-augmented agentic AI for creative visual tasks.
+
+---
+
+### Light-Omni: Reflex over Reasoning in Agentic Video Understanding with Long-Term Memory
+**arXiv:** [2607.05511](https://arxiv.org/abs/2607.05511)
+**Authors:** Chang Nie, Jiaju Wei, Junlan Feng, Chaoyou Fu, Caifeng Shan
+**Score:** 81
+
+Light-Omni eliminates the iterative "detective-style" reasoning loops of video agents by maintaining dual contextual states — a global non-parametric multimodal script (continuously consolidated via sleep-time hierarchical merging) and a parametric latent state (generated in a single forward pass that simultaneously drives action control and produces semantically aligned retrieval embeddings). The dual-state design enables reflexive responses with near-constant latency regardless of video length, outperforming M3-Agent by 2.4% accuracy while being 12.1× faster and 2.6× more memory-efficient. The architecture directly addresses the key bottleneck in long-horizon agentic video systems: coupling global context availability with efficient retrieval without iterative reasoning overhead.
+
+---
+
+### WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
+**arXiv:** [2607.06118](https://arxiv.org/abs/2607.06118)
+**Authors:** Wei Dong, Tianyu Fu, Zhe Yu, Hanning Wang, Anyang Su, Zhizhou Fang, Yuyang Chen, Shuo Wang, Minghui Wu, Ping Jiang, Zhen Lei, Chenxu Zhao
+**Score:** 74
+
+WebRetriever is a large-scale benchmark (800 websites, 1,550 tasks) for evaluating web agents across consumer, professional, and enterprise domains, with NavEval — a novel LLM-as-Judge approach using rich interaction context beyond screenshots — achieving better human-alignment than prior methods. Three complementary evaluation protocols (navigation proficiency, knowledge-assisted interaction, end-to-end task completion) reveal large performance disparities that existing benchmarks miss, exposing that navigation success alone is a poor predictor of real-world agent capability. The benchmark establishes a rigorous foundation for measuring cross-domain web agent generalization, a key evaluation gap in autonomous task execution research.
+
+---
+
+### Image2Sim: Scaling Embodied Navigation via Generative Neural Simulator
+**arXiv:** [2607.05765](https://arxiv.org/abs/2607.05765)
+**Authors:** Zihan Wang, Seungjun Lee, Yinghao Xu, Gim Hee Lee
+**Score:** 72
+
+Image2Sim is a real-time neural simulation framework that converts posed RGB-D image sequences into scalable, high-fidelity interactive environments for embodied navigation training, decoupling 3D spatial anchoring (via a feed-forward feature Gaussian model) from photorealistic rendering (via a Geometry-Aware One-Step Pixel Flow model). By automating environment construction from video collections, it generates nearly 20K interactive scenes and 10M+ navigation training samples, enabling embodied agents trained purely in neural environments to transfer effectively to real-world zero-shot settings. This scalable neural simulation approach addresses the data bottleneck in training embodied research agents — directly relevant to agentic systems that require large-scale environment interaction for learning.
+
+---
