@@ -1118,3 +1118,30 @@ WebRetriever is a large-scale benchmark (800 websites, 1,550 tasks) for evaluati
 Image2Sim is a real-time neural simulation framework that converts posed RGB-D image sequences into scalable, high-fidelity interactive environments for embodied navigation training, decoupling 3D spatial anchoring (via a feed-forward feature Gaussian model) from photorealistic rendering (via a Geometry-Aware One-Step Pixel Flow model). By automating environment construction from video collections, it generates nearly 20K interactive scenes and 10M+ navigation training samples, enabling embodied agents trained purely in neural environments to transfer effectively to real-world zero-shot settings. This scalable neural simulation approach addresses the data bottleneck in training embodied research agents — directly relevant to agentic systems that require large-scale environment interaction for learning.
 
 ---
+
+## 2026-07-09
+
+### EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embodied AI
+**arXiv:** [2607.07459](https://arxiv.org/abs/2607.07459) | **Score:** 88/100
+**Authors:** Xinjie Wang, Liu Liu, Taojun Ding, Andrew Choi, Chaodong Huang, Mengao Zhao et al. (Horizon Robotics, WuwenAI)
+
+EmbodiedGen V2 is a fully automated, agentic pipeline for building simulation-ready 3D environments for embodied AI — from natural-language task parsing and 3D asset generation to affordance autolabeling and physics-validated world editing via a stateful agent-skill harness (Vibe Coding). The system achieves 83.3% of generated task-driven worlds usable for downstream simulation without manual modification, and online RL with generated environments improves real-robot task success from 21.7% to 75.0%. A key contribution for scalable embodied AI research: turns generation of training environments from a manual bottleneck into a programmable, automated pipeline.
+
+### Infinite Worlds with Versatile Interactions (LingBot-World 2.0)
+**arXiv:** [2607.07534](https://arxiv.org/abs/2607.07534) | **Score:** 77/100
+**Authors:** Zelin Gao, Qiuyu Wang, Jiapeng Zhu, Jingye Chen, Zichen Liu, Qingyan Bai et al.
+
+LingBot-World 2.0 introduces an agentic harness within world modeling: a pilot agent plans and executes character behaviors while a director agent synthesizes novel environmental elements as the scene progresses, enabling unbounded interaction horizons in a generative world model. The system achieves real-time 720p/60fps through distillation of a 14B base model into a lightweight 1.3B variant, and supports versatile interactions (object manipulation, camera control, conditional generation) for multi-player shared environments. The multi-agent world-generation architecture is a practical instantiation of director-actor agent hierarchies in the context of interactive video generation.
+
+### Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence (LingBot-Video)
+**arXiv:** [2607.07675](https://arxiv.org/abs/2607.07675) | **Score:** 75/100
+**Authors:** Shuailei Ma, Jiaqi Liao, Xinyang Wang, Jingjing Wang, Chaoran Feng, Zijing Hu et al.
+
+LingBot-Video is a DiT-based MoE video pretraining framework specifically designed for embodied intelligence, combining internet videos with extensive robot-oriented footage (manipulation, navigation, egocentric) and training with a multi-dimensional reward system enforcing physical rationality and task completion beyond standard aesthetics/motion metrics. As the first large-scale open-source MoE video foundation model, it aims to bridge digital video generation with physical actuation, providing the video pretraining side of the data pipeline that underpins robot learning research.
+
+### Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation (LaMem-VLA)
+**arXiv:** [2607.07608](https://arxiv.org/abs/2607.07608) | **Score:** 73/100
+**Authors:** Hongyu Qu, Jianzhe Gao, Xiaobin Hu, Shaohuan Yang, Xinlei Yu, Rui Yan et al.
+
+LaMem-VLA introduces a latent-memory-native framework for VLA models that reconstructs historical experience (short-term and long-term vaults) into compact latent memory tokens and interweaves them directly into VLA reasoning — enabling memory to participate in action generation rather than remaining external context. The four-component pipeline (curator, seeker, condenser, weaver) keeps all memory within the VLA's continuous latent space, and experiments on SimplerEnv and LIBERO demonstrate superior performance on long-horizon, temporally dependent manipulation tasks. This is a key building block for VLA agents that need to reason over extended interaction histories.
+
