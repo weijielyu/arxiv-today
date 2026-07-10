@@ -1145,3 +1145,25 @@ LingBot-Video is a DiT-based MoE video pretraining framework specifically design
 
 LaMem-VLA introduces a latent-memory-native framework for VLA models that reconstructs historical experience (short-term and long-term vaults) into compact latent memory tokens and interweaves them directly into VLA reasoning — enabling memory to participate in action generation rather than remaining external context. The four-component pipeline (curator, seeker, condenser, weaver) keeps all memory within the VLA's continuous latent space, and experiments on SimplerEnv and LIBERO demonstrate superior performance on long-horizon, temporally dependent manipulation tasks. This is a key building block for VLA agents that need to reason over extended interaction histories.
 
+
+---
+
+## 2026-07-10
+
+### OpenCoF: Learning to Reason Through Video Generation
+**arXiv:** [2607.08763](https://arxiv.org/abs/2607.08763) | **Score:** 87/100
+**Authors:** Xinyan Chen, Ziyu Guo, Renrui Zhang, Dongzhi Jiang, Hongsheng Li (ByteDance Seed, CUHK MMLab)
+
+OpenCoF introduces Chain-of-Frame (CoF) reasoning — using temporally evolving video frames as the reasoning medium instead of text tokens — as a fundamentally new paradigm for AI reasoning about dynamic processes and causal consequences. The OpenCoF-17K dataset (17,312 videos across 11 task families, built via four complementary pipelines) provides diverse temporal supervision, and the fine-tuned Wan-CoF model achieves substantial gains on four video reasoning benchmarks. Additional exploration of visual and textual reasoning tokens as explicit intermediate representations demonstrates that stronger video reasoning requires both broad temporal supervision and mechanisms for organizing intermediate visual state — directly relevant to how future AI agents might reason by simulating visual futures.
+
+### Cognitive-structured Multimodal Agent for Multimodal Understanding, Generation, and Editing
+**arXiv:** [2607.08497](https://arxiv.org/abs/2607.08497) | **Score:** 82/100
+**Authors:** Feng Wang, Canmiao Fu, Zhipeng Huang, Chen Li, Jing Lyu, Ge Li (Peking University, WeChat Vision, Tencent)
+
+CMA proposes a modular cognitive agent architecture for long-horizon multimodal dialogue where visual memory is externalized into an Episodic Visual Memory rather than fed as raw tokens — comprising a Perceptual Abstraction Engine, Cognitive Retrieval Engine, and Multimodal Executive Controller. An 8B CMA agent achieves 91.4% retrieval accuracy over 20-turn sessions and halves per-turn inference time compared to 32B baselines, validated on a new long-horizon visual-dialogue benchmark. The CMA-Harness deployment integrates persistent multimodal memory, web access, and image generation/editing tools, demonstrating that structured memory and modular decision-making provide a more scalable and efficient paradigm for long-horizon multimodal agents than monolithic parameter scaling.
+
+### Playing ZendoWorld: Challenging AI Agents on Active Visual Concept Induction
+**arXiv:** [2607.08233](https://arxiv.org/abs/2607.08233) | **Score:** 72/100
+**Authors:** Sophia Koehler, Antonia Wüst, Inga Ibs, Wasu Top Piriyakulkij
+
+ZendoWorld is a controlled interactive benchmark environment requiring AI agents to jointly perceive visual game observations, form hypotheses about hidden logical rules, design and propose informative experiments to test those hypotheses, and induce the underlying visual concept. This directly instantiates the active scientific discovery loop — perception, hypothesis formation, experimental design, and rule induction — in a visual setting, providing a rigorous evaluation framework for agents that must autonomously drive their own information gathering to learn abstract concepts. Initial results expose large gaps between current agents and ideal inductive reasoning, motivating new approaches to agentic visual concept learning.
