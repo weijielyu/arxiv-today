@@ -1167,3 +1167,13 @@ CMA proposes a modular cognitive agent architecture for long-horizon multimodal 
 **Authors:** Sophia Koehler, Antonia Wüst, Inga Ibs, Wasu Top Piriyakulkij
 
 ZendoWorld is a controlled interactive benchmark environment requiring AI agents to jointly perceive visual game observations, form hypotheses about hidden logical rules, design and propose informative experiments to test those hypotheses, and induce the underlying visual concept. This directly instantiates the active scientific discovery loop — perception, hypothesis formation, experimental design, and rule induction — in a visual setting, providing a rigorous evaluation framework for agents that must autonomously drive their own information gathering to learn abstract concepts. Initial results expose large gaps between current agents and ideal inductive reasoning, motivating new approaches to agentic visual concept learning.
+
+---
+
+## 2026-07-14
+
+### LightMem-Ego: Your AI Memory for Everyday Life
+**arXiv:** [2607.11487](https://arxiv.org/abs/2607.11487) | **Score:** 75/100
+**Authors:** Yijun Chen, Boyi Xiao, Yixian Zhao, Haoting Xia, Buqiang Xu, Jizhan Fang et al. (Zhejiang University)
+
+LightMem-Ego is a lightweight streaming multimodal memory system designed to run on smartphones and AI glasses, continuously capturing egocentric visual and audio streams, aligning them on a shared timeline, and organizing them into a three-tier hierarchical memory (current, short-term, long-term). Given a user query, the system dynamically routes retrieval to the appropriate memory tier and produces answers grounded in multimodal evidence — supporting object finding, conversation recall, life summarization, and routine discovery. As a practical deployment of continuous agentic AI memory, it demonstrates how the perception-accumulation-retrieval loop can be made lightweight enough for always-on wearable devices.
