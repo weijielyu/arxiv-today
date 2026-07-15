@@ -1177,3 +1177,56 @@ ZendoWorld is a controlled interactive benchmark environment requiring AI agents
 **Authors:** Yijun Chen, Boyi Xiao, Yixian Zhao, Haoting Xia, Buqiang Xu, Jizhan Fang et al. (Zhejiang University)
 
 LightMem-Ego is a lightweight streaming multimodal memory system designed to run on smartphones and AI glasses, continuously capturing egocentric visual and audio streams, aligning them on a shared timeline, and organizing them into a three-tier hierarchical memory (current, short-term, long-term). Given a user query, the system dynamically routes retrieval to the appropriate memory tier and produces answers grounded in multimodal evidence — supporting object finding, conversation recall, life summarization, and routine discovery. As a practical deployment of continuous agentic AI memory, it demonstrates how the perception-accumulation-retrieval loop can be made lightweight enough for always-on wearable devices.
+
+
+---
+
+## 2026-07-15
+
+### FlowWAM: Optical Flow as a Unified Action Representation for World Action Models
+**arXiv:** [2607.13017](https://arxiv.org/abs/2607.13017) | **Score:** 90/100
+**Authors:** Yixiang Chen, Peiyan Li, Yuan Xu, Qisen Ma, Jiabing Yang, Kai Wang et al. (Institute of Automation, CAS · UCAS · FiveAges · MBZUAI · Alibaba Group)
+
+FlowWAM proposes optical flow as a video-native action representation for World Action Models, enabling a single dual-stream diffusion backbone to serve simultaneously as a robot manipulation policy and an action-conditioned world model. By encoding flow in HSV to RGB space, the representation shares the same format and VAE as standard video, eliminating the modality gap between control signals and video priors while enabling pretraining from large-scale action-unlabeled egocentric video. FlowWAM achieves 92.94% success on RoboTwin and state-of-the-art EWMScore 63.71 (+18.4% trajectory accuracy) on WorldArena, demonstrating that a carefully chosen video-native action representation can unify policy learning and world modeling in a single framework.
+
+### SymbOmni: Evolving Agentic Omni Models via Symbolic Concept Learning
+**arXiv:** [2607.12042](https://arxiv.org/abs/2607.12042) | **Score:** 90/100
+**Authors:** Jinxiu Liu, Jianru Li, Tanqing Kuang, Xuanming Liu, Kangfu Mei, Yandong Wen, Weiyang Liu (SCUT · Westlake University · JHU · CUHK)
+
+SymbOmni addresses the "perpetual novice" problem in visual generation systems — their inability to learn cumulatively — by maintaining a Symbolic Concept Box (optimizable memory of reusable Symbolic Workflow Instructions) and operating through an induction-transduction cycle with verbalized backpropagation that achieves continuous self-improvement without gradient-based fine-tuning. Experiments on ComfyUI visual workflows show SymbOmni outperforms both open-source agent systems and closed-source models (GPT-Image-1) in image quality and task success, while reducing token consumption by over 40% and achieving cumulative gains across online-learning benchmarks. This is a direct instantiation of the "experience → symbolic abstraction → compositional reuse" paradigm for self-improving generative AI agents.
+
+### How to Realize Recursively Self-Improving Agents and Personal Singularity
+**arXiv:** [2607.12254](https://arxiv.org/abs/2607.12254) | **Score:** 75/100
+**Authors:** Chengshuai Yang
+
+This position paper proposes a governed multi-agent architecture for recursive self-improvement, defining each agent through goal contracts, bounded scopes, validated tool registries, and improvement policies, with a "Personal Singularity OS" coordinating specialized sub-agents (working, computational-imaging, process-learning, personal-learning). The architecture combines a fast planner-executor-verifier loop with a slower evidence-gated improvement loop and external governance plane, formalizing scope, routing, improvement acceptance, and human capability transfer with safety invariants. While explicitly a design proposal rather than a demonstrated system, it provides a detailed blueprint for how bounded recursive self-improvement could be realized in a human-AI co-development framework.
+
+### KnowAct-GUIClaw: Personal GUI Assistant with Self-Evolving Memory and Skill
+**arXiv:** [2607.12625](https://arxiv.org/abs/2607.12625) | **Score:** 74/100
+**Authors:** Yunxin Li, Jinchao Li, Shibo Su, Zhenran Xu, Chenrui Zhao, Tongshu Bian et al.
+
+KnowAct-GUIClaw implements the "Know Deeply, Act Perfectly" paradigm for personal GUI assistants via a Know-Route-Act-Reflect framework where accumulated user interaction and task-execution experience directly improve future accuracy — the experience-attributable memory system and self-evolving skill library enable cross-platform migration (Android/iOS/HarmonyOS/Windows) and fast-path task integration. The GUIClaw agent with open-source Kimi-2.6 achieves 64.1% on the long-horizon MobileWorld benchmark, outperforming all agentical frameworks and closed-source models including GPT-5.5. The transferable memory/skill modules that boost any base model by 8.5% demonstrate that self-evolving structured knowledge is architecture-agnostic.
+
+### ReflectVLN: Training Vision-Language Navigation Agents with Reflective Reasoning
+**arXiv:** [2607.12680](https://arxiv.org/abs/2607.12680) | **Score:** 73/100
+**Authors:** Jiahang Wang, Yirong Yang, Yanqing Zhu, Minghua Luo, Shichao Xie, Fei Liu
+
+ReflectVLN implements a bidirectionally interactive intention-execution agent pair for VLN, where an intention agent performs subtask decomposition and generates corrective plans, while an execution agent grounds instructions into short-horizon actions and monitors progress — with closed-loop communication triggered by deviation signals to drive on-demand reflection. The Action-CoT (path-conditioned dual-query training for interpretable intermediate rationals) improves both success rate and path efficiency under a constrained data budget. The closed-loop bidirectional architecture with evidence-gated reflection calls is a concrete embodiment of the planner-executor-verifier loop for embodied navigation agents.
+
+### Hy-Embodied-VLM-1.0: Efficient Physical-World Agents
+**arXiv:** [2607.12894](https://arxiv.org/abs/2607.12894) | **Score:** 72/100
+**Authors:** Ziyi Wang, Xumin Yu, Yongming Rao, Yonggen Ling, Yunheng Li, Oran Wang et al.
+
+Hy-Embodied-VLM-1.0 is a MoE embodied foundation model (3B activated / ~14B total parameters) built on Hy3-A3B and Hy-ViT2 with an action-centric capability taxonomy (Action-Relevant State Understanding → Action-Transition Reasoning → Sequential and Adaptive Reasoning) that structures both data curation and post-training. Evaluated on 38 benchmarks spanning embodied perception, physical-world understanding, and embodied reasoning, it achieves best-in-class among similar-sized models on 19 benchmarks and matches the previous 32B-parameter generation with only 3B activated parameters. Its strong performance on long-horizon agentic tasks with multi-turn interaction demonstrates that structured capability taxonomies and efficient MoE architectures can substantially close the gap between model scale and physical-world agentic capability.
+
+### The GEST-Engine: From Event Graphs to Synthetic Video
+**arXiv:** [2607.12231](https://arxiv.org/abs/2607.12231) | **Score:** 72/100
+**Authors:** Nicolae Cudlenco, Mihai Masala, Marius Leordeanu
+
+GEST-Engine is a complete system converting natural-language text into fully-annotated multi-actor video using an explicit world model (Graph of Events in Space and Time) rather than learned latents; an agentic LLM Director uses tool calls validated by a programmatic state backend to generate executable GEST specifications, which then pass through a four-stage deterministic pipeline (parsing, grounding, temporal orchestration via Floyd-Warshall, and execution) in a game engine. The system emits zero-cost frame-aligned annotations (RGB, depth, instance segmentation, skeletal pose, bounding boxes, event-frame mappings, NL descriptions) all traceable to semantic specifications, making it valuable for generating diagnostic training data and evaluation benchmarks. The agentic LLM Director + programmatic validator pattern — where every generated plan is guaranteed executable by construction — is a practical instantiation of the tool-validated generation loop relevant to automated data generation pipelines.
+
+### EvoGraph-R1: Self-Evolving Multimodal Knowledge Hypergraphs for Agentic Retrieval
+**arXiv:** [2607.12764](https://arxiv.org/abs/2607.12764) | **Score:** 70/100
+**Authors:** Jiashi Lin, Changhong Jiang, Xiangru Lin, Ruifei Zhang, Xinyi Zhu, Jiyao Liu et al.
+
+EvoGraph-R1 reconceptualizes knowledge graphs as dynamic environments shaped through agent interactions, formulating retrieval as a Markov Decision Process where the agent executes four action types (GraphRetrieve, WebSearch, GraphEdit, Answer) that reshape the hypergraph structure and generate feedback for subsequent evolution. This overcomes the static-graph bottleneck in GraphRAG — text-centric fragmentation, frozen structures, and rigid single-pass retrieval — achieving substantial improvements on multimodal VQA and text QA benchmarks. The closed-loop graph-reshaping paradigm where retrieval actions modify the very knowledge structure being queried is a novel approach to adaptive knowledge management for long-horizon agentic reasoning.
