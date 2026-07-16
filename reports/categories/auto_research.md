@@ -1230,3 +1230,25 @@ GEST-Engine is a complete system converting natural-language text into fully-ann
 **Authors:** Jiashi Lin, Changhong Jiang, Xiangru Lin, Ruifei Zhang, Xinyi Zhu, Jiyao Liu et al.
 
 EvoGraph-R1 reconceptualizes knowledge graphs as dynamic environments shaped through agent interactions, formulating retrieval as a Markov Decision Process where the agent executes four action types (GraphRetrieve, WebSearch, GraphEdit, Answer) that reshape the hypergraph structure and generate feedback for subsequent evolution. This overcomes the static-graph bottleneck in GraphRAG — text-centric fragmentation, frozen structures, and rigid single-pass retrieval — achieving substantial improvements on multimodal VQA and text QA benchmarks. The closed-loop graph-reshaping paradigm where retrieval actions modify the very knowledge structure being queried is a novel approach to adaptive knowledge management for long-horizon agentic reasoning.
+
+---
+
+## 2026-07-16
+
+### Exploratory, Communicative, and Deployable: Vision-Driven Embodied Agents for Open-World Mobile Manipulation (REAL)
+**arXiv:** [2607.13653](https://arxiv.org/abs/2607.13653) | **Score:** 82/100
+**Authors:** Boyu Mi, Mengchen Ma, Yifei Yao, Xing Gao, Junting Chen, Yangzi Li, Zihou Zhu, Guohao Li, Zhenfei Yin, Tai Wang, Yao Mu, Jiangmiao Pang, Hanqing Wang
+
+REAL is an agentic framework for open-world mobile manipulation that removes the common simulator shortcut (no privileged oracle states, no fully specified instructions) and instead forces agents to actively explore, visually ground, and interactively disambiguate — the three core challenges of real-world deployment. The hierarchical training pipeline (SFT → online RL) achieves 56.9% success on interactive disambiguation tasks (surpassing leading closed-source VLMs) and 78.3% end-to-end success across 60 real-world episodes on a physical dual-arm mobile robot with zero-shot transfer to unseen household scenarios. The sim-to-real-consistent API design — ensuring no information gap between simulation and physical deployment — is a key enabler for the strong sim-to-real transfer and represents a practically important design principle for embodied agentic systems.
+
+### From Pixels to States: Rethinking Interactive World Models as Game Engines
+**arXiv:** [2607.14076](https://arxiv.org/abs/2607.14076) | **Score:** 73/100
+**Authors:** Zhen Li, Zian Meng, Shuwei Shi, Mingliang Zhai, Jiaming Tan, Chuanhao Li, Kaipeng Zhang
+
+This paper frames interactive world modeling through the lens of conventional game engine loops (action → state update → observation render) and systematically examines where current video generative approaches succeed and fall short on four dimensions: player action control, game state dynamics, state-observation persistence, and real-time interactive generation. Complementing the analysis is a scalable data engine for Black Myth: Wukong collecting 90+ hours of gameplay with frame-aligned actions, ground-truth game states, visual observations, and semantic annotations — a resource specifically designed for state-aware world model research. The action-state-observation loop framing provides a clean vocabulary for diagnosing capability gaps in current video-based world models that are increasingly being explored as simulation environments for AI agents.
+
+### M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming
+**arXiv:** [2607.14005](https://arxiv.org/abs/2607.14005) | **Score:** 74/100
+**Authors:** Ke Cheng, Hanqiao Ye, Lei Shi, Yahui Liu, Yunhan Shen, Jingtao Dong, Zhenke Wang, Wenxuan Ao, Weixiang Xu, Kaining Huang, Shuhan Shen
+
+M⁴World is a multi-view multimodal driving world model that generates synchronized surround-view video + LiDAR streams with fine-grained object-level control (spatial layout + visual appearance of individual objects) and stable minute-long streaming via causal generation in four denoising steps. The automated VLM-based judging pipeline for evaluating scene-level condition adherence and cross-view object consistency is a useful contribution to controllable world model evaluation methodology. The combination of interactive object manipulation with long-horizon coherence directly addresses the simulation requirements of autonomous agents needing to reason over extended, controllable driving scenarios.
