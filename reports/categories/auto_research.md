@@ -1233,6 +1233,28 @@ EvoGraph-R1 reconceptualizes knowledge graphs as dynamic environments shaped thr
 
 ---
 
+## 2026-07-17
+
+### ToolAnchor: Anchoring Counterfactual Context to Boost Agentic Tool-use Capability
+**arXiv:** [2607.14145](https://arxiv.org/abs/2607.14145) | **Score:** 72/100
+**Authors:** Weiting Liu, Jieyi Bi, Wanqi Zhou, Jianfeng Feng, Yining Ma, Ai Han
+
+ToolAnchor addresses behavioral inertia in LLM agents post-trained on fixed toolsets: when new tools are introduced, agents default to familiar patterns and fail to use novel capabilities effectively. The framework identifies that injecting counterfactual anchor contexts at critical decision points (hypothesizing what would happen if the agent used a new tool instead) can break this inertia by eliciting suppressed capabilities; a teacher-student pipeline then internalizes successful counterfactual interventions via agentic post-training. Evaluations on GAIA, BrowseComp, and VDR-Bench show consistent competitive performance under expanded toolsets, charting a path for scalable agentic RL that bridges static post-training and dynamic toolset adaptation.
+
+### MAGiSt3R: Multi-Agent Feed-forward 3D Reconstruction from Monocular RGB Videos
+**arXiv:** [2607.15211](https://arxiv.org/abs/2607.15211) | **Score:** 76/100
+**Authors:** Ziren Gong, Xiaohan Li, Fabio Tosi, Ninghui Xu, Stefano Mattoccia, Jianfei Cai
+
+MAGiSt3R is a multi-agent 3D reconstruction framework that achieves reconstruction and camera tracking at ~10 FPS from monocular RGB video by combining a feed-forward 3R-family model for local point map regression with a MAGMA merging model that coordinates intra- and inter-agent map fusion. Pose graph optimization is applied to mitigate cumulative camera drift across the multi-agent pipeline, and the system outperforms SOTA on both synthetic and real-world reconstruction benchmarks. The multi-agent coordination pattern — where independent agents process local windows and a dedicated merging agent resolves global consistency — is a practically important design for scalable feed-forward reconstruction pipelines.
+
+### DriftWorld: Fast World Modeling through Drifting
+**arXiv:** [2607.15065](https://arxiv.org/abs/2607.15065) | **Score:** 70/100
+**Authors:** Susie Lu, Haonan Chen, Weirui Ye, Yilun Du
+
+DriftWorld is an action-conditioned world model that replaces iterative diffusion sampling with a learned drift, enabling single-forward-pass future frame prediction at 30+ FPS — 17× faster than diffusion-based world model baselines — while achieving state-of-the-art task performance on Bridge-V2, RT-1, Language Table, Push-T, and Robomimic. Beyond online robot control, DriftWorld serves as an offline simulator where rollout-based scores correlate with ground-truth policy rankings at up to 0.99, enabling scalable policy evaluation without real-world interaction. The drifting paradigm — where the world model generates long-horizon rollouts at display framerate — directly enables the large-scale action search required by planning-based autonomous agents.
+
+---
+
 ## 2026-07-16
 
 ### Exploratory, Communicative, and Deployable: Vision-Driven Embodied Agents for Open-World Mobile Manipulation (REAL)
