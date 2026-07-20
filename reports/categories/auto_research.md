@@ -1274,3 +1274,24 @@ This paper frames interactive world modeling through the lens of conventional ga
 **Authors:** Ke Cheng, Hanqiao Ye, Lei Shi, Yahui Liu, Yunhan Shen, Jingtao Dong, Zhenke Wang, Wenxuan Ao, Weixiang Xu, Kaining Huang, Shuhan Shen
 
 M⁴World is a multi-view multimodal driving world model that generates synchronized surround-view video + LiDAR streams with fine-grained object-level control (spatial layout + visual appearance of individual objects) and stable minute-long streaming via causal generation in four denoising steps. The automated VLM-based judging pipeline for evaluating scene-level condition adherence and cross-view object consistency is a useful contribution to controllable world model evaluation methodology. The combination of interactive object manipulation with long-horizon coherence directly addresses the simulation requirements of autonomous agents needing to reason over extended, controllable driving scenarios.
+
+## 2026-07-20
+
+### Searching Videos as Trees: Self-Correcting Agents for Grounded Long Video QA (VideoTreeSearch / VTS)
+**arXiv:** [2607.16189](https://arxiv.org/abs/2607.16189) | **Score:** 81/100
+**Authors:** Ce Zhang, Ziyang Wang, Yulu Pan, Oluwatumininu Oguntola, Pranav Wagh, Qiyu Wu, Hiromi Wakaki, Mohit Bansal, Gedas Bertasius
+
+VideoTreeSearch frames grounded long-video question answering as agentic navigation over an adaptive temporal tree (nodes aligned to visual scene boundaries via CLIP), training a VLM with four discrete tree-navigation operations — zoom_in, zoom_out, shift, answer — that make self-correction and backtracking explicit, independently learnable primitives rather than implicit behaviors. A trajectory synthesis pipeline generates deliberate wrong-branch detours followed by recovery, providing supervised signal for error correction that existing datasets lack; RL on grounding and answer-accuracy rewards follows. Gains of +12.5 mIoU on CG-Bench and generalization to general long-video QA (+7.1 accuracy on Video-MME) demonstrate that structured hierarchical search with explicit backtracking significantly outperforms continuous single-action search — a design principle relevant to any agentic system navigating hierarchical information spaces.
+
+### MLLM-DataEngine: Closing the Loop of Multimodal Instruction Tuning Data Generation
+**arXiv:** [2607.15299](https://arxiv.org/abs/2607.15299) | **Score:** 74/100
+**Authors:** Zhiyuan Zhao, Bin Wang, Linke Ouyang, Yiqi Lin, Pan Zhang et al.
+
+MLLM-DataEngine is a closed-loop system that automatically identifies model weaknesses from benchmark evaluation results, generates targeted incremental training data via GPT-4 with adaptive bad-case sampling, and iteratively retrains the model — completing the LLM-driven experiment loop without human involvement. The Adaptive Bad-case Sampling module dynamically adjusts data generation focus based on benchmark performance profiles, providing a practical implementation of the "evaluate → diagnose → generate → train → iterate" research loop. A direct implementation of LLM-driven experiment loops (priority 1): the closed loop improves MLLM capability more effectively than static dataset collection, suggesting this pattern generalizes to other model-improvement domains.
+
+### Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories
+**arXiv:** [2607.15330](https://arxiv.org/abs/2607.15330) | **Score:** 73/100
+**Authors:** Xiaomi Robotics Team, Jun Guo, Piaopiao Jin, Jason Li, Peiyan Li et al.
+
+Xiaomi-Robotics-1 is a foundational VLA model for mobile manipulation trained on 100K+ hours of real-world UMI device trajectories, using a scalable auto-labeling pipeline that annotates clips with natural language scene-state-transition descriptions for rich conditioning. The two-stage recipe (broad capability pretraining → embodiment-aligned post-training) shows strong scaling behavior: more data and larger models at pretraining directly transfer to better out-of-the-box performance, and the foundation policy supports efficient fine-tuning on complex dexterous tasks. Establishes new SOTA on RoboCasa365 (57.6%) and RoboDojo (20.07) — relevant to embodied autonomous agent research as a practical demonstration that scaling real-world trajectory data yields generalizable robot policies.
+
