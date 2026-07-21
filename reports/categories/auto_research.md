@@ -1295,3 +1295,23 @@ MLLM-DataEngine is a closed-loop system that automatically identifies model weak
 
 Xiaomi-Robotics-1 is a foundational VLA model for mobile manipulation trained on 100K+ hours of real-world UMI device trajectories, using a scalable auto-labeling pipeline that annotates clips with natural language scene-state-transition descriptions for rich conditioning. The two-stage recipe (broad capability pretraining → embodiment-aligned post-training) shows strong scaling behavior: more data and larger models at pretraining directly transfer to better out-of-the-box performance, and the foundation policy supports efficient fine-tuning on complex dexterous tasks. Establishes new SOTA on RoboCasa365 (57.6%) and RoboDojo (20.07) — relevant to embodied autonomous agent research as a practical demonstration that scaling real-world trajectory data yields generalizable robot policies.
 
+## 2026-07-21
+
+### PhysAgent: Reflective Agentic Physics Control for Physically Plausible Video Generation
+**arXiv:** [2607.16355](https://arxiv.org/abs/2607.16355) | **Score:** 86/100
+**Authors:** Qirui Li, Jinkun Hao, Yibo Li, Ran Yi, Paul L. Rosin, Yu-Kun Lai
+
+PhysAgent is a closed-loop agentic framework that treats physics simulation specifications for video generation as executable hypotheses rather than one-shot predictions: a program generator constructs a physical control program, the simulator executes it, a stage-specific verifier diagnoses failures, and a planner performs targeted repairs—iterating until all stages pass. A semantic physics-control API (velocity initialization, scheduled force/torque actuation, disturbance injection) makes motion specification compositional and reduces the agent's burden to synthesize brittle simulator-specific commands. The execution-aware agentic loop is a clean instance of the test-and-repair paradigm, directly applicable to any autonomous system where physical correctness can only be verified by running the simulation.
+
+### Clarify Before Executing: A Self-Evolving Agent for Resolving Intent Asymmetry in 3D Tool Orchestration (CLARE)
+**arXiv:** [2607.16352](https://arxiv.org/abs/2607.16352) | **Score:** 85/100
+**Authors:** Xiaoye Zhu, Weixin Li, Junan Huo, Bozhong Wang, Jia Zeng et al.
+
+CLARE is a clarification-aware 3D agent that proactively asks targeted questions to resolve underspecified user instructions before invoking expensive 3D tools (text-to-3D generation, reconstruction, point cloud editing, post-processing), with a four-role pipeline (Intent Analyst, Clarification Generator, Specification Composer, Tool Executor) that decouples intent resolution from execution. Its clarification policy is learned via simulated multi-turn dialogues optimized by a Multi-turn Reward that jointly minimizes unnecessary clarification rounds and maximizes task-completion success—self-evolving without manual rule engineering. On the new 3D-Clarify benchmark (620 scenarios, three injected ambiguity types), CLARE achieves 60.4%/43.3% single/multi-step success rates, more than doubling baselines, demonstrating that proactive clarification is a critical missing capability in current AI agents.
+
+### Self-Evolving Just-In-Time Memory for Proactive Embodied Safety
+**arXiv:** [2607.16247](https://arxiv.org/abs/2607.16247) | **Score:** 75/100
+**Authors:** Bingrui Sima, Lizhong Wang, Xiaoya Lu, Kun He, Xiao Yang
+
+JIT-Memory introduces a self-evolving memory system for VLM-based embodied agents that proactively detects and resolves dynamically emerging hazards during household task execution, rather than relying on runtime guardrails that stall task progress. The memory evolves by distilling past interaction episodes into just-in-time safety interventions—activated only when contextually relevant—breaking the safety-progress trade-off that plagues existing safety approaches. The self-evolving component is directly relevant to autonomous research agents that must update their operational knowledge from experience without stopping execution, and the JIT activation pattern is a useful design primitive for agents operating in open-ended environments.
+
