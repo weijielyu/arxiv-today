@@ -1315,3 +1315,23 @@ CLARE is a clarification-aware 3D agent that proactively asks targeted questions
 
 JIT-Memory introduces a self-evolving memory system for VLM-based embodied agents that proactively detects and resolves dynamically emerging hazards during household task execution, rather than relying on runtime guardrails that stall task progress. The memory evolves by distilling past interaction episodes into just-in-time safety interventions—activated only when contextually relevant—breaking the safety-progress trade-off that plagues existing safety approaches. The self-evolving component is directly relevant to autonomous research agents that must update their operational knowledge from experience without stopping execution, and the JIT activation pattern is a useful design primitive for agents operating in open-ended environments.
 
+
+## 2026-07-22
+
+### OmniReasoner: Thinking with Long Audio-Video via Native Tool Use
+**arXiv:** [2607.19339](https://arxiv.org/abs/2607.19339) | **Score:** 90/100
+**Authors:** Yu Chen, Caorui Li, Ziyu Xiong, Yidong Wang, Mingqi Gao, Shuman Liu, Biao Liu, Chunfeng Yang, Anxiang Zeng, Haibo Zhang, Chaofan Chen
+
+OmniReasoner is a post-training framework that teaches omnimodal LLMs to autonomously decide when and where to invoke a "zoom-in" tool for targeted high-fidelity temporal excerpts during long audio-video reasoning—trained via SFT then RL from answer-correctness rewards, with a Temporal Augmented Data Engine that synthesizes tool-use training trajectories automatically without human annotation. TimeAnchor maintains frame-index coherence across different sampling granularities, grounding tool calls temporally. This is a clean instance of agentic tool use learned end-to-end: the model learns the policy (when to use the tool) and the skill (what temporal window to specify) jointly, directly relevant to building AI agents that selectively gather evidence rather than processing everything at once.
+
+### FilmWorld: Agentic Novel-to-Film Generation through Dynamic Cinematic World Modeling
+**arXiv:** [2607.19038](https://arxiv.org/abs/2607.19038) | **Score:** 88/100
+**Authors:** Jialong Zuo, Haotong Zuo, Shiwei Zhang, Xiang Wang, Chen Li, Nong Sang, Changxin Gao, Xiang Bai
+
+FilmWorld formalizes novel-to-film generation as dynamic cinematic world modeling with six specialized agents split into Construction (narrative translation → stateful world entities with visual anchoring → state-driven shot planning) and Evolution (state-anchored rendering → cross-shot state propagation → closed-loop verification) phases, achieving O(N/P) parallel latency by pre-materializing the full state trajectory before any rendering occurs. The explicit world state system (state identifiers mapping entity attributes to visual reference assets) is a strong design pattern for multi-agent systems that must maintain consistency across long execution horizons—removing sequential dependencies by externalizing state. Removing the world state in ablations collapses Character Consistency from 82.12 to 54.50, directly validating the importance of explicit state management in agentic pipelines.
+
+### Masked Visual Actions for Unified World Modeling
+**arXiv:** [2607.19343](https://arxiv.org/abs/2607.19343) | **Score:** 77/100
+**Authors:** Hadi Alzayer, Wenlong Huang, Haonan Chen, Christopher Luey, Lvmin Zhang, Maneesh Agrawala, Gordon Wetzstein, Li Fei-Fei, Yilun Du, Jiajun Wu, Jia-Bin Huang
+
+Masked Visual Actions communicates robot actions to video world models as masked image regions in the visual space (rather than numeric vectors or control tokens), aligning action representation with the visual priors that video models learned during pretraining—enabling robotic world modeling without the visual-action grounding gap. This bridges the gap between the rich visual-physical priors in video foundation models and the action-grounded requirements of robotic planning agents, a relevant design choice for any agentic system that uses video models as its world model backbone.
