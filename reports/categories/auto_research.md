@@ -1335,3 +1335,17 @@ FilmWorld formalizes novel-to-film generation as dynamic cinematic world modelin
 **Authors:** Hadi Alzayer, Wenlong Huang, Haonan Chen, Christopher Luey, Lvmin Zhang, Maneesh Agrawala, Gordon Wetzstein, Li Fei-Fei, Yilun Du, Jiajun Wu, Jia-Bin Huang
 
 Masked Visual Actions communicates robot actions to video world models as masked image regions in the visual space (rather than numeric vectors or control tokens), aligning action representation with the visual priors that video models learned during pretraining—enabling robotic world modeling without the visual-action grounding gap. This bridges the gap between the rich visual-physical priors in video foundation models and the action-grounded requirements of robotic planning agents, a relevant design choice for any agentic system that uses video models as its world model backbone.
+
+## 2026-07-23
+
+### Silent Failures in Multimodal Agentic Search: A Diagnostic Taxonomy and Cross-Judge Evaluation
+**arXiv:** [2607.19793](https://arxiv.org/abs/2607.19793) | **Score:** 83/100
+**Authors:** Zhengxian Wu, Junjie Gao, Kai Yang (Ant Group)
+
+This work establishes a six-category taxonomy of silent failures in multimodal agentic search—modality shortcuts, phantom grounding, wrong-evidence-right-answer, over-retrieval laundering, cross-modal contradiction, and provenance hallucination—demonstrating that surface accuracy systematically overestimates trajectory-grounded correctness across all four frontier models evaluated on 800 MMSearch-Plus trajectories. The trajectory-level diagnostic pipeline (ReAct scaffold + LLM judge + cross-family validation) is directly applicable to evaluating any agentic system where reasoning traces matter, not just final answers. The key finding that silent failures shift distribution (rather than disappearing) as model capability increases has direct implications for how reliability should be measured in production agentic deployments.
+
+### ETPDesigner: Multi-Agent Orchestration for Interactive Multimodal Electronic Theater Programs
+**arXiv:** [2607.19947](https://arxiv.org/abs/2607.19947) | **Score:** 75/100
+**Authors:** Mengtian Li, Xinru Guo, Xiaoru Lin, Xiao Rong et al.
+
+ETPDesigner is a collaborative multi-agent framework for synthesizing multi-page multimodal content (theatrical programs) from raw dramatic scripts, orchestrating specialized agents for semantic analysis, poster generation, background synthesis, and character composition with a global style anchor mechanism for cross-page aesthetic consistency. The integration of portrait animation, speech synthesis, and persona-grounded LLMs to create interactive virtual characters is a concrete example of a multi-agent creative pipeline that moves from document generation to interactive agent deployment. The ETP-Pro benchmark enables future comparison of multi-agent creative systems on a well-defined multi-step heterogeneous task.
