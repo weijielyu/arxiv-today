@@ -1349,3 +1349,29 @@ This work establishes a six-category taxonomy of silent failures in multimodal a
 **Authors:** Mengtian Li, Xinru Guo, Xiaoru Lin, Xiao Rong et al.
 
 ETPDesigner is a collaborative multi-agent framework for synthesizing multi-page multimodal content (theatrical programs) from raw dramatic scripts, orchestrating specialized agents for semantic analysis, poster generation, background synthesis, and character composition with a global style anchor mechanism for cross-page aesthetic consistency. The integration of portrait animation, speech synthesis, and persona-grounded LLMs to create interactive virtual characters is a concrete example of a multi-agent creative pipeline that moves from document generation to interactive agent deployment. The ETP-Pro benchmark enables future comparison of multi-agent creative systems on a well-defined multi-step heterogeneous task.
+
+## 2026-07-24
+
+### GS-Agent: Creating 4D Physical Worlds With Generative Simulation
+**arXiv:** [2607.21522](https://arxiv.org/abs/2607.21522) | **Score:** 86/100
+**Authors:** Hongxin Zhang, Chunru Lin, Junyan Li, Zhou Xian, Tsun-Hsuan Wang, Chuang Gan
+
+GS-Agent is an end-to-end multi-agent framework that decomposes 4D world creation into entity management (Manager Agent) and rendering configuration (Render Agent + Entity Agent), with each agent interacting with a physics engine via code and receiving multimodal feedback to iteratively self-correct. The system produces physically plausible 4D scenes with rich interactions among liquids, deformable objects, and rigid bodies, plus cinematic camera and lighting control—all from a single text prompt. The physics-in-the-loop agentic design, including autonomous error detection and fine-grained compositional control, represents a concrete multi-agent pipeline for creative 4D world construction.
+
+### WorldWeaver: Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers
+**arXiv:** [2607.21594](https://arxiv.org/abs/2607.21594) | **Score:** 78/100
+**Authors:** Sicheng Mo, Yuheng Li, Ziyang Leng, Krishna Kumar Singh, Bolei Zhou
+
+WorldWeaver (W²) introduces cross-agent world state registers—learnable tokens storing shared world information and individual agent status—into a streaming multi-agent video diffusion model, enabling persistent world state across agents and views. The Mixture-of-Transformers design uses separate weights for world state modeling and visual frame modeling, and supervision spans individual agent status, global state views (bird's-eye), and scene text. Explicit world-state modeling improves logical consistency in multi-agent video generation (demonstrated on Minecraft), a design principle applicable to agentic systems requiring shared persistent state across multiple actors.
+
+### Agentic Designer: Progressive Multi-Agent Collaboration for Structure-Aware Interior Layout Generation
+**arXiv:** [2607.20866](https://arxiv.org/abs/2607.20866) | **Score:** 72/100
+**Authors:** Zhijing Yang, Haocheng Lin, Zhihua Xu, Haojie Li, Keze Wang et al.
+
+Agentic Designer formulates interior furniture layout as an iterative constraint-verified decision process, coordinating three specialized agents (Generator, Evaluator, Refiner) through a Progressive Consensus Mechanism that enforces stepwise geometric validation before committing each placement. The framework prevents error accumulation by verifying geometric constraints at every step rather than one-shot, a design pattern with broader applicability to any agentic system operating under hard structural constraints. The InStruct benchmark (18,000 samples with structure-centric metrics) enables future comparison of multi-agent spatial planning systems.
+
+### Engine-Native Editable 3D World Reconstruction with Objects and Lighting (Lumera)
+**arXiv:** [2607.20889](https://arxiv.org/abs/2607.20889) | **Score:** 70/100
+**Authors:** Junhao Chen, Xinghao Chen, Henghaofan Zhang, Zihao Qiao, Saining Zhang et al.
+
+Lumera introduces a benchmark (Lumera-2K, 2,513 UE5 projects) and reference pipeline for parsing object instances and parametric lights from a single image into engine-native, editable 3D assets, with a bounded agentic refinement loop for quality improvement. The VLM-based detection of object boxes and parametric light tuples (position, color, intensity) represents an agentic approach to structured 3D scene understanding, addressing the gap between free-form image content and the parametric scene representations required by physics and rendering engines.
