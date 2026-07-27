@@ -1375,3 +1375,23 @@ Agentic Designer formulates interior furniture layout as an iterative constraint
 **Authors:** Junhao Chen, Xinghao Chen, Henghaofan Zhang, Zihao Qiao, Saining Zhang et al.
 
 Lumera introduces a benchmark (Lumera-2K, 2,513 UE5 projects) and reference pipeline for parsing object instances and parametric lights from a single image into engine-native, editable 3D assets, with a bounded agentic refinement loop for quality improvement. The VLM-based detection of object boxes and parametric light tuples (position, color, intensity) represents an agentic approach to structured 3D scene understanding, addressing the gap between free-form image content and the parametric scene representations required by physics and rendering engines.
+
+## 2026-07-27
+
+### Robot-Factored World Models via Robot Rendering
+**arXiv:** [2607.22535](https://arxiv.org/abs/2607.22535) | **Score:** 85/100
+**Authors:** Byungjun Kim, Taeksoo Kim, Hyunsoo Cha, Hanbyul Joo (Seoul National University)
+
+Robot-Factored World Models introduces a visual conditioning interface that factors robot-specific elements (kinematics, appearance) out of the learned world model by rendering a deployment-available nominal trajectory through the robot's URDF into camera-aligned mesh geometry and depth maps—leaving the model to learn only how the scene responds to visible robot geometry. The factored design enables zero-shot generalization to unseen robot embodiments at inference and allows generating robot manipulation videos from retargeted human hand demonstrations without robot-specific training data. As a concrete architecture for compositional, data-efficient robot world models, this directly addresses the agentic AI challenge of learning environment models that generalize across embodiments.
+
+### SceneActBench: Can Agents Act on the 3D Scenes They See?
+**arXiv:** [2607.22393](https://arxiv.org/abs/2607.22393) | **Score:** 72/100
+**Authors:** Yifei Zhao, Xiangxin Zhou, Wenhao Yang, Jiaqi Tang, Pu Jian, Huanjin Yao, Jiarui Yao, Haowei Lin, Chunchao Guo, Zhuo Chen, Wenkai Lyu, Jianzhu Ma, Xueqian Wang, Wenxi Zhu
+
+SceneActBench is a benchmark for evaluating VLM agents on visually conditioned action across five 3D task families (object manipulation, layout, navigation, scene editing, and multi-step planning) under a unified agent-environment loop, going beyond existing 3D benchmarks that only score textual responses or single-object operations. The benchmark exposes a systematic gap between VLMs' scene *description* ability and their *action* ability on complete multi-object 3D scenes, providing a principled testbed for developing agents that close this gap. It is directly relevant to agentic AI research on grounded, visually-conditioned decision-making in 3D environments.
+
+### AgentHOI: Multi-Agent Reasoning for Human-Object-Interaction Video Generation via Implicit Representation Alignment
+**arXiv:** [2607.22241](https://arxiv.org/abs/2607.22241) | **Score:** 75/100
+**Authors:** Ziyao Huang, Shunkai Li, Juan Cao, Chenyu Li, Youliang Zhang, Zixiang Zhou, Cong Wang, Yuan Zhou, Qinglin Lu, Fan Tang
+
+AgentHOI proposes a multi-agent reasoning framework for text-driven HOI video generation that replaces explicit motion control with implicit representation alignment, allowing multiple agents to reason about interaction logic (between humans, objects, and their context) and coordinate to generate plausible HOI sequences without requiring dense motion annotations. The framework scales to diverse objects and interaction types precisely because it avoids the brittleness of explicit motion specification. The multi-agent decomposition of a creative generative task into reasoning agents is a promising architectural pattern for video generation systems requiring fine-grained compositional control.
