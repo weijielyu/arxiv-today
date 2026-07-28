@@ -1395,3 +1395,21 @@ SceneActBench is a benchmark for evaluating VLM agents on visually conditioned a
 **Authors:** Ziyao Huang, Shunkai Li, Juan Cao, Chenyu Li, Youliang Zhang, Zixiang Zhou, Cong Wang, Yuan Zhou, Qinglin Lu, Fan Tang
 
 AgentHOI proposes a multi-agent reasoning framework for text-driven HOI video generation that replaces explicit motion control with implicit representation alignment, allowing multiple agents to reason about interaction logic (between humans, objects, and their context) and coordinate to generate plausible HOI sequences without requiring dense motion annotations. The framework scales to diverse objects and interaction types precisely because it avoids the brittleness of explicit motion specification. The multi-agent decomposition of a creative generative task into reasoning agents is a promising architectural pattern for video generation systems requiring fine-grained compositional control.
+
+---
+
+## 2026-07-28
+
+### 2607.22824 — Agentic Autoresearch for CT Reconstruction
+**Authors:** Andreas Maier, Lucas Kachelrieß, Siming Bayer, Yixing Huang, Yan Xia, Amber Simpson, Moritz Zaiss
+**Score:** 81/100
+
+An LLM agentic loop autonomously implements, tunes, and benchmarks 26 CT reconstruction methods by iteratively editing solver code, submitting fixed-budget cluster jobs, and reading a calibrated headroom score (hr = 1 − RMSE/RMSE_FBP) without human intervention. The system independently replicates and extends state-of-the-art results across Mayo low-dose CT and sparse-view breast CT tasks. Critically, the paper finds that idealized (noiseless) benchmark rankings frequently do not transfer to realistic noise conditions — a warning for benchmark design in automated research pipelines.
+
+---
+
+### 2607.23704 — LabRobFail: A Benchmark for Robotic Failure Analysis in Chemical Labs
+**Authors:** Haobo Wang, Baoli Sun, Anqi Zou, Dongsheng Huang
+**Score:** 78/100
+
+LabRobFail targets a reliability gap in self-driving laboratory deployment: the irreversible, domain-specific failure modes (spills, equipment damage, contamination) that prevent embodied agents from safely accelerating scientific discovery in wet-lab settings. The benchmark catalogs failure types specific to chemical lab robotics and provides evaluation protocols for detection and prevention. Directly relevant to the challenge of deploying AI scientist systems in physical laboratory environments.
