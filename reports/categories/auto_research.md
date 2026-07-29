@@ -1413,3 +1413,13 @@ An LLM agentic loop autonomously implements, tunes, and benchmarks 26 CT reconst
 **Score:** 78/100
 
 LabRobFail targets a reliability gap in self-driving laboratory deployment: the irreversible, domain-specific failure modes (spills, equipment damage, contamination) that prevent embodied agents from safely accelerating scientific discovery in wet-lab settings. The benchmark catalogs failure types specific to chemical lab robotics and provides evaluation protocols for detection and prevention. Directly relevant to the challenge of deploying AI scientist systems in physical laboratory environments.
+
+---
+
+## 2026-07-29
+
+### 2607.26041 — Desktop-Delta Bench: Do Computer-Use Models Understand Desktop GUI Transitions?
+**Authors:** Abhishek Pillai, Samir Kumar Nayak, Yuan Chen
+**Score:** 72/100
+
+Desktop-Delta Bench (DDB) is an offline step-level benchmark with 2,013 human-verified instances from multi-app Linux trajectories targeting the ability of computer-use agents (CUAs) to reconstruct causal, task-relevant GUI transitions after an action — specifically state verification, source tracking, and context-aware control. Current CUA benchmarks measure only end-task success or single-frame grounding, missing the intermediate visual understanding that enables agents to reject stale observations, verify progress, and recover from failure. DDB fills this diagnostic gap between GUI grounding and final task success, and reveals consistent weaknesses across 8 model families — the best non-decoy ordering accuracy is only 65.1%. Directly relevant to reliability and failure-recovery in desktop computer-use agentic systems.
