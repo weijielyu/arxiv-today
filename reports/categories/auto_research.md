@@ -1423,3 +1423,78 @@ LabRobFail targets a reliability gap in self-driving laboratory deployment: the 
 **Score:** 72/100
 
 Desktop-Delta Bench (DDB) is an offline step-level benchmark with 2,013 human-verified instances from multi-app Linux trajectories targeting the ability of computer-use agents (CUAs) to reconstruct causal, task-relevant GUI transitions after an action — specifically state verification, source tracking, and context-aware control. Current CUA benchmarks measure only end-task success or single-frame grounding, missing the intermediate visual understanding that enables agents to reject stale observations, verify progress, and recover from failure. DDB fills this diagnostic gap between GUI grounding and final task success, and reveals consistent weaknesses across 8 model families — the best non-decoy ordering accuracy is only 65.1%. Directly relevant to reliability and failure-recovery in desktop computer-use agentic systems.
+
+---
+
+## 2026-07-31
+
+### 2607.28243 — EgoGenesis: Egocentric World-Action Modeling with Online Anchored Projective Memory and Action-3D RoPE
+**Authors:** Zexuan Yan, Yuzhou Wu, Yue Ma, Zonghang He, Kaibo Yin, Xiaobing Tu, Yinggui Wang et al.
+**Score:** 92/100
+
+EgoGenesis is an egocentric world-action simulator that generates controllable manipulation videos to expand scarce embodied AI training data, using Online Anchored Projective Memory (OAPM) to maintain spatial coherence across viewpoints and Action-3D RoPE to encode fine-grained 3D action trajectories within the latent video space. The model generalizes cross-embodiment to unseen robot platforms in out-of-distribution environments, and generated videos successfully transfer as world-action model training data for downstream real-robot task completion. A principled combination of spatial scene memory and metric action-position encoding sets a new standard for controllable egocentric video generation as an automated data engine for embodied AI.
+
+---
+
+### 2607.27380 — VideoCoCo: Code-as-CoT for Physically-Consistent Video Generation via an Agentic Dual-Engine System
+**Authors:** Haodong Li, Tianfei Ren, Xiaoxiao Ma, Chunmei Qing, Zhen Fang, Sipeng He et al.
+**Score:** 92/100
+
+VideoCoCo uses executable simulation code as chain-of-thought (Code-as-CoT) to overcome the physics consistency failures of text-to-video models: an Executable Simulation Engine uses an LLM to synthesize and execute Python physics programs producing a low-fidelity draft, then a Generative Video Engine translates the draft into a high-quality video conditioned on the physically correct motion trajectory. This agentic dual-engine design externalizes physics reasoning into verifiable code and lets the generative model handle only visual translation, cleanly separating dynamics from appearance. The approach directly exemplifies LLM-driven experiment loops and multi-agent generation pipelines applied to video synthesis.
+
+---
+
+### 2607.28595 — Beacon: Knowing When and How to Perform Agentic Visual Reasoning
+**Authors:** Qixun Wang, Yang Shi, Letian Cheng, Zhuoran Zhang, Yan He et al.
+**Score:** 88/100
+
+Beacon addresses the core gap in agentic visual reasoning — that existing models call tools indiscriminately without genuine benefit — by introducing Mode Adaptiveness (MA) and Tool Effect (TE) as metrics, then training with a Necessity-Aware Adaptive Reward that penalizes unnecessary tool use while rewarding effective tool use, plus Hint-Guided Capability Expansion that grows the policy's capability frontier on hard cases. The resulting model correctly routes between tool-free and tool-enabled reasoning modes, achieving both efficiency and accuracy gains — a fundamental contribution to the meta-policy layer of agentic AI systems. The MA/TE framework provides a reusable evaluation lens for any agentic VLM pipeline.
+
+---
+
+### 2607.28225 — FaithEyes: Towards Faithful Tool Use via Multi-Agent Process-Image Verification
+**Authors:** Haoqing Wang, Xingrun Xing, Wei Xia, Ziheng Li, Yehui Tang
+**Score:** 87/100
+
+FaithEyes introduces a multi-agent self-judging framework where a dedicated subagent independently verifies whether each tool call's process image is actually relevant to the question, preventing the main agent from incorporating hallucinated visual evidence from unfaithful tool use. A dedicated tool-faithfulness reward in GRPO training decoupled from accuracy creates a direct training signal for the faithfulness property, separate from whether the final answer is correct. Faithful tool use is a necessary condition for trustworthy agentic AI; this work cleanly operationalizes and trains for that property via multi-agent verification.
+
+---
+
+### 2607.28609 — OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models
+**Authors:** Qiushi Sun, Kanzhi Cheng, Yian Wang, Bowen Yang, Hang Yan et al.
+**Score:** 87/100
+
+OSReward provides a standardized multi-platform benchmark (Web, Windows, Ubuntu, Mobile) for evaluating CUA trajectory verifiers with human-consensus annotations, revealing that current VLM judges exhibit consistent leniency bias and that visual inputs barely change verdicts. OS-Shepherd, an open reward model trained on 100K trajectories with an RL stage targeting failure detection, generalizes across benchmarks and provides a scalable verifier for CUA training pipelines. This addresses the evaluation infrastructure bottleneck that limits progress on computer-using agents and autonomous digital task execution.
+
+---
+
+### 2607.28442 — ViewMind3D: Modular View-Aware Inference for Training-Free 3D-QA
+**Authors:** Ping-Kun Chiang, Kun-Ru Wu, Po-han Li, Sandeep Chinchali, Ufuk Topcu, Yu-Chee Tseng
+**Score:** 83/100
+
+ViewMind3D is a fully training-free, modular multi-agent pipeline for 3D question answering that decomposes the task into question-driven view selection, guided visual grounding, spatial reasoning, and answer aggregation via a panel of specialized VLM components — achieving strong 3D-QA without any 3D-specific fine-tuning or annotation. The multi-agent decomposition (Question Interpreter, View Captioner, Summarizer, Answerer, Answer Normalizer) provides interpretability and modularity absent from monolithic trained models. This demonstrates that complex 3D spatial reasoning can be orchestrated through training-free multi-agent pipelines, directly relevant to agentic AI research applied to embodied perception.
+
+---
+
+### 2607.27924 — ODEWorld: A Continuous Predictive Architecture via Physical-Time Flow
+**Authors:** Dongxiu Liu, Haoyi Niu, Peng Cheng, Yuan Gao, Xirui Kang, Sangli Teng, Koushil Sreenath, Xianyuan Zhan
+**Score:** 82/100
+
+ODEWorld replaces discrete-time world model prediction with Physical-Time Flow (PT-Flow) — a neural ODE that learns a continuous latent velocity field enabling prediction at arbitrary physical time intervals, not just fixed training frequencies. Dynamical representation decoupling separates time-invariant content from time-varying dynamics, focusing the ODE on motion rather than appearance, and first-order velocity supervision improves learning efficiency. Continuous world models generalize across temporal resolutions, are demonstrated on both video generation and robot manipulation policy learning, and are directly applicable to embodied agents that must reason over variable-length action horizons.
+
+---
+
+### 2607.28227 — Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents
+**Authors:** Hanzhang Zhou, Panrong Tong, Xu Zhang, Quyu Kong, Chenglin Cai et al.
+**Score:** 82/100
+
+Qwen-UI-Agent is a comprehensive GUI agent system covering Web, Windows, Ubuntu, and Mobile platforms with hybrid GUI+CLI actions, proactive notification-triggered workflows, and an agent-driven data flywheel where agents synthesize tasks, explore environments, and self-judge trajectories to continuously expand training data. Three-stage training (SFT, Action RL for recurring error correction, Online RL with model-adaptive task curriculum) addresses distinct capability gaps progressively. The agent-driven data flywheel concept — automated self-improvement loops for GUI agents — is a concrete instance of the autonomous capability-building that is central to agentic AI research.
+
+---
+
+### 2607.28287 — Tycho: Active Abstraction with Programmatic World Models for ARC-AGI-3
+**Authors:** Jens Lehmann, Andrei Aioanei, Sahar Vahdati
+**Score:** 71/100
+
+Tycho is a coding-agent system for ARC-AGI-3 that formalizes interactive environments as parameterized rendered deterministic Moore machines, then constructs game-specific programmatic world models during interaction to efficiently infer rules, hidden state, and goals while maintaining action efficiency. Active abstraction — building and exploiting structured world models during play — distinguishes Tycho from reactive agents and connects to the broader challenge of agentic systems that must form and update structured representations of novel environments from limited interaction.
+
