@@ -1498,3 +1498,29 @@ Qwen-UI-Agent is a comprehensive GUI agent system covering Web, Windows, Ubuntu,
 
 Tycho is a coding-agent system for ARC-AGI-3 that formalizes interactive environments as parameterized rendered deterministic Moore machines, then constructs game-specific programmatic world models during interaction to efficiently infer rules, hidden state, and goals while maintaining action efficiency. Active abstraction — building and exploiting structured world models during play — distinguishes Tycho from reactive agents and connects to the broader challenge of agentic systems that must form and update structured representations of novel environments from limited interaction.
 
+---
+
+## 2026-08-03
+
+### 2607.29440 — Beyond Retrieval: Analytic Memory for Multimodal Agents (AdaMM)
+**Authors:** Zhoujin Tian, Yao Tian, Hao Zhang, Cheng Chen, Yakun Li et al.
+**Score:** 77/100
+
+AdaMM introduces "analytic memory" as a complement to retrieval memory for long-term multimodal agents: rather than indexing history for similarity-based retrieval, it extracts recurring attribute-value observations from dialogue, images, and contextual metadata, discovers recurring field structures, and materializes them as queryable structures supporting filtering, aggregation, ranking, and temporal comparison. A memory-aware planner at inference time decomposes queries into retrieval vs. analytic operations and routes each to the appropriate tool. Improves performance by 11.3% on MemEye and 7.3% on MemGallery. Directly relevant as a scalable memory abstraction for multimodal agents that must reason over long interaction histories.
+
+---
+
+### 2607.28678 — ViSAGE: Constructing Self-Correcting Memories for Long-Form Video Understanding
+**Authors:** Xinkui Zhao, Enbo Chen, Yifan Zhang, Chang Liu, Guanjie Cheng et al.
+**Score:** 73/100
+
+ViSAGE is a multimodal agentic memory framework for long-horizon video agents that builds self-correcting, entity-centric memories: cross-modal binding anchors entity identity over long temporal ranges; bidirectional memory refinement retroactively unifies historical records when delayed identity evidence arrives; multi-agent cross-verification assesses retrieved evidence under an identity-evidence alignment constraint, enabling abstention rather than hallucinated answers when evidence is missing. Achieves 5.9% higher accuracy than the strongest baseline on long-form video QA. Relevant as an agentic memory architecture combining multi-agent verification with bidirectional self-correction.
+
+---
+
+### 2607.29302 — BWM: A Low-Cost High-Fidelity World Simulator for Robot Learning
+**Authors:** BWM Team
+**Score:** 73/100
+
+BWM (Boundless World Model) is an action-conditioned video world model for robot manipulation that combines initial-environment guidance, dynamic visual history, and temporally aligned robot-action conditioning for stateful autoregressive prediction of future observations. Serves dual roles as a data engine (augments imitation-learning data with action-aligned rollouts) and as a policy evaluator (closed-loop assessment, risk anticipation, policy ranking). Ranks first overall in the WorldArena Challenge. Relevant as an autonomous world-modeling system that enables agents to anticipate action consequences, evaluate policies, and generate synthetic training data without physical hardware execution.
+
