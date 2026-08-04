@@ -1524,3 +1524,61 @@ ViSAGE is a multimodal agentic memory framework for long-horizon video agents th
 
 BWM (Boundless World Model) is an action-conditioned video world model for robot manipulation that combines initial-environment guidance, dynamic visual history, and temporally aligned robot-action conditioning for stateful autoregressive prediction of future observations. Serves dual roles as a data engine (augments imitation-learning data with action-aligned rollouts) and as a policy evaluator (closed-loop assessment, risk anticipation, policy ranking). Ranks first overall in the WorldArena Challenge. Relevant as an autonomous world-modeling system that enables agents to anticipate action consequences, evaluate policies, and generate synthetic training data without physical hardware execution.
 
+---
+
+## 2026-08-04
+
+### 2608.02217 — VC-Tooler: Learning Compositional and Adaptive Visual Tool Use
+**Authors:** Yizheng Wu, Jiashen Hua, Bing Deng, Jieping Ye
+**Score:** 85/100
+
+VC-Tooler teaches VLMs to use visual tools compositionally and adaptively through a hierarchical trajectory bank (single-tool grounding → multi-tool composition → diverse tool contexts) and two-stage training: supervised fine-tuning followed by RL that rewards accuracy, efficiency, and effective use of tool-returned observations. Achieves SOTA among open-source models on agentic visual benchmarks (95.8% on V*, 35.3% on VTC-Bench) and generalizes to new tool interfaces unseen during training, demonstrating compositional rather than schema-specific learning. Directly addresses the core unsolved challenge of building agents that can flexibly acquire and refine visual evidence through tools.
+
+---
+
+### 2608.02392 — GROVE: Growing and Reasoning over Temporally Stratified Memory from Streaming Video Experience
+**Authors:** Sitong Gong, Caixin Kang, Tianyu Yan, Guo Chen, Bo Zheng, Kaipeng Zhang, Yunzhi Zhuge, Xiang Ruan, Huchuan Lu, Yifei Huang
+**Score:** 78/100
+
+GROVE is a training-free framework for wearable agentic assistants that unifies reactive recall and proactive reasoning in a single temporally stratified memory grown from streaming video — addressing the gap where prior systems support only question-conditioned retrieval without proactive awareness of when history is situationally relevant. The memory is grown online from streaming observations and supports both modes through one unified structure, enabling the assistant to recognize when stored visual history applies to the current situation and volunteer it without being asked. Directly relevant to agentic AI systems that must maintain long-horizon memory and proactively surface contextually useful information.
+
+---
+
+### 2608.01827 — DeepVoyager-VL: Incentivizing Vision-in-the-Loop Search for Long-Horizon Multimodal Agents
+**Authors:** Huanyao Zhang, Jiepeng Zhou, Runhao Zhao, Yanzhe Shan, Jiaoyang Chen, Bowen Zhou, Bo Li, Fang Wang, Jialong Wu, Zhengwei Tao, Lang Mei, Xiaohan Yu, Liyan Liu, Chong Chen, Wentao Zhang
+**Score:** 73/100
+
+DeepVoyager-VL addresses the static parametric knowledge bottleneck in MLLMs by training agents to conduct long-horizon multi-step visual search — iteratively querying, retrieving, and grounding visual evidence in an active search loop rather than relying on a single retrieval call. The vision-in-the-loop design enables agents to adapt search strategy based on returned visual evidence, resolving knowledge-intensive and dynamically evolving open-world queries that single-pass retrieval cannot handle. Relevant as a multi-turn agentic search framework that integrates visual evidence gathering into the reasoning loop.
+
+---
+
+### 2608.00540 — DiffuseAgent-MI: Distributionally-Grounded, Tool-Integrated Self-Evolving Agents for Faithful Visual Reasoning
+**Authors:** An Lanji, Dawei Liu, Jin Li, Haoran Xu, Mei Chen, Yu Tian
+**Score:** 73/100
+
+DiffuseAgent-MI addresses faithfulness failures in tool-integrated vision-language agents — where stated reasoning diverges from the computation that produced the answer — through distributionally-grounded perceptual reasoning that anchors tool outputs to verifiable visual evidence. The self-evolving component allows the agent to improve its grounding strategy from experience without human labeling, targeting the reliability gap that makes current tool-integrated VLMs unsafe for high-stakes applications. Relevant as a concrete approach to the faithfulness and self-evolution challenges central to deployable agentic AI systems.
+
+---
+
+### 2608.01456 — Long-Horizon Embodied Decision-Making via Multimodal Memory Compression
+**Authors:** Bingxuan Li, Rui Yang, Cheng Qian, Jiateng Liu, Jeonghwan Kim, Zhenhailong Wang, Manling Li, Tong Zhang, Heng Ji
+**Score:** 73/100
+
+Proposes DunphyBench, a benchmark for evaluating agents on long-horizon human-centered embodied decision-making where agents must accumulate evidence across many steps, interpret implicit user preferences, and compare candidates under partial observations — going beyond task-executor framing to decision-maker framing. The companion method addresses the key bottleneck of maintaining relevant context over long horizons through multimodal memory compression, allowing agents to retain task-relevant state without unbounded context growth. Directly addresses the evidence-accumulation and preference-inference challenges that distinguish autonomous decision agents from reactive assistants.
+
+---
+
+### 2608.01964 — LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks
+**Authors:** Ziyu Ma, Hailang Huang, Shun Zou, Yong Wang, Shidong Yang, Yiming Hu, Fei Wei, XiangXiang Chu
+**Score:** 72/100
+
+LongHorizon-Harness reformulates long-horizon agent execution as explicit task-state management: rather than maintaining task execution, state, and completion assessment within a growing context window (where incorrect self-assessments propagate), it externalizes persistent context-free state tracking, enabling agents to maintain accurate progress estimates across many interdependent steps. The harness addresses the core failure mode of existing agent frameworks on real-world long-horizon tasks where growing context causes state confusion and compounding errors. Provides a reusable execution infrastructure for long-horizon agentic pipelines.
+
+---
+
+### 2608.01049 — FactorJEPA: Factorizing Monolithic Futures into Layout-Agent-Interaction Channels
+**Authors:** Kapil Wanaskar, Gaytri Jena, Aman Chadha, Vinija Jain, Vasu Sharma, Amitava Das
+**Score:** 72/100
+
+FactorJEPA decomposes world model prediction into three specialized channels — layout (static structure), agent (dynamic actor trajectories), and interaction (cross-agent relationships) — using a Joint Embedding Predictive Architecture (JEPA) to learn factorized latent representations rather than predicting monolithic pixel futures. Applied to the understudied regime of dense, chaotic Global South urban environments (DENSEWORLD), the factored representation outperforms monolithic baselines on trajectory and interaction prediction while enabling interpretable disentanglement of scene components. Relevant as a structured world model architecture that enables agents to reason about distinct scene factors independently.
+
