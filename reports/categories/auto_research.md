@@ -1582,3 +1582,62 @@ LongHorizon-Harness reformulates long-horizon agent execution as explicit task-s
 
 FactorJEPA decomposes world model prediction into three specialized channels — layout (static structure), agent (dynamic actor trajectories), and interaction (cross-agent relationships) — using a Joint Embedding Predictive Architecture (JEPA) to learn factorized latent representations rather than predicting monolithic pixel futures. Applied to the understudied regime of dense, chaotic Global South urban environments (DENSEWORLD), the factored representation outperforms monolithic baselines on trajectory and interaction prediction while enabling interpretable disentanglement of scene components. Relevant as a structured world model architecture that enables agents to reason about distinct scene factors independently.
 
+---
+
+## 2026-08-05
+
+### 2608.03979 — Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent
+**Authors:** Zhen Fang, Yu Zeng, Wenxuan Huang, Yiming Zhao, Shiting Huang, Tianfei Ren, Qi Lu, Qingnan Ren, Qisheng Su, Lionel Z. Wang, Qingyu Yin, Shuang Chen, Zehui Chen, Lin Chen, Zhenfei Yin, Yao Hu, Shaohui Lin, Wanli Ouyang, Shaosheng Cao, Feng Zhao
+**Score:** 87/100
+
+Video-DeepResearch extends multimodal deep research agents to continuous video streams—a setting requiring dense spatiotemporal grounding coupled with open-web exploration—by enforcing a strict tool unlocking order where visual perception must precede web retrieval, preventing modality bias and parametric knowledge leakage. The two-stage training (SFT + GRPO) teaches the agent to exceed the imitation ceiling and autonomously route across video grounding, temporal search, and answer synthesis. The 35B model achieves 64.0% on VideoDR-Bench, surpassing Claude-4.5-Sonnet by 5 points and GPT-5 by 11.5 points—establishing the first competitive open-weight video deep research agent.
+
+---
+
+### 2608.03779 — AgenticVAU: Multi-Agent Explore-Verify Reasoning for Video Anomaly Understanding
+**Authors:** Yuxiang Duan, Huining Li, Ao Li, Shuai Feng, Lanju Kong, Ning Liu, Jian Zhang, Xingdong Sheng, Yuntao Du
+**Score:** 81/100
+
+AgenticVAU decomposes video anomaly understanding into four specialized agents—visual-rule construction, search planning, video observation, and final decision—coordinated through an anchor registry that binds spatiotemporal evidence across agents, enabling structured explore-verify reasoning rather than monolithic single-pass inference. The training-free framework interleaves broad temporal exploration with dense local verification until an evidence sufficiency threshold is met, a pattern directly generalizable to other multi-hop video reasoning tasks. Outperforms both zero-shot and RL-trained baselines on VAU-Bench, demonstrating that multi-agent role specialization adds measurable value even without task-specific training.
+
+---
+
+### 2608.02713 — Quo Vadis, World Modeling?
+**Authors:** Yu Yang, Xuemeng Yang, Licheng Wen, Lingdong Kong, Xiaobin Hu, Dongyue Lu, Wei Chow, Xiyan Huang, Yuxiang Feng, Yue Liao, Jianbiao Mei, Daocheng Fu, Rong Wu, Pinlong Cai, Ran Yi, Ying Tai, Jiangning Zhang, Botian Shi, Yong Liu, Shuicheng Yan
+**Score:** 79/100
+
+Proposes reframing world models as "Agent-Centric Interactive World Proxies"—shifting from physical-state prediction to agent-usable information transitions (execution outcomes, retrieved experience, verification signals)—organized into six functional forms: dynamics, spatial, execution, memory/experience, skill, and reward/verification proxies. Maps how these proxies empower agents across three levels: inference-time guidance, training-time optimization via rewards and synthetic rollouts, and agent-proxy co-evolution for continuous improvement. Provides a comprehensive roadmap for building world modeling systems that go beyond state prediction to serve as genuine scaffolding for continually improving agents.
+
+---
+
+### 2608.03483 — Continue or Replan? Bernoulli-Continuation Policy Learning for Adaptive Horizon Execution
+**Authors:** Weichen Xu, Zhenhua Liu, Lin Luo, Yaobo Liang, Chengtang Yao, Qingyu Mei, Jian Cao, Xixin Cao, Xing Zhang, Jiaolong Yang, Baining Guo
+**Score:** 76/100
+
+BCP introduces a lightweight plug-and-play continuation head that transforms fixed-horizon VLA chunk execution into adaptive replanning decisions—framing each continue-or-replan choice as a Bernoulli variable with ordinal prefix-sharing bias rather than independent classes, trained with RL to jointly reward success and execution efficiency. Crucially, the base VLA policy is frozen and BCP adds only a small head, making it transferable across different base models (LingBot-VLA and π₀.₅) without retraining. Achieves +11% SR on RoboTwin 2.0 low-success tasks and generalizes from Clean to Randomized settings, offering a reusable solution to the replanning-granularity problem in chunk-based agents.
+
+---
+
+### 2607.26657 — Enfold: Folding World Model Imagination into Predictive Representations for Ultra-Efficient Embodied Control
+**Authors:** Weili Zeng, Yitong Xing, Fulong Liu, Chengqun Yang, Antao Xiang, Feng Tian, Jingnan Gao, Jisong Cai, Xin Wang, Xiaomin Wu, Yao Mu, Xiaokang Yang, Yichao Yan
+**Score:** 73/100
+
+Enfold transfers the computation of a world model generator into a predictive representation inferred from the current visual context alone, so action prediction no longer needs to execute the generator at every step—reducing action latency 3.7–10.1× relative to Fast-WAM while maintaining strong control on LIBERO, RoboTwin 2.0, and real-robot tasks. The learned representation is supervised by multi-level generator states during training and adapts at test time when the scene changes via human intervention, distinguishing it from fixed trajectory replay. Relevant as an efficient approach to internalizing world model knowledge into agent representations without paying the per-step generation cost.
+
+---
+
+### 2608.03270 — GUI-Lens: Coarse-to-Fine Cropping for GUI Grounding with General-Purpose VLMs
+**Authors:** Zichuan Fu, Shirong Wang, Wenlin Zhang, Guojing Li, Yimin Deng, Jingtong Gao, Junjia Qi, Hanyu Yan, Yefeng Zheng, Xiaopeng Li, Wanyu Wang, Xian Wu, Xiangyu Zhao
+**Score:** 72/100
+
+GUI-Lens enables general-purpose VLMs to ground GUI instructions through iterative coarse-to-fine visual zooming—using OCR text and detected UI components as coordinate references, then having the VLM select progressively more focused crops until the target element is precisely localized, with instruction-consistency checking at each step. The active visual observation loop avoids the failure mode where VLMs recognize a UI element semantically but mislocate it in high-resolution dense interfaces. Improves GUI grounding accuracy by up to 24.9 percentage points across four benchmarks, with gains transferring across GPT-5.5, Gemini, and other VLM backends.
+
+---
+
+### 2608.03571 — Beyond Simply Environment Scaling: Designing Effective Environment Distributions for Multimodal Agent Learning
+**Authors:** Kejian Zhu, Zhuoran Jin, Dongqi Huang, Hongbang Yuan, Yupu Hao, Kang Liu, Jun Zhao
+**Score:** 72/100
+
+Challenges the assumption that larger multimodal environment pools always improve agent training, finding through systematic experiments that environment count and diversity are orthogonal axes—simply adding more environments can saturate or even hurt performance when the added environments fail to cover underrepresented agent abilities. Proposes Ability-aware Environment Selection (AES) for diversity and Hierarchical Difficulty Curriculum (HDC) with two-level difficulty progression for structured learning, both improving final agent performance. Directly addresses the environment distribution design problem that becomes critical as agentic training scales toward web-scale and simulation-scale environment pools.
+
+
