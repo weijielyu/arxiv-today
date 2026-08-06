@@ -1641,3 +1641,37 @@ GUI-Lens enables general-purpose VLMs to ground GUI instructions through iterati
 Challenges the assumption that larger multimodal environment pools always improve agent training, finding through systematic experiments that environment count and diversity are orthogonal axes—simply adding more environments can saturate or even hurt performance when the added environments fail to cover underrepresented agent abilities. Proposes Ability-aware Environment Selection (AES) for diversity and Hierarchical Difficulty Curriculum (HDC) with two-level difficulty progression for structured learning, both improving final agent performance. Directly addresses the environment distribution design problem that becomes critical as agentic training scales toward web-scale and simulation-scale environment pools.
 
 
+
+## 2026-08-06
+
+### 2608.04436 — ToolArtist: Tool-Using Unified Multimodal Models for Agentic Image Generation
+**Authors:** Jiahao Zhao, Xiaomin Yu, Zhongxiang Sun, Fengwei Teng, Chengwei Qin, Xiaobin Hu, Jun Xu, Shuicheng Yan
+**Score:** 83/100
+
+ToolArtist is the first fully agentic image generation model, obtained by post-training a Unified Multimodal Model (Emu3.5) to autonomously orchestrate reasoning, external tool use (TextSearch, ImageSearch), and native image generation under a single learned policy — no prescribed ordering between retrieval, reasoning, and synthesis. Training uses a two-stage pipeline: a teacher agent with external tools generates trajectories, which are converted to UMM-compatible format by concealing tool calls but retaining generated images as native visual tokens; a subsequent RAD-GRPO RL stage with dual rewards (Intent Reward for description quality, Quality Reward across four dimensions) prevents collapse into search-only behavior. This is a direct advance toward AI systems that autonomously acquire world knowledge at generation time rather than relying on static training parameters, with open release of data and infrastructure.
+
+---
+
+### 2608.04459 — AdaptAgent: A Multi-Agent Domain-Guided Reasoning Framework for Code Adaptation
+**Authors:** (see arXiv:2608.04459)
+**Score:** 73/100
+
+AdaptAgent decomposes code integration tasks into a pipeline of specialized agents (Intent Summarizer, Policy Agent, Domain Planner, Context Miner, Code Adapter) that communicate through typed artifacts — structured intermediate representations (intent summaries, domain policies, context bundles) — rather than raw natural language handoffs. Each agent contributes a focused capability to a larger reasoning chain, enabling the system to solve real-world code adaptation problems that single-shot LLM calls fail on. Demonstrates that typed multi-agent pipelines can match or exceed frontier single-model approaches on structured software integration tasks.
+
+---
+
+### 2608.04719 — Diagnosing Tool-Selection Reasoning in LLM Agents with Canary Tools
+**Authors:** (see arXiv:2608.04719)
+**Score:** 73/100
+
+Introduces a 6-type taxonomy of LLM agent tool-selection failure modes (semantic decoys, capability mirages, prerequisite blindness, and others) and proposes "canary tools" — diagnostically inserted tools designed to elicit specific failure patterns — to quantify each weakness in isolation. Evaluated across 8 models and 8,640 test runs, revealing that correct selection rate (CSR) spans 36× across model tiers and that failure modes distribute non-uniformly across capability levels. Provides a systematic framework for auditing and improving the tool-selection component of LLM agents without conflating it with other reasoning failures.
+
+---
+
+### 2608.04843 — MemoryCPT: An End-to-End Agent Memory Framework for Cost-Performance Trade-off
+**Authors:** (see arXiv:2608.04843)
+**Score:** 72/100
+
+MemoryCPT introduces a fully end-to-end trainable agent memory pipeline with two components: an offline QAD module that distills memory construction into a compact model (reducing retrieval cost), and an online QAR module that combines reciprocal rank fusion retrieval with a GRPO-trained LoRA summarizer using cost-aware rewards. The cost-aware reward explicitly trades off answer quality against memory-lookup expense, enabling deployable memory systems that remain effective under constrained budgets. Demonstrates improvements on LoCoMo and LongMemEval benchmarks, with the end-to-end differentiable design being directly applicable to building persistent agent memory in long-horizon task settings.
+
+---
